@@ -10,7 +10,7 @@ export default function BlogSection() {
     <section className="blog_section">
       <h2>Latest Blog Posts</h2>
       <p className="blog_intro">
-        Check out our recent articles on recruitment strategies, hiring best practices, and industry trends.
+        Check out our recent articles on recruitment strategies, hiring best practices.
       </p>
       <div className="blog_grid">
         {latestPosts.map((post) => (
