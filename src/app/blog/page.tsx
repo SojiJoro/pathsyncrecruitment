@@ -7,13 +7,7 @@ export const metadata: Metadata = {
   description: 'Detailed view of a blog post',
 }
 
-interface PageProps {
-  params: {
-    slug: string
-  }
-}
-
-export default async function PostPage({ params }: PageProps) {
+export default async function PostPage({ params }: { params: { slug: string } }) {
   const post = blogPosts.find((p) => p.link === `/blog/${params.slug}`)
   if (!post) {
     notFound()
@@ -23,7 +17,6 @@ export default async function PostPage({ params }: PageProps) {
     <div style={{ padding: '2rem 1rem', maxWidth: '800px', margin: '0 auto' }}>
       <h1>{post.title}</h1>
       <p>{post.summary}</p>
-      {/* Add additional post content here as needed */}
     </div>
   )
 }
