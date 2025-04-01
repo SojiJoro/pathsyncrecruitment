@@ -7,8 +7,9 @@ export const metadata: Metadata = {
   description: 'Detailed view of a blog post',
 }
 
-export default async function PostPage({ params }: { params: Promise<{ slug: string }> }) {
-  const { slug } = await params
+export default async function PostPage({ params }: { params: any }) {
+  // Treat params as a promise, then destructure the slug
+  const { slug } = await Promise.resolve(params)
   const post = blogPosts.find((p) => p.link === `/blog/${slug}`)
   if (!post) {
     notFound()
@@ -18,6 +19,7 @@ export default async function PostPage({ params }: { params: Promise<{ slug: str
     <div style={{ padding: '2rem 1rem', maxWidth: '800px', margin: '0 auto' }}>
       <h1>{post.title}</h1>
       <p>{post.summary}</p>
+      {/* Additional post content here */}
     </div>
   )
 }
