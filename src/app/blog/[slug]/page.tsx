@@ -1,15 +1,16 @@
-// app/blog/[slug]/page.tsx
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { blogPosts } from '@/data/blogPosts'
 import { notFound } from 'next/navigation'
+import { Metadata } from 'next'
 
-interface PageProps {
-  params: { slug: string }
+export const metadata: Metadata = {
+  title: 'Blog Post - Pathsync Recruitment',
+  description: 'Detailed view of a blog post',
 }
 
-export default function PostPage({ params }: PageProps) {
-  // Find the post by matching the slug (here we assume the slug is like 'post-1', 'post-2', etc.)
-  const post = blogPosts.find(p => p.link === `/blog/${params.slug}`)
-
+export default async function PostPage({ params }: { params: any }) {
+  const { slug } = await Promise.resolve(params)
+  const post = blogPosts.find((p) => p.link === `/blog/${slug}`)
   if (!post) {
     notFound()
   }
@@ -18,7 +19,6 @@ export default function PostPage({ params }: PageProps) {
     <div style={{ padding: '2rem 1rem', maxWidth: '800px', margin: '0 auto' }}>
       <h1>{post.title}</h1>
       <p>{post.summary}</p>
-      {/* More details here */}
     </div>
   )
 }
