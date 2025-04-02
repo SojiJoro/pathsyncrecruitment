@@ -22,37 +22,65 @@ export default function BlogSection() {
       </div>
 
       <div className="blog_grid">
-        {latestPosts.map((post, index) => (
+        {latestPosts.map((post) => ( // Removed unused index parameter
           <article key={post.id} className="blog_card">
             <div className="blog_image_wrapper">
               <Image
                 src={post.imageUrl}
                 alt={post.title}
                 fill
+                priority // Add priority for first image
                 sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                style={{ objectFit: 'cover' }}
+                style={{ 
+                  objectFit: 'cover',
+                  objectPosition: 'center',
+                }}
               />
               <div className="blog_category">
-                <IconBookmark size={18} stroke={1.5} className="category_icon" />
-                {post.category}
+                <IconBookmark 
+                  size={18} 
+                  stroke={1.5} 
+                  className="category_icon"
+                  aria-hidden="true"
+                />
+                <span>{post.category}</span>
               </div>
             </div>
             <div className="blog_content">
               <div className="blog_meta">
-                <span>
-                  <IconClock size={18} stroke={1.5} className="meta_icon" />
-                  5 min read
+                <span className="meta_item">
+                  <IconClock 
+                    size={18} 
+                    stroke={1.5} 
+                    className="meta_icon"
+                    aria-hidden="true"
+                  />
+                  <span>5 min read</span>
                 </span>
-                <span>
-                  <IconUser size={18} stroke={1.5} className="meta_icon" />
-                  {post.author}
+                <span className="meta_item">
+                  <IconUser 
+                    size={18} 
+                    stroke={1.5} 
+                    className="meta_icon"
+                    aria-hidden="true"
+                  />
+                  <span>{post.author}</span>
                 </span>
               </div>
               <h3>{post.title}</h3>
               <p>{post.summary}</p>
-              <Link href={post.link} className="read_more">
-                Read More
-                <IconArrowRight size={18} stroke={1.5} className="arrow_icon" />
+              <Link 
+                href={post.link} 
+                className="read_more"
+                aria-label={`Read more about ${post.title}`}
+              >
+                <span>Read More</span>
+                <IconArrowRight 
+                  size={18} 
+                  stroke={1.5} 
+                  className="arrow_icon"
+                  aria-hidden="true"
+                />
               </Link>
             </div>
           </article>
@@ -60,9 +88,18 @@ export default function BlogSection() {
       </div>
 
       <div className="view_all_container">
-        <Link href="/blog" className="view_all_button">
-          View All Posts
-          <IconArrowRight size={18} stroke={1.5} className="arrow_icon" />
+        <Link 
+          href="/blog" 
+          className="view_all_button"
+          aria-label="View all blog posts"
+        >
+          <span>View All Posts</span>
+          <IconArrowRight 
+            size={18} 
+            stroke={1.5} 
+            className="arrow_icon"
+            aria-hidden="true"
+          />
         </Link>
       </div>
     </section>
