@@ -1,8 +1,7 @@
 // src/app/blog/page.tsx
 import { Metadata } from 'next'
 import { blogPosts } from '@/data/blogPosts'
-import Link from 'next/link'
-import { IconArrowRight, IconPlayerPlay } from '@tabler/icons-react'
+import { IconPlayerPlay } from '@tabler/icons-react' // Remove unused imports
 import BlogCard from '@/components/BlogCard'
 
 export const metadata: Metadata = {
