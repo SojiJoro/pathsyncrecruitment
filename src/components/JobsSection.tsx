@@ -1,5 +1,6 @@
 // src/components/JobsSection.tsx
-
+"use client"
+// rest of the component code
 import Link from 'next/link'
 
 export default function JobsSection() {
