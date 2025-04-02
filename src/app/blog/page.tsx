@@ -2,8 +2,8 @@
 import { Metadata } from 'next'
 import { blogPosts } from '@/data/blogPosts'
 import Link from 'next/link'
-import Image from 'next/image'
-import { IconArrowRight, IconPlayerPlay } from '@tabler/icons-react'  // Changed this line
+import { IconArrowRight, IconPlayerPlay } from '@tabler/icons-react'
+import BlogCard from '@/components/BlogCard'
 
 export const metadata: Metadata = {
   title: 'Blog - Pathsync Recruitment',
@@ -31,7 +31,7 @@ export default function BlogPage() {
                 loading="lazy"
               />
               <div className="video_overlay">
-                <IconPlayerPlay  // Changed this line
+                <IconPlayerPlay
                   size={64} 
                   className="play_icon"
                   aria-hidden="true"
@@ -53,38 +53,7 @@ export default function BlogPage() {
         
         <div className="blog_grid">
           {blogPosts.map((post) => (
-            <article key={post.id} className="blog_card">
-              <div className="blog_image_wrapper">
-                <Image
-                  src={post.imageUrl}
-                  alt={post.title}
-                  fill
-                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                  style={{ objectFit: 'cover' }}
-                  onError={(e) => {
-                    const target = e.target as HTMLImageElement;
-                    target.src = '/placeholder-blog.jpg';
-                  }}
-                />
-                <div className="image_overlay" />
-              </div>
-              <div className="blog_content">
-                <h3>{post.title}</h3>
-                <p>{post.summary}</p>
-                <Link 
-                  href={post.link} 
-                  className="read_more"
-                  aria-label={`Read more about ${post.title}`}
-                >
-                  <span>Read More</span>
-                  <IconArrowRight 
-                    size={18} 
-                    stroke={1.5} 
-                    className="arrow_icon"
-                  />
-                </Link>
-              </div>
-            </article>
+            <BlogCard key={post.id} post={post} />
           ))}
         </div>
       </section>
