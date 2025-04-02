@@ -1,10 +1,10 @@
-// HeroSection.jsx
+// HeroSection.tsx
 import Image from 'next/image'
+import { motion } from 'framer-motion' // You'll need to install framer-motion
 
 export default function HeroSection() {
   return (
     <section className="hero_section">
-      {/* Background Image Layer */}
       <div className="hero_bg_image_container">
         <Image
           src="/hero-bg.png"
@@ -13,22 +13,23 @@ export default function HeroSection() {
           priority
           className="hero_bg_image"
           sizes="100vw"
-          style={{
-            objectFit: 'cover',
-            objectPosition: 'center',
-          }}
         />
+        <div className="circuit_lines"></div>
       </div>
-
-      {/* Overlay for dark effect */}
-      <div className="hero_overlay" />
-
-      {/* Hero Text Content */}
-      <div className="hero_content">
+      <div className="hero_overlay gradient_overlay" />
+      <motion.div 
+        className="hero_content"
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.8 }}
+      >
         <h1>Your IT and Tech Recruitment Solution</h1>
         <p>We help you find the best talent for your organisation</p>
-        <button className="hero_button">Get Started</button>
-      </div>
+        <button className="hero_button">
+          Get Started
+          <span className="button_arrow">→</span>
+        </button>
+      </motion.div>
     </section>
   )
 }
