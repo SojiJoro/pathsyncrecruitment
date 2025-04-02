@@ -5,7 +5,6 @@ import Image from 'next/image'
 import { 
   IconClock, 
   IconUser, 
-  IconTag,
   IconArrowRight,
   IconBookmark 
 } from '@tabler/icons-react'
