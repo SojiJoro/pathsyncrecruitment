@@ -1,4 +1,5 @@
-// HeroSection.tsx
+//HeroSection.tsx
+"use client"
 import Image from 'next/image'
 import { motion } from 'framer-motion' // You'll need to install framer-motion
 
