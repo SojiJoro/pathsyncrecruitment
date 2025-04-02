@@ -70,19 +70,33 @@ header {
 /* Hero section */
 .hero_section {
   position: relative;
-  height: 65vh; /* Updated from 100vh */
+  height: 65vh;
+  min-height: 500px; /* Prevents too small height */
+  max-height: 800px; /* Prevents excessive height when zooming out */
   overflow: hidden;
   display: flex;
   align-items: center;
   justify-content: center;
   text-align: center;
   color: var(--light-text);
+  width: 100%;
 }
 
-.hero_bg_image {
+/* New container for Next.js Image */
+.hero_bg_image_container {
   position: absolute;
   inset: 0;
+  width: 100%;
+  height: 100%;
   z-index: -2;
+}
+
+/* Updated image styles */
+.hero_bg_image {
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: cover !important;
+  object-position: center !important;
 }
 
 .hero_overlay {
@@ -93,9 +107,11 @@ header {
 }
 
 .hero_content {
+  position: relative;
   max-width: 800px;
   padding: 0 1rem;
   z-index: 1;
+  margin: 0 auto; /* Centers content horizontally */
 }
 
 .hero_content h1 {
@@ -123,6 +139,37 @@ header {
 .hero_button:hover {
   background-color: var(--teal-light);
   color: var(--white);
+}
+
+/* Added responsive adjustments */
+@media (max-width: 768px) {
+  .hero_section {
+    height: 60vh;
+    min-height: 400px;
+  }
+
+  .hero_content h1 {
+    font-size: 2rem;
+  }
+
+  .hero_content p {
+    font-size: 1.1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero_section {
+    height: 55vh;
+    min-height: 350px;
+  }
+
+  .hero_content h1 {
+    font-size: 1.8rem;
+  }
+
+  .hero_content p {
+    font-size: 1rem;
+  }
 }
 
 /* Features section */
