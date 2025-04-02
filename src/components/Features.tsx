@@ -1,4 +1,3 @@
-// Features.tsx
 "use client"
 import {  
   IconBrain,
@@ -6,7 +5,7 @@ import {
   IconClockPlay
 } from '@tabler/icons-react'
 
-export default function Features() {  // Changed from FeaturesSection to Features
+export default function Features() {
   const features = [
     {
       icon: <IconBrain size={28} stroke={1.5} />,

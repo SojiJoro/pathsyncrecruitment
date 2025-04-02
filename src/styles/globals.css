@@ -186,6 +186,46 @@ header {
     font-size: 1rem;
   }
 }
+.testimonials_section {
+  padding: 4rem 1rem;
+  background: var(--gray-light);
+  text-align: center;
+}
+
+.testimonials_container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 2rem;
+}
+
+.testimonial_card {
+  background: var(--white);
+  padding: 1.5rem;
+  border-radius: 8px;
+  width: 350px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.quote_icon {
+  font-size: 1.5rem;
+  color: var(--teal-dark);
+  margin-bottom: 1rem;
+}
+
+.testimonial_quote {
+  font-style: italic;
+  margin-bottom: 1rem;
+}
+
+.testimonial_author {
+  font-weight: bold;
+}
+
+.testimonial_author span {
+  font-weight: normal;
+  font-size: 0.9rem;
+}
 
 
 /* Toast Notifications */
@@ -280,26 +320,32 @@ header {
 }
 
 /* Feature Card Improvements */
+.features_section {
+  padding: 4rem 1rem;
+  text-align: center;
+}
+
+.features_cards {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 2rem;
+}
+
 .feature_card {
   background: var(--white);
-  padding: 2rem;
-  border-radius: 16px;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
-  transition: all 0.3s ease;
-  border: 1px solid rgba(0, 0, 0, 0.05);
+  padding: 1.5rem;
+  border-radius: 8px;
+  width: 300px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
 }
 
 .feature_icon {
-  background: var(--teal-light);
-  width: 60px;
-  height: 60px;
-  border-radius: 12px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin-bottom: 1.5rem;
-  color: var(--white);
+  font-size: 2.5rem;
+  color: var(--teal-dark);
+  margin-bottom: 1rem;
 }
+
 
 /* Button Improvements */
 /* For buttons that are specific to a component, you may still use .submit_button or .hero_button.
