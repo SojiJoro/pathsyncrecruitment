@@ -1,4 +1,5 @@
 // Features.tsx
+"use client"
 import {  
   IconBrain,
   IconTargetArrow,
