@@ -11,8 +11,6 @@
   --light-text: #f5f5f5;
   --white: #fff;
   --off-white: #f2f2f2;
-  /* Added custom font variable */
-  --font-inter: 'Inter', sans-serif;
 }
 
 /* Basic resets */
@@ -22,17 +20,42 @@
   box-sizing: border-box;
 }
 
-html,
 body {
-  /* Using the custom Inter font and improving readability */
-  font-family: var(--font-inter);
-  font-size: 16px;
-  line-height: 1.6;
-}
-
-body {
+  font-family: sans-serif;
   background-color: var(--white);
   color: var(--dark-text);
+}
+
+/* Global Link Styles for consistency */
+a {
+  color: var(--teal-dark);
+  text-decoration: none;
+  transition: color 0.2s ease-in-out;
+}
+
+a:hover {
+  color: var(--teal-light);
+}
+
+/* Universal Button Styles */
+.btn {
+  background: linear-gradient(45deg, var(--teal-dark), var(--teal-mid));
+  color: var(--white);
+  border: none;
+  padding: 1rem 2rem;
+  border-radius: 8px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  box-shadow: 0 4px 15px rgba(15, 89, 103, 0.2);
+}
+
+.btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(15, 89, 103, 0.3);
 }
 
 /* Navigation */
@@ -135,6 +158,7 @@ header {
 }
 
 .hero_button {
+  /* Replaced with .btn styles – add this class along with any additional hero button specifics if needed */
   background-color: var(--white);
   color: var(--teal-dark);
   border: none;
@@ -150,8 +174,7 @@ header {
   color: var(--white);
 }
 
-/* Add to your existing CSS */
-/* In your global.css */
+/* Toast Notifications */
 .toast {
   position: fixed;
   bottom: 2rem;
@@ -195,6 +218,7 @@ header {
 .toast_close:hover {
   opacity: 1;
 }
+
 /* Modern Form Styles */
 .form_group {
   position: relative;
@@ -264,6 +288,8 @@ header {
 }
 
 /* Button Improvements */
+/* For buttons that are specific to a component, you may still use .submit_button or .hero_button.
+   Otherwise, try to use the universal .btn class for consistency. */
 .submit_button,
 .hero_button {
   background: linear-gradient(45deg, var(--teal-dark), var(--teal-mid));
@@ -308,7 +334,8 @@ header {
   0% { transform: translateY(0); }
   100% { transform: translateY(-50%); }
 }
-/* Added responsive adjustments */
+
+/* Responsive adjustments for Hero Section */
 @media (max-width: 768px) {
   .hero_section {
     height: 60vh;
@@ -458,8 +485,13 @@ header {
   border-radius: 16px;
   overflow: hidden;
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
-  transition: all 0.3s ease;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
   border: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.blog_card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
 }
 
 .blog_image_wrapper {
@@ -517,6 +549,7 @@ header {
   transform: translateY(-2px);
   box-shadow: 0 6px 20px rgba(15, 89, 103, 0.3);
 }
+
 /* Blog Hero Section */
 .blog_hero {
   background: linear-gradient(135deg, var(--teal-dark), var(--teal-mid));
@@ -687,7 +720,7 @@ header {
   transform: translateX(4px);
 }
 
-/* Responsive Adjustments */
+/* Responsive Adjustments for Blog Section */
 @media (max-width: 768px) {
   .blog_hero h1 {
     font-size: 2rem;
@@ -695,13 +728,15 @@ header {
   
   .blog_grid {
     grid-template-columns: 1fr;
+    padding: 0 1rem;
   }
   
-  .blog_hero_video {
-    margin: 1.5rem auto;
+  .blog_header h2 {
+    font-size: 2rem;
   }
 }
-/* Add smooth scrolling to the whole page */
+
+/* Smooth Scrolling */
 html {
   scroll-behavior: smooth;
 }
@@ -745,71 +780,302 @@ html {
   animation: shimmer 1.5s infinite;
 }
 
-/* Responsive Improvements */
-@media (max-width: 768px) {
-  .blog_grid {
-    grid-template-columns: repeat(auto-fit, minmax(100%, 1fr));
-    padding: 0 1rem;
-  }
-  
-  .blog_header h2 {
-    font-size: 2rem;
-  }
-}
-
-/* Dark Mode Support (if needed) */
-@media (prefers-color-scheme: dark) {
-  :root {
-    --white: #1a1a1a;
-    --off-white: #222;
-    --dark-text: #f5f5f5;
-    --light-text: #f5f5f5;
-  }
-  
-  .blog_card {
-    background: #2a2a2a;
-  }
-  
-  .blog_category {
-    background: rgba(0, 0, 0, 0.8);
-    color: var(--teal-light);
-  }
-}
-
-/* View All Container */
-.view_all_container {
-  margin-top: 1rem;
+/* Jobs Section */
+.jobs_section {
+  background-color: var(--white);
+  padding: 3rem 1rem;
   text-align: center;
+  /* Optional box shadow or subtle border */
+  /* box-shadow: 0 2px 4px rgba(0,0,0,0.1); */
 }
-.view_all_container a {
-  color: var(--teal-dark);
+
+.jobs_section h2 {
+  font-size: 1.8rem;
+  margin-bottom: 0.75rem;
+}
+
+.jobs_section p {
+  max-width: 800px;
+  margin: 0 auto 2rem auto;
+  line-height: 1.5;
+}
+
+/* Search Form */
+.jobs_search_form {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1rem;
+  max-width: 600px;
+  margin: 0 auto 2rem;
+}
+
+.jobs_search_form input {
+  flex: 1 1 200px;
+  padding: 0.5rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.jobs_search_form button {
+  background-color: var(--teal-dark);
+  color: var(--white);
+  border: none;
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+  font-weight: bold;
+  border-radius: 4px;
+  transition: background-color 0.2s ease-in-out;
+}
+
+.jobs_search_form button:hover {
+  background-color: var(--teal-mid);
+}
+
+/* Jobs Table */
+.jobs_table_wrapper {
+  overflow-x: auto; /* Allows horizontal scroll on mobile if needed */
+  margin-bottom: 2rem;
+}
+
+.jobs_table {
+  width: 100%;
+  max-width: 800px;
+  margin: 0 auto;
+  border-collapse: collapse;
+  min-width: 400px;
+}
+
+.jobs_table thead {
+  background-color: var(--off-white);
+}
+
+.jobs_table th,
+.jobs_table td {
+  border: 1px solid #ccc;
+  padding: 0.75rem;
+  text-align: left;
+}
+
+.jobs_table th {
+  font-weight: bold;
+}
+
+/* View All Jobs Button */
+.jobs_button_container {
+  margin-bottom: 3rem;
+}
+
+.jobs_button {
+  display: inline-block;
+  background-color: var(--teal-dark);
+  color: var(--white);
+  border: 2px solid var(--teal-dark);
+  padding: 0.75rem 1.5rem;
+  border-radius: 4px;
   text-decoration: none;
   font-weight: bold;
+  transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
+}
+
+.jobs_button:hover {
+  background-color: var(--white);
+  color: var(--teal-dark);
+}
+
+/* Loading Spinner */
+.loading_spinner {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 200px;
+}
+
+.spinner {
+  width: 40px;
+  height: 40px;
+  border: 3px solid var(--off-white);
+  border-top: 3px solid var(--teal-dark);
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* Extra Feature Cards Section */
+.jobs_features {
+  margin-top: 2rem;
+}
+
+.jobs_features h2 {
+  font-size: 1.8rem;
+  margin-bottom: 1rem;
+}
+
+.jobs_features_cards {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  max-width: 1200px;
+  margin: 0 auto;
+  justify-content: center;
+  text-align: left;
+}
+
+.jobs_feature_card {
+  background-color: var(--off-white);
+  border-radius: 6px;
+  padding: 1rem;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  flex: 1 1 250px;
+  max-width: 300px;
+}
+
+.jobs_feature_card h3 {
+  margin-bottom: 0.5rem;
+}
+
+.jobs_feature_card p {
+  line-height: 1.4;
+}
+
+.jobs_feature_card ul {
+  list-style: none;
+  padding-left: 1.5rem;
+}
+
+.jobs_feature_card ul li {
+  margin-bottom: 0.5rem;
+  position: relative;
+}
+
+.jobs_feature_card ul li::before {
+  content: "✔️"; /* Checkmark or any other icon */
+  position: absolute;
+  left: -1.5rem; /* Adjust as needed */
+  top: 0;
+  font-size: 1.2rem; /* Adjust size */
+  color: var(--teal-dark);
+}
+
+/* Jobs Feature Card Button */
+.jobs_feature_card_button {
+  display: inline-block;
+  background-color: var(--teal-dark);
+  color: var(--white);
   border: 2px solid var(--teal-dark);
   padding: 0.5rem 1rem;
   border-radius: 4px;
-  display: inline-block;
+  text-decoration: none;
+  font-weight: bold;
   transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
 }
-.view_all_container a:hover {
-  background-color: var(--teal-dark);
-  color: var(--white);
-}
-/* Media Queries */
-@media (max-width: 768px) {
-  .features_cards {
-    flex-direction: column;
-    align-items: center;
-  }
+
+.jobs_feature_card_button:hover {
+  background-color: var(--white);
+  color: var(--teal-dark);
 }
 
-/* Utility Classes */
-.text-center {
+/* Footer Container */
+.site_footer {
+  background-color: var(--teal-dark);
+  color: var(--white);
+  padding: 2rem 1rem;
+}
+
+/* Top section: multi-column layout */
+.footer_top {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  max-width: 1200px;
+  margin: 0 auto 2rem auto;
+  gap: 1.5rem;
+}
+
+/* Each column */
+.footer_col {
+  flex: 1 1 200px;
+  min-width: 200px;
+}
+
+/* Logo and brand text */
+.footer_logo {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: var(--white);
+  font-weight: bold;
+  font-size: 1.25rem;
+  text-decoration: none;
+  margin-bottom: 0.75rem;
+}
+
+.footer_brand_text {
+  line-height: 1.4;
+  margin-bottom: 0.75rem;
+}
+
+/* Column headings */
+.footer_col h3 {
+  margin-bottom: 0.75rem;
+}
+
+/* Link list in columns */
+.footer_col ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.footer_col ul li {
+  margin-bottom: 0.5rem;
+}
+
+.footer_col ul li a {
+  color: var(--white);
+  text-decoration: none;
+  transition: color 0.2s ease-in-out;
+}
+
+.footer_col ul li a:hover {
+  color: var(--teal-light);
+}
+
+/* Bottom section: disclaimer and social links */
+.footer_bottom {
+  border-top: 1px solid rgba(255, 255, 255, 0.2);
+  padding-top: 1rem;
   text-align: center;
+  max-width: 1200px;
+  margin: 0 auto;
 }
-.text-left {
-  text-align: left;
+
+.footer_disclaimer p {
+  margin: 0.5rem 0;
+  line-height: 1.4;
+  font-size: 0.9rem;
 }
-.text-right {
-  text-align: right;
+
+.footer_disclaimer a {
+  color: var(--white);
+  text-decoration: underline;
+}
+
+.footer_social {
+  margin-top: 1rem;
+}
+
+.footer_social a {
+  color: var(--white);
+  margin: 0 0.75rem;
+  text-decoration: none;
+  transition: color 0.2s ease-in-out;
+}
+
+.footer_social a:hover {
+  color: var(--teal-light);
 }
