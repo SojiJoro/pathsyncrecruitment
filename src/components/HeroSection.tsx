@@ -1,16 +1,22 @@
+// HeroSection.jsx
 import Image from 'next/image'
 
 export default function HeroSection() {
   return (
     <section className="hero_section">
       {/* Background Image Layer */}
-      <div className="hero_bg_image">
+      <div className="hero_bg_image_container">
         <Image
           src="/hero-bg.png"
           alt="Tech abstract background"
           fill
           priority
-          style={{ objectFit: 'cover' }}
+          className="hero_bg_image"
+          sizes="100vw"
+          style={{
+            objectFit: 'cover',
+            objectPosition: 'center',
+          }}
         />
       </div>
 
