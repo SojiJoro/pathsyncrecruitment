@@ -1,4 +1,5 @@
 // src/components/BlogSection.tsx
+"use client"
 import { blogPosts } from '@/data/blogPosts'
 import Link from 'next/link'
 import { IconArrowRight } from '@tabler/icons-react'
