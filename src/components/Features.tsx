@@ -1,8 +1,6 @@
 // Features.tsx
-import { 
-  IconBriefcase, 
+import {  
   IconUsers, 
-  IconRocket,
   IconBrain,
   IconTargetArrow,
   IconClockPlay
