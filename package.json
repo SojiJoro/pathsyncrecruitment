@@ -23,6 +23,7 @@
     "eslint": "^9",
     "eslint-config-next": "15.2.4",
     "@eslint/eslintrc": "^3",
-    "framer-motion": "^12.6.3"
+    "framer-motion": "^12.6.3",
+    "@tabler/icons-react": "^2.47.0"
   }
 }
