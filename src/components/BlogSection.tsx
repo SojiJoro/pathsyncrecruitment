@@ -1,5 +1,5 @@
 // src/components/BlogSection.tsx
-import { blogPosts, BlogPost } from '@/data/blogPosts'  // Import type from data file
+import { blogPosts } from '@/data/blogPosts'  // Remove BlogPost import since we're not using it explicitly
 import Link from 'next/link'
 import Image from 'next/image'
 import { 
