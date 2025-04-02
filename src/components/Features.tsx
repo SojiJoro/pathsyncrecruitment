@@ -1,6 +1,5 @@
 // Features.tsx
 import {  
-  IconUsers, 
   IconBrain,
   IconTargetArrow,
   IconClockPlay
