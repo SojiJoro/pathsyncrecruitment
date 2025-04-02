@@ -1,7 +1,5 @@
-// components/Toast.tsx
+// Toast.tsx
 import { motion, AnimatePresence } from 'framer-motion'
-import styles from './Toast.module.css'  // If using CSS modules
-// Or just use the styles from global.css
 
 interface ToastProps {
   message: string
