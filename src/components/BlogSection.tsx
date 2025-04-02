@@ -1,20 +1,16 @@
 // src/components/BlogSection.tsx
-import { blogPosts } from '@/data/blogPosts'
-import { BlogPost } from '@/types/blog'
+import { blogPosts, BlogPost } from '@/data/blogPosts'  // Import type from data file
 import Link from 'next/link'
 import Image from 'next/image'
 import { 
   IconClock, 
-  IconUser, 
   IconArrowRight,
   IconBookmark 
 } from '@tabler/icons-react'
 
 export default function BlogSection() {
-  // Add type annotation here
-  const latestPosts: BlogPost[] = blogPosts.slice(0, 3)
+  const latestPosts = blogPosts.slice(0, 3)
 
-  // Optional: Add fallback if no posts
   if (latestPosts.length === 0) {
     return null
   }
@@ -29,21 +25,20 @@ export default function BlogSection() {
       </div>
 
       <div className="blog_grid">
-        {latestPosts.map((post, index) => ( // Added index back for priority
+        {latestPosts.map((post) => (
           <article key={post.id} className="blog_card">
             <div className="blog_image_wrapper">
               <Image
-                src={post.imageUrl || '/placeholder-blog.jpg'} // Add fallback image
+                src={post.imageUrl}
                 alt={post.title}
                 fill
-                priority={index === 0} // Only prioritize first image
+                priority
                 sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                 style={{ 
                   objectFit: 'cover',
                   objectPosition: 'center',
                 }}
                 onError={(e) => {
-                  // Fallback for image error
                   const target = e.target as HTMLImageElement;
                   target.src = '/placeholder-blog.jpg';
                 }}
@@ -55,7 +50,7 @@ export default function BlogSection() {
                   className="category_icon"
                   aria-hidden="true"
                 />
-                <span>{post.category || 'General'}</span> {/* Add fallback category */}
+                <span>Recruitment Guide</span>
               </div>
             </div>
             <div className="blog_content">
@@ -67,16 +62,7 @@ export default function BlogSection() {
                     className="meta_icon"
                     aria-hidden="true"
                   />
-                  <span>{post.readTime || '5 min read'}</span>
-                </span>
-                <span className="meta_item">
-                  <IconUser 
-                    size={18} 
-                    stroke={1.5} 
-                    className="meta_icon"
-                    aria-hidden="true"
-                  />
-                  <span>{post.author || 'Anonymous'}</span>
+                  <span>5 min read</span>
                 </span>
               </div>
               <h3>{post.title}</h3>
