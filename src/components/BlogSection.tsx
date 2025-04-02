@@ -1,5 +1,6 @@
-// BlogSection.tsx
+// src/components/BlogSection.tsx
 import { blogPosts } from '@/data/blogPosts'
+import { BlogPost } from '@/types/blog'
 import Link from 'next/link'
 import Image from 'next/image'
 import { 
@@ -10,7 +11,13 @@ import {
 } from '@tabler/icons-react'
 
 export default function BlogSection() {
-  const latestPosts = blogPosts.slice(0, 3)
+  // Add type annotation here
+  const latestPosts: BlogPost[] = blogPosts.slice(0, 3)
+
+  // Optional: Add fallback if no posts
+  if (latestPosts.length === 0) {
+    return null
+  }
 
   return (
     <section className="blog_section">
@@ -22,18 +29,23 @@ export default function BlogSection() {
       </div>
 
       <div className="blog_grid">
-        {latestPosts.map((post) => ( // Removed unused index parameter
+        {latestPosts.map((post, index) => ( // Added index back for priority
           <article key={post.id} className="blog_card">
             <div className="blog_image_wrapper">
               <Image
-                src={post.imageUrl}
+                src={post.imageUrl || '/placeholder-blog.jpg'} // Add fallback image
                 alt={post.title}
                 fill
-                priority // Add priority for first image
+                priority={index === 0} // Only prioritize first image
                 sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                 style={{ 
                   objectFit: 'cover',
                   objectPosition: 'center',
+                }}
+                onError={(e) => {
+                  // Fallback for image error
+                  const target = e.target as HTMLImageElement;
+                  target.src = '/placeholder-blog.jpg';
                 }}
               />
               <div className="blog_category">
@@ -43,7 +55,7 @@ export default function BlogSection() {
                   className="category_icon"
                   aria-hidden="true"
                 />
-                <span>{post.category}</span>
+                <span>{post.category || 'General'}</span> {/* Add fallback category */}
               </div>
             </div>
             <div className="blog_content">
@@ -55,7 +67,7 @@ export default function BlogSection() {
                     className="meta_icon"
                     aria-hidden="true"
                   />
-                  <span>5 min read</span>
+                  <span>{post.readTime || '5 min read'}</span>
                 </span>
                 <span className="meta_item">
                   <IconUser 
@@ -64,7 +76,7 @@ export default function BlogSection() {
                     className="meta_icon"
                     aria-hidden="true"
                   />
-                  <span>{post.author}</span>
+                  <span>{post.author || 'Anonymous'}</span>
                 </span>
               </div>
               <h3>{post.title}</h3>
