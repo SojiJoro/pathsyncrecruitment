@@ -3,7 +3,7 @@ import { Metadata } from 'next'
 import { blogPosts } from '@/data/blogPosts'
 import Link from 'next/link'
 import Image from 'next/image'
-import { IconArrowRight, IconPlayCircle } from '@tabler/icons-react'
+import { IconArrowRight, IconPlayerPlay } from '@tabler/icons-react'  // Changed this line
 
 export const metadata: Metadata = {
   title: 'Blog - Pathsync Recruitment',
@@ -31,7 +31,7 @@ export default function BlogPage() {
                 loading="lazy"
               />
               <div className="video_overlay">
-                <IconPlayCircle 
+                <IconPlayerPlay  // Changed this line
                   size={64} 
                   className="play_icon"
                   aria-hidden="true"
