@@ -1,5 +1,7 @@
 // components/Toast.tsx
 import { motion, AnimatePresence } from 'framer-motion'
+import styles from './Toast.module.css'  // If using CSS modules
+// Or just use the styles from global.css
 
 interface ToastProps {
   message: string
@@ -17,37 +19,8 @@ export default function Toast({ message, type, onClose }: ToastProps) {
         exit={{ opacity: 0, y: 50 }}
       >
         <p>{message}</p>
-        <button onClick={onClose}>×</button>
+        <button onClick={onClose} className="toast_close">×</button>
       </motion.div>
     </AnimatePresence>
   )
-}
-
-// Add these styles
-.toast {
-  position: fixed;
-  bottom: 2rem;
-  right: 2rem;
-  padding: 1rem 2rem;
-  border-radius: 8px;
-  display: flex;
-  align-items: center;
-  gap: 1rem;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-  z-index: 1000;
-}
-
-.toast_success {
-  background: #4caf50;
-  color: white;
-}
-
-.toast_error {
-  background: #f44336;
-  color: white;
-}
-
-.toast_info {
-  background: var(--teal-mid);
-  color: white;
 }
