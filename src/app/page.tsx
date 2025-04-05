@@ -5,6 +5,7 @@ import Features from '@/components/Features'
 import ContactForm from '@/components/ContactForm'
 import BlogSection from '@/components/BlogSection'
 import JobsSection from '@/components/JobsSection'
+import TestimonialsSection from '@/components/TestimonialsSection'
 import Footer from '@/components/Footer'
 
 export const metadata = {
