@@ -66,183 +66,177 @@ export default function CompanyContactPage() {
   ]
 
   function handleChange(e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) {
-    const { name, value, type } = e.target;
-    const newValue = type === 'checkbox' ? (e.target as HTMLInputElement).checked : value;
-    setFormData({ ...formData, [name]: newValue });
+    const { name, value, type } = e.target
+    const newValue = type === 'checkbox' ? (e.target as HTMLInputElement).checked : value
+    setFormData({ ...formData, [name]: newValue })
   }
 
   function handleSubmit(e: React.FormEvent) {
-    e.preventDefault();
-    console.log('Company contact form submitted:', formData);
+    e.preventDefault()
+    console.log('Company contact form submitted:', formData)
     // TODO: send formData to your backend or email service
   }
 
   return (
-    <section className="contact_section">
-      <motion.h2
+    <section className="contact_section company_contact_section">
+      <motion.div
+        className="contact_container"
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6 }}
       >
-        Let&apos;s Talk About Your Hiring Needs
-      </motion.h2>
-
-      <motion.form
-        className="contact_form"
-        onSubmit={handleSubmit}
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ delay: 0.2, duration: 0.5 }}
-      >
-        <input
-          type="text"
-          name="firstName"
-          placeholder="Your first name *"
-          required
-          value={formData.firstName}
-          onChange={handleChange}
-        />
-
-        <input
-          type="text"
-          name="lastName"
-          placeholder="Your last name *"
-          required
-          value={formData.lastName}
-          onChange={handleChange}
-        />
-
-        <input
-          type="text"
-          name="jobTitle"
-          placeholder="Your job title *"
-          required
-          value={formData.jobTitle}
-          onChange={handleChange}
-        />
-
-        <input
-          type="email"
-          name="email"
-          placeholder="Your company email address *"
-          required
-          value={formData.email}
-          onChange={handleChange}
-        />
-
-        <input
-          type="text"
-          name="companyName"
-          placeholder="Your company name *"
-          required
-          value={formData.companyName}
-          onChange={handleChange}
-        />
-
-        <input
-          type="tel"
-          name="phone"
-          placeholder="Your company telephone *"
-          required
-          value={formData.phone}
-          onChange={handleChange}
-        />
-
-        <select
-          name="seniority"
-          required
-          value={formData.seniority}
-          onChange={handleChange}
-        >
-          <option value="">Your job seniority *</option>
-          <option value="C-Level">C-Level (CEO/CFO)</option>
-          <option value="Senior Director">Senior Director / SVP</option>
-          <option value="Director">Director / VP</option>
-          <option value="Manager">Senior Manager / Manager</option>
-          <option value="Associate">Associate</option>
-          <option value="Other">Other</option>
-        </select>
-
-        <select
-          name="location"
-          required
-          value={formData.location}
-          onChange={handleChange}
-        >
-          <option value="">Select nearest location *</option>
-          {locations.map(city => (
-            <option key={city} value={city}>{city}</option>
-          ))}
-        </select>
-
-        <select
-          name="expertise"
-          required
-          value={formData.expertise}
-          onChange={handleChange}
-        >
-          <option value="">Area of expertise hiring for *</option>
-          {techRoles.map(role => (
-            <option key={role} value={role}>{role}</option>
-          ))}
-        </select>
-
-        {formData.expertise === 'Other' && (
+        <h2 className="contact_title">Let&apos;s Talk About Your Hiring Needs</h2>
+        <form className="contact_form" onSubmit={handleSubmit}>
           <input
             type="text"
-            name="customExpertise"
-            placeholder="Type your job role"
-            value={formData.customExpertise}
-            onChange={handleChange}
-          />
-        )}
-
-        <select
-          name="expectedHires"
-          required
-          value={formData.expectedHires}
-          onChange={handleChange}
-        >
-          <option value="">Number of hires expected in the next 12 months *</option>
-          <option value="1-20">1-20</option>
-          <option value="20-50">20-50</option>
-          <option value="50-100">50-100</option>
-        </select>
-
-        <select
-          name="enquiryType"
-          required
-          value={formData.enquiryType}
-          onChange={handleChange}
-        >
-          <option value="">Your enquiry type *</option>
-          {enquiryTypes.map(type => (
-            <option key={type} value={type}>{type}</option>
-          ))}
-        </select>
-
-        <textarea
-          name="message"
-          placeholder="Please provide further information about your enquiry (optional)"
-          value={formData.message}
-          onChange={handleChange}
-        />
-
-        <label>
-          <input
-            type="checkbox"
-            name="consent"
+            name="firstName"
+            placeholder="Your first name *"
             required
-            checked={formData.consent}
+            value={formData.firstName}
             onChange={handleChange}
           />
-          {' '}I confirm that I have read and accept the Terms and Conditions and Privacy Policy.
-        </label>
 
-        <button className="submit_button" type="submit">
-          Request a call back <span className="button_arrow">&rarr;</span>
-        </button>
-      </motion.form>
+          <input
+            type="text"
+            name="lastName"
+            placeholder="Your last name *"
+            required
+            value={formData.lastName}
+            onChange={handleChange}
+          />
+
+          <input
+            type="text"
+            name="jobTitle"
+            placeholder="Your job title *"
+            required
+            value={formData.jobTitle}
+            onChange={handleChange}
+          />
+
+          <input
+            type="email"
+            name="email"
+            placeholder="Your company email address *"
+            required
+            value={formData.email}
+            onChange={handleChange}
+          />
+
+          <input
+            type="text"
+            name="companyName"
+            placeholder="Your company name *"
+            required
+            value={formData.companyName}
+            onChange={handleChange}
+          />
+
+          <input
+            type="tel"
+            name="phone"
+            placeholder="Your company telephone *"
+            required
+            value={formData.phone}
+            onChange={handleChange}
+          />
+
+          <select
+            name="seniority"
+            required
+            value={formData.seniority}
+            onChange={handleChange}
+          >
+            <option value="">Your job seniority *</option>
+            <option value="C-Level">C-Level (CEO/CFO)</option>
+            <option value="Senior Director">Senior Director / SVP</option>
+            <option value="Director">Director / VP</option>
+            <option value="Manager">Senior Manager / Manager</option>
+            <option value="Associate">Associate</option>
+            <option value="Other">Other</option>
+          </select>
+
+          <select
+            name="location"
+            required
+            value={formData.location}
+            onChange={handleChange}
+          >
+            <option value="">Select nearest location *</option>
+            {locations.map(city => (
+              <option key={city} value={city}>{city}</option>
+            ))}
+          </select>
+
+          <select
+            name="expertise"
+            required
+            value={formData.expertise}
+            onChange={handleChange}
+          >
+            <option value="">Area of expertise hiring for *</option>
+            {techRoles.map(role => (
+              <option key={role} value={role}>{role}</option>
+            ))}
+          </select>
+
+          {formData.expertise === 'Other' && (
+            <input
+              type="text"
+              name="customExpertise"
+              placeholder="Type your job role"
+              value={formData.customExpertise}
+              onChange={handleChange}
+            />
+          )}
+
+          <select
+            name="expectedHires"
+            required
+            value={formData.expectedHires}
+            onChange={handleChange}
+          >
+            <option value="">Number of hires expected in the next 12 months *</option>
+            <option value="1-20">1-20</option>
+            <option value="20-50">20-50</option>
+            <option value="50-100">50-100</option>
+          </select>
+
+          <select
+            name="enquiryType"
+            required
+            value={formData.enquiryType}
+            onChange={handleChange}
+          >
+            <option value="">Your enquiry type *</option>
+            {enquiryTypes.map(type => (
+              <option key={type} value={type}>{type}</option>
+            ))}
+          </select>
+
+          <textarea
+            name="message"
+            placeholder="Please provide further information about your enquiry (optional)"
+            value={formData.message}
+            onChange={handleChange}
+          />
+
+          <label className="consent_label">
+            <input
+              type="checkbox"
+              name="consent"
+              required
+              checked={formData.consent}
+              onChange={handleChange}
+            />
+            I confirm that I have read and accept the Terms and Conditions and Privacy Policy.
+          </label>
+
+          <button className="submit_button" type="submit">
+            Submit <span className="button_arrow">&rarr;</span>
+          </button>
+        </form>
+      </motion.div>
     </section>
   )
 }

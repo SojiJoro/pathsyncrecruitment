@@ -41,155 +41,148 @@ export default function CandidateContactPage() {
   ]
 
   function handleChange(e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) {
-    const { name, value, type } = e.target;
-    // Narrow type to HTMLInputElement when checkbox is expected
-    const newValue = type === 'checkbox' ? (e.target as HTMLInputElement).checked : value;
-    setFormData({ ...formData, [name]: newValue });
+    const { name, value, type } = e.target
+    const newValue = type === 'checkbox' ? (e.target as HTMLInputElement).checked : value
+    setFormData({ ...formData, [name]: newValue })
   }
 
   function handleSubmit(e: React.FormEvent) {
-    e.preventDefault();
-    console.log('Candidate contact form submitted:', formData);
+    e.preventDefault()
+    console.log('Candidate contact form submitted:', formData)
     // TODO: Process the form data via your backend or email service
   }
 
   return (
-    <section className="contact_section">
-      <motion.h2
+    <section className="contact_section candidate_contact_section">
+      <motion.div
+        className="contact_container"
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6 }}
       >
-        Get in Touch
-      </motion.h2>
-
-      <motion.form
-        className="contact_form"
-        onSubmit={handleSubmit}
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ delay: 0.2, duration: 0.5 }}
-      >
-        <input
-          type="text"
-          name="firstName"
-          placeholder="Your first name *"
-          required
-          value={formData.firstName}
-          onChange={handleChange}
-        />
-
-        <input
-          type="text"
-          name="lastName"
-          placeholder="Your last name *"
-          required
-          value={formData.lastName}
-          onChange={handleChange}
-        />
-
-        <input
-          type="email"
-          name="email"
-          placeholder="Your email address *"
-          required
-          value={formData.email}
-          onChange={handleChange}
-        />
-
-        <input
-          type="tel"
-          name="phone"
-          placeholder="Your phone number *"
-          required
-          value={formData.phone}
-          onChange={handleChange}
-        />
-
-        <input
-          type="text"
-          name="linkedIn"
-          placeholder="Your LinkedIn Profile URL (optional)"
-          value={formData.linkedIn}
-          onChange={handleChange}
-        />
-
-        <select
-          name="desiredPosition"
-          required
-          value={formData.desiredPosition}
-          onChange={handleChange}
-        >
-          <option value="">Desired Position *</option>
-          {jobTypes.map(job => (
-            <option key={job} value={job}>{job}</option>
-          ))}
-        </select>
-
-        <select
-          name="currentLocation"
-          required
-          value={formData.currentLocation}
-          onChange={handleChange}
-        >
-          <option value="">Current Location *</option>
-          {locations.map(loc => (
-            <option key={loc} value={loc}>{loc}</option>
-          ))}
-        </select>
-
-        <select
-          name="locationPreference"
-          required
-          value={formData.locationPreference}
-          onChange={handleChange}
-        >
-          <option value="">Preferred Work Location *</option>
-          {locations.map(loc => (
-            <option key={loc} value={loc}>{loc}</option>
-          ))}
-        </select>
-
-        <input
-          type="text"
-          name="salaryExpectation"
-          placeholder="Salary Expectation (e.g. £40k-£50k) *"
-          required
-          value={formData.salaryExpectation}
-          onChange={handleChange}
-        />
-
-        <input
-          type="date"
-          name="availableStartDate"
-          placeholder="Available Start Date *"
-          required
-          value={formData.availableStartDate}
-          onChange={handleChange}
-        />
-
-        <textarea
-          name="message"
-          placeholder="Tell us more about yourself (optional)"
-          value={formData.message}
-          onChange={handleChange}
-        />
-
-        <label>
+        <h2 className="contact_title">Get in Touch</h2>
+        <form className="contact_form" onSubmit={handleSubmit}>
           <input
-            type="checkbox"
-            name="consent"
+            type="text"
+            name="firstName"
+            placeholder="Your first name *"
             required
-            checked={formData.consent}
+            value={formData.firstName}
             onChange={handleChange}
           />
-          {' '}I confirm that I have read and accept the Terms and Conditions and Privacy Policy.
-        </label>
 
-        <button className="submit_button" type="submit">
-          Submit <span className="button_arrow">&rarr;</span>
-        </button>
-      </motion.form>
+          <input
+            type="text"
+            name="lastName"
+            placeholder="Your last name *"
+            required
+            value={formData.lastName}
+            onChange={handleChange}
+          />
+
+          <input
+            type="email"
+            name="email"
+            placeholder="Your email address *"
+            required
+            value={formData.email}
+            onChange={handleChange}
+          />
+
+          <input
+            type="tel"
+            name="phone"
+            placeholder="Your phone number *"
+            required
+            value={formData.phone}
+            onChange={handleChange}
+          />
+
+          <input
+            type="text"
+            name="linkedIn"
+            placeholder="Your LinkedIn Profile URL (optional)"
+            value={formData.linkedIn}
+            onChange={handleChange}
+          />
+
+          <select
+            name="desiredPosition"
+            required
+            value={formData.desiredPosition}
+            onChange={handleChange}
+          >
+            <option value="">Desired Position *</option>
+            {jobTypes.map(job => (
+              <option key={job} value={job}>{job}</option>
+            ))}
+          </select>
+
+          <select
+            name="currentLocation"
+            required
+            value={formData.currentLocation}
+            onChange={handleChange}
+          >
+            <option value="">Current Location *</option>
+            {locations.map(loc => (
+              <option key={loc} value={loc}>{loc}</option>
+            ))}
+          </select>
+
+          <select
+            name="locationPreference"
+            required
+            value={formData.locationPreference}
+            onChange={handleChange}
+          >
+            <option value="">Preferred Work Location *</option>
+            {locations.map(loc => (
+              <option key={loc} value={loc}>{loc}</option>
+            ))}
+          </select>
+
+          <input
+            type="text"
+            name="salaryExpectation"
+            placeholder="Salary Expectation (e.g. £40k-£50k) *"
+            required
+            value={formData.salaryExpectation}
+            onChange={handleChange}
+          />
+
+          <input
+            type="date"
+            name="availableStartDate"
+            placeholder="Available Start Date *"
+            required
+            value={formData.availableStartDate}
+            onChange={handleChange}
+          />
+
+          <textarea
+            name="message"
+            placeholder="Tell us more about yourself (optional)"
+            value={formData.message}
+            onChange={handleChange}
+          />
+
+          <label className="consent_label">
+            <input
+              type="checkbox"
+              name="consent"
+              required
+              checked={formData.consent}
+              onChange={handleChange}
+            />
+            I confirm that I have read and accept the Terms and Conditions and Privacy Policy.
+          </label>
+
+          <button className="submit_button" type="submit">
+            Submit <span className="button_arrow">&rarr;</span>
+          </button>
+        </form>
+      </motion.div>
     </section>
   )
 }
