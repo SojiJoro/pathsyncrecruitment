@@ -66,13 +66,14 @@ export default function CompanyContactPage() {
   ]
 
   function handleChange(e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) {
-    const { name, value, type, checked } = e.target
-    setFormData({ ...formData, [name]: type === 'checkbox' ? checked : value })
+    const { name, value, type } = e.target;
+    const newValue = type === 'checkbox' ? (e.target as HTMLInputElement).checked : value;
+    setFormData({ ...formData, [name]: newValue });
   }
 
   function handleSubmit(e: React.FormEvent) {
-    e.preventDefault()
-    console.log('Company contact form submitted:', formData)
+    e.preventDefault();
+    console.log('Company contact form submitted:', formData);
     // TODO: send formData to your backend or email service
   }
 
@@ -239,7 +240,7 @@ export default function CompanyContactPage() {
         </label>
 
         <button className="submit_button" type="submit">
-          Request a call back <span className="button_arrow">→</span>
+          Request a call back <span className="button_arrow">&rarr;</span>
         </button>
       </motion.form>
     </section>
