@@ -4,6 +4,7 @@ import { motion } from 'framer-motion'
 
 export default function ContactButtons() {
   const router = useRouter()
+
   return (
     <motion.section
       className="contact_buttons_section"
@@ -14,20 +15,20 @@ export default function ContactButtons() {
     >
       <h2>Contact Us</h2>
       <p>Please select your option:</p>
-      <button
-        className="contact_button"
-        onClick={() => router.push('/contact/company')}
-        style={{ marginRight: '1rem', padding: '1rem 2rem', fontSize: '1rem' }}
-      >
-        I&apos;m a Company
-      </button>
-      <button
-        className="contact_button"
-        onClick={() => router.push('/contact/candidate')}
-        style={{ padding: '1rem 2rem', fontSize: '1rem' }}
-      >
-        I&apos;m a Candidate
-      </button>
+      <div style={{ display: 'flex', justifyContent: 'center', gap: '1rem', marginTop: '1rem' }}>
+        <button 
+          className="btn" 
+          onClick={() => router.push('/contact/company')}
+        >
+          I&apos;m a Company
+        </button>
+        <button 
+          className="btn" 
+          onClick={() => router.push('/contact/candidate')}
+        >
+          I&apos;m a Candidate
+        </button>
+      </div>
     </motion.section>
   )
 }
