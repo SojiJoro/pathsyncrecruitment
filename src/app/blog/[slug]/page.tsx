@@ -8,15 +8,15 @@ export const metadata: Metadata = {
   description: 'Detailed view of a blog post',
 }
 
-interface PostPageProps {
-  params: {
-    slug: string
-  }
+// Proper Next.js PageProps type
+interface PageProps {
+  params: { slug: string }
 }
 
-export default async function PostPage({ params }: PostPageProps) {
-  const { slug } = await Promise.resolve(params)
+export default function PostPage({ params }: PageProps) {
+  const { slug } = params
   const post = blogPosts.find((p) => p.link === `/blog/${slug}`)
+
   if (!post) {
     notFound()
   }
