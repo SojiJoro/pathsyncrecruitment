@@ -1,4 +1,3 @@
-// src/app/page.tsx
 import Navbar from '@/components/Navbar'
 import HeroSection from '@/components/HeroSection'
 import Features from '@/components/Features'
@@ -14,7 +13,7 @@ export const metadata = {
 }
 
 export default function Home() {
-  // Add console.log to check which components are defined
+  // Optional: Remove these logs once everything is stable
   console.log({
     Navbar: !!Navbar,
     HeroSection: !!HeroSection,
@@ -22,18 +21,19 @@ export default function Home() {
     ContactForm: !!ContactForm,
     BlogSection: !!BlogSection,
     JobsSection: !!JobsSection,
+    TestimonialsSection: !!TestimonialsSection,
     Footer: !!Footer
   })
 
   return (
     <main>
-      {/* Add components one by one */}
       {Navbar && <Navbar />}
       {HeroSection && <HeroSection />}
       {Features && <Features />}
       {ContactForm && <ContactForm />}
       {BlogSection && <BlogSection />}
       {JobsSection && <JobsSection />}
+      {TestimonialsSection && <TestimonialsSection />} {/* ✅ Added here */}
       {Footer && <Footer />}
     </main>
   )
