@@ -1,7 +1,7 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
 import { blogPosts } from '@/data/blogPosts'
 import { notFound } from 'next/navigation'
 import { Metadata } from 'next'
+import ReactMarkdown from 'react-markdown'
 
 export const metadata: Metadata = {
   title: 'Blog Post - Pathsync Recruitment',
@@ -18,7 +18,7 @@ export default async function PostPage({ params }: { params: any }) {
   return (
     <div style={{ padding: '2rem 1rem', maxWidth: '800px', margin: '0 auto' }}>
       <h1>{post.title}</h1>
-      <p>{post.summary}</p>
+      <ReactMarkdown>{post.content}</ReactMarkdown>
     </div>
   )
 }
