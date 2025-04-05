@@ -5,7 +5,7 @@ import BlogSection from '@/components/BlogSection'
 import JobsSection from '@/components/JobsSection'
 import TestimonialsSection from '@/components/TestimonialsSection'
 import Footer from '@/components/Footer'
-import ContactButtons from '@/components/ContactButtons' // Directly import the client component
+import ContactButtons from '@/components/ContactButtons' // updated import
 
 export const metadata = {
   title: 'Pathsync Recruitment',
@@ -18,8 +18,7 @@ export default function Home() {
       <Navbar />
       <HeroSection />
       <Features />
-      {/* Display the contact buttons that link to the Company and Candidate pages */}
-      <ContactButtons />
+      <ContactButtons />  {/* This section now displays the two options */}
       <BlogSection />
       <JobsSection />
       <TestimonialsSection />

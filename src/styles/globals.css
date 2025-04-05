@@ -102,9 +102,8 @@ header {
 /* Hero section */
 .hero_section {
   position: relative;
-  min-height: 60vh;
-  height: auto;
-  max-height: 800px;
+  height: 100vh;
+  min-height: 600px;
   overflow: hidden;
   display: flex;
   align-items: center;
@@ -113,6 +112,7 @@ header {
   color: var(--light-text);
   width: 100%;
 }
+
 
 /* Container for Next.js Image */
 .hero_bg_image_container {
@@ -174,14 +174,13 @@ header {
 }
 
 /* Responsive adjustments */
-@media (max-width: 768px) {
+@media (min-height: 1000px) {
   .hero_section {
-    min-height: 50vh;
-    max-height: none;
+    max-height: 800px;
   }
-  .hero_content h1 {
-    font-size: 2rem;
-  }
+.hero_content h1 {
+  font-size: 2rem;
+}
   .hero_content p {
     font-size: 1rem;
   }
@@ -529,6 +528,7 @@ header {
   font-size: 2.5rem;
   margin-bottom: 1rem;
   background: linear-gradient(45deg, var(--teal-dark), var(--teal-mid));
+  background-clip: text;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
