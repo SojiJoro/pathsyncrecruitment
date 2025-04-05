@@ -8,13 +8,12 @@ export const metadata: Metadata = {
   description: 'Detailed view of a blog post',
 }
 
-// Proper Next.js PageProps type
 interface PageProps {
-  params: { slug: string }
+  params: Promise<{ slug: string }>
 }
 
-export default function PostPage({ params }: PageProps) {
-  const { slug } = params
+export default async function PostPage({ params }: PageProps) {
+  const { slug } = await params
   const post = blogPosts.find((p) => p.link === `/blog/${slug}`)
 
   if (!post) {
