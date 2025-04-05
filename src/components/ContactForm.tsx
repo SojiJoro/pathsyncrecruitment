@@ -1,36 +1,16 @@
-// ContactForm.tsx
 'use client'
-import { useState, ChangeEvent, FormEvent } from 'react'
+import { useRouter } from 'next/navigation'
 import { motion } from 'framer-motion'
 
-interface FormData {
-  company: string
-  firstName: string
-  lastName: string
-  email: string
-  phone: string
-  referral: string
-  enquiryType: string
-}
-
 export default function ContactForm() {
-  const [formData, setFormData] = useState<FormData>({
-    company: '',
-    firstName: '',
-    lastName: '',
-    email: '',
-    phone: '',
-    referral: 'None',
-    enquiryType: ''
-  })
+  const router = useRouter()
 
-  function handleChange(e: ChangeEvent<HTMLInputElement | HTMLSelectElement>) {
-    setFormData({ ...formData, [e.target.name]: e.target.value })
+  function handleCompanyClick() {
+    router.push('/contact/company')
   }
 
-  function handleSubmit(e: FormEvent<HTMLFormElement>) {
-    e.preventDefault()
-    console.log('Form submitted:', formData)
+  function handleCandidateClick() {
+    router.push('/contact/candidate')
   }
 
   return (
@@ -42,34 +22,23 @@ export default function ContactForm() {
       >
         Contact Us
       </motion.h2>
-      <motion.form 
-        onSubmit={handleSubmit} 
+
+      <motion.div 
         className="contact_form"
         initial={{ opacity: 0 }}
         whileInView={{ opacity: 1 }}
         transition={{ duration: 0.5, delay: 0.2 }}
       >
-        <div className="form_group">
-          <input
-            id="company"
-            name="company"
-            type="text"
-            value={formData.company}
-            onChange={handleChange}
-            required
-            className="form_input"
-          />
-          <label htmlFor="company" className="form_label">Company</label>
-          <div className="form_line"></div>
-        </div>
-
-        {/* Repeat for other fields with the same pattern */}
-        
-        <button type="submit" className="submit_button">
-          Submit
+        <button className="submit_button" onClick={handleCompanyClick}>
+          I'm a Company
           <span className="button_arrow">→</span>
         </button>
-      </motion.form>
+
+        <button className="submit_button" onClick={handleCandidateClick}>
+          I'm a Candidate
+          <span className="button_arrow">→</span>
+        </button>
+      </motion.div>
     </section>
   )
 }
