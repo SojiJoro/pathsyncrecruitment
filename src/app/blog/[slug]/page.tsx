@@ -8,7 +8,13 @@ export const metadata: Metadata = {
   description: 'Detailed view of a blog post',
 }
 
-export default async function PostPage({ params }: { params: any }) {
+interface PostPageProps {
+  params: {
+    slug: string
+  }
+}
+
+export default async function PostPage({ params }: PostPageProps) {
   const { slug } = await Promise.resolve(params)
   const post = blogPosts.find((p) => p.link === `/blog/${slug}`)
   if (!post) {
