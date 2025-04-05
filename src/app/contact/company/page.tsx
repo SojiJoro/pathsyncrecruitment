@@ -38,7 +38,7 @@ export default function CompanyContactPage() {
     "Hereford", "Lancaster", "Grimsby", "Gillingham", "Worthing", "Banbury", "Cannock"
   ]
 
-  // Expanded list of tech roles with 15 additional roles (see previous code)
+  // Expanded list of tech roles with 15 additional roles
   const techRoles = [
     "Software Engineer", "Frontend Developer", "Backend Developer", "Fullstack Developer",
     "DevOps Engineer", "Data Analyst", "Data Scientist", "Cloud Architect",
@@ -83,7 +83,7 @@ export default function CompanyContactPage() {
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6 }}
       >
-        Let’s Talk About Your Hiring Needs
+        Let&apos;s Talk About Your Hiring Needs
       </motion.h2>
 
       <motion.form
