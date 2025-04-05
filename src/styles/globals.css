@@ -102,8 +102,8 @@ header {
 /* Hero section */
 .hero_section {
   position: relative;
-  height: 100vh;
-  min-height: 600px;
+  height: 70vh; /* Adjust as needed */
+  min-height: 400px; /* For smaller screens */
   overflow: hidden;
   display: flex;
   align-items: center;
@@ -112,6 +112,7 @@ header {
   color: var(--light-text);
   width: 100%;
 }
+
 
 
 /* Container for Next.js Image */
