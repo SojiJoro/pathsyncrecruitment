@@ -41,13 +41,15 @@ export default function CandidateContactPage() {
   ]
 
   function handleChange(e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) {
-    const { name, value, type, checked } = e.target
-    setFormData({ ...formData, [name]: type === 'checkbox' ? checked : value })
+    const { name, value, type } = e.target;
+    // Narrow type to HTMLInputElement when checkbox is expected
+    const newValue = type === 'checkbox' ? (e.target as HTMLInputElement).checked : value;
+    setFormData({ ...formData, [name]: newValue });
   }
 
   function handleSubmit(e: React.FormEvent) {
-    e.preventDefault()
-    console.log('Candidate contact form submitted:', formData)
+    e.preventDefault();
+    console.log('Candidate contact form submitted:', formData);
     // TODO: Process the form data via your backend or email service
   }
 
@@ -185,7 +187,7 @@ export default function CandidateContactPage() {
         </label>
 
         <button className="submit_button" type="submit">
-          Submit <span className="button_arrow">→</span>
+          Submit <span className="button_arrow">&rarr;</span>
         </button>
       </motion.form>
     </section>
