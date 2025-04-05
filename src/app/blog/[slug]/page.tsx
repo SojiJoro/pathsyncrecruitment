@@ -21,18 +21,24 @@ export default async function PostPage({ params }: PageProps) {
   }
 
   return (
-    <div className="bg-white text-gray-800">
-      {/* Hero/Header Section */}
-      <header className="bg-teal-700 text-white py-8 mb-8">
+    <div className="bg-white text-gray-800 min-h-screen">
+      {/* Hero Section */}
+      <header className="bg-teal-800 text-white py-10 mb-8">
         <div className="max-w-4xl mx-auto px-4">
-          <h1 className="text-3xl font-bold">{post.title}</h1>
-          <p className="mt-2 text-gray-100">{post.summary}</p>
+          <h1 className="text-3xl md:text-4xl font-bold">
+            {post.title}
+          </h1>
+          {post.summary && (
+            <p className="mt-3 text-gray-100 text-lg">
+              {post.summary}
+            </p>
+          )}
         </div>
       </header>
 
-      {/* Main Content Area */}
-      <main className="max-w-4xl mx-auto px-4 pb-12">
-        <article className="prose prose-teal lg:prose-xl">
+      {/* Main Content */}
+      <main className="max-w-4xl mx-auto px-4 pb-16">
+        <article className="prose prose-teal md:prose-lg">
           <ReactMarkdown>{post.content}</ReactMarkdown>
         </article>
       </main>
