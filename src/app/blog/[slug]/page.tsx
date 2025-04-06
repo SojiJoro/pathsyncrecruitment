@@ -1,6 +1,7 @@
 import { blogPosts } from '@/data/blogPosts'
 import { notFound } from 'next/navigation'
 import ReactMarkdown from 'react-markdown'
+import Image from 'next/image'
 
 interface PageProps {
   params: Promise<{ slug: string }>
@@ -16,14 +17,15 @@ export default async function PostPage({ params }: PageProps) {
 
   return (
     <div className="bg-white min-h-screen">
-      {/* Container */}
       <div className="max-w-6xl mx-auto py-8 px-4">
-        {/* Hero Image */}
+        {/* Hero Image using next/image */}
         {post.imageUrl && (
           <div className="mb-8">
-            <img
+            <Image
               src={post.imageUrl}
               alt={post.title}
+              width={1200}
+              height={600}
               className="w-full h-auto object-cover rounded"
             />
           </div>
@@ -33,9 +35,7 @@ export default async function PostPage({ params }: PageProps) {
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
           {/* Main Blog Content */}
           <div className="col-span-2">
-            <h1 className="text-3xl font-bold mb-4">
-              {post.title}
-            </h1>
+            <h1 className="text-3xl font-bold mb-4">{post.title}</h1>
             <article className="prose prose-teal md:prose-lg">
               <ReactMarkdown>{post.content}</ReactMarkdown>
             </article>
@@ -43,13 +43,13 @@ export default async function PostPage({ params }: PageProps) {
 
           {/* Sidebar */}
           <aside className="col-span-1 space-y-8">
-            {/* Career Guides & News */}
+            {/* Career Guides &amp; News */}
             <section>
               <h2 className="text-lg font-semibold mb-3">Career Guides &amp; News</h2>
               <ul className="space-y-2">
                 <li>
                   <a href="#" className="text-teal-600 hover:underline">
-                    Why executive coaching is a 'must-have' for technology professionals
+                    Why executive coaching is a &apos;must-have&apos; for technology professionals
                   </a>
                 </li>
                 <li>
