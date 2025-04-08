@@ -1,8 +1,9 @@
-"use client"
-import { blogPosts } from '@/data/blogPosts'
-import Link from 'next/link'
-import { IconArrowRight } from '@tabler/icons-react'
-import BlogCard from './BlogCard'
+"use client";
+
+import { blogPosts } from '@/data/blogPosts';
+import Link from 'next/link';
+import { IconArrowRight } from '@tabler/icons-react';
+import BlogCard from './BlogCard';
 
 // Define the BlogPost interface
 interface BlogPost {
@@ -17,10 +18,10 @@ interface BlogPost {
 }
 
 export default function BlogSection() {
-  const latestPosts = blogPosts.slice(0, 3)
+  const latestPosts = blogPosts.slice(0, 3);
 
   if (latestPosts.length === 0) {
-    return null
+    return null;
   }
 
   return (
@@ -54,5 +55,5 @@ export default function BlogSection() {
         </Link>
       </div>
     </section>
-  )
+  );
 }
