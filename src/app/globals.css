@@ -1,0 +1,26 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.prose h2 {
+  @apply text-2xl font-bold mt-8 mb-4;
+}
+
+.prose h3 {
+  @apply text-xl font-semibold mt-6 mb-3;
+}
+
+.prose p {
+  @apply my-4;
+}
+
+.prose ul {
+  @apply list-disc pl-5 my-4;
+}
+
+.prose li {
+  @apply mb-2;
+}
+
+/* Ensure this file only contains CSS and Tailwind directives. 
+   Remove non-CSS content like JavaScript imports or JSX code. */
