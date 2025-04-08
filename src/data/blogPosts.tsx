@@ -1,17 +1,22 @@
+import React from 'react';
+import Image from 'next/image';
+import { marked } from 'marked';
+
 export interface BlogPost {
-  id: number
-  title: string
-  summary: string
-  imageUrl: string
-  link: string
-  content: string
+  id: number;
+  title: string;
+  summary: string;
+  imageUrl: string;
+  link: string;
+  content: string;
 }
 
 export const blogPosts: BlogPost[] = [
   {
     id: 1,
     title: 'Effective Job Ad Writing: Attracting Top IT Talent',
-    summary: 'Discover how to create compelling job ads that attract the best IT talent in the UK.',
+    summary:
+      'Discover how to create compelling job ads that attract the best IT talent in the UK.',
     imageUrl: '/guide1.jpg',
     link: '/blog/post-1',
     content: `
@@ -44,7 +49,8 @@ By focusing on clarity, engagement, and detailed information, your job ad can at
   {
     id: 2,
     title: 'Top Tech Interview Questions in 2025',
-    summary: 'Prepare for your next tech interview with our curated list of questions and strategies.',
+    summary:
+      'Prepare for your next tech interview with our curated list of questions and strategies.',
     imageUrl: '/guide2.jpg',
     link: '/blog/post-2',
     content: `
@@ -84,7 +90,8 @@ Tech interviews in 2025 are set to be more holistic than ever. By preparing for 
   {
     id: 3,
     title: 'Modern Recruitment Strategies for IT Talent',
-    summary: 'Explore modern methods and digital strategies to attract high-calibre IT professionals.',
+    summary:
+      'Explore modern methods and digital strategies to attract high-calibre IT professionals.',
     imageUrl: '/guide3.jpg',
     link: '/blog/post-3',
     content: `
@@ -110,10 +117,11 @@ The IT industry is constantly evolving. Keep an eye on emerging trends such as r
 ### Conclusion
 Modern recruitment for IT talent is about more than just posting job ads. By leveraging social media, using data, and focusing on the candidate experience, you can build a recruitment strategy that not only attracts high-calibre professionals but also retains them for the long term.
 `
-  },
-]
+  }
+];
+
 export function BlogPostView({ postId }: { postId: number }) {
-  const post = blogPosts.find(post => post.id === postId);
+  const post = blogPosts.find((post: BlogPost) => post.id === postId);
 
   if (!post) {
     return <div className="text-center py-12">Post not found</div>;
@@ -122,9 +130,11 @@ export function BlogPostView({ postId }: { postId: number }) {
   return (
     <div className="max-w-4xl mx-auto px-4 py-12">
       <div className="mb-8">
-        <img
+        <Image
           src={post.imageUrl}
           alt={post.title}
+          width={1200}
+          height={600}
           className="w-full h-64 object-cover rounded-lg shadow-md"
         />
       </div>
@@ -139,19 +149,23 @@ export function BlogPostView({ postId }: { postId: number }) {
         <h3 className="text-xl font-semibold mb-4">Related Posts</h3>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           {blogPosts
-            .filter(relatedPost => relatedPost.id !== post.id)
+            .filter((relatedPost: BlogPost) => relatedPost.id !== post.id)
             .slice(0, 2)
-            .map(relatedPost => (
+            .map((relatedPost: BlogPost) => (
               <div key={relatedPost.id} className="border rounded-lg overflow-hidden shadow-sm hover:shadow-md transition">
-                <img
+                <Image
                   src={relatedPost.imageUrl}
                   alt={relatedPost.title}
+                  width={400}
+                  height={200}
                   className="w-full h-40 object-cover"
                 />
                 <div className="p-4">
                   <h4 className="font-semibold text-lg mb-2">{relatedPost.title}</h4>
                   <p className="text-gray-600 text-sm">{relatedPost.summary}</p>
-                  <a href={relatedPost.link} className="mt-3 inline-block text-blue-600 font-medium">Read more →</a>
+                  <a href={relatedPost.link} className="mt-3 inline-block text-blue-600 font-medium">
+                    Read more &rarr;
+                  </a>
                 </div>
               </div>
             ))}

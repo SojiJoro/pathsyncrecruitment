@@ -1,4 +1,4 @@
-import { blogPosts } from '@/data/blogPosts'
+import { blogPosts, BlogPost } from '@/data/blogPosts'
 import { notFound } from 'next/navigation'
 import ReactMarkdown from 'react-markdown'
 import Image from 'next/image'
@@ -9,8 +9,9 @@ interface PageProps {
 
 export default async function PostPage({ params }: PageProps) {
   const { slug } = params
-  const post = blogPosts.find((p: any) => p.link === `/blog/${slug}`)
-
+  // Specify the parameter type using the BlogPost interface.
+  const post = blogPosts.find((p: BlogPost) => p.link === `/blog/${slug}`)
+  
   if (!post) {
     notFound()
   }
@@ -43,15 +44,13 @@ export default async function PostPage({ params }: PageProps) {
 
           {/* Sidebar */}
           <aside className="col-span-1 space-y-8">
-            {/* Career Guides & News */}
+            {/* Career Guides &amp; News */}
             <section>
-              <h2 className="text-lg font-semibold mb-3">
-                Career Guides &amp; News
-              </h2>
+              <h2 className="text-lg font-semibold mb-3">Career Guides &amp; News</h2>
               <ul className="space-y-2">
                 <li>
                   <a href="#" className="text-teal-600 hover:underline">
-                    Why executive coaching is a 'must-have' for technology professionals
+                    Why executive coaching is a &apos;must-have&apos; for technology professionals
                   </a>
                 </li>
                 <li>
@@ -71,26 +70,10 @@ export default async function PostPage({ params }: PageProps) {
             <section>
               <h2 className="text-lg font-semibold mb-3">Featured Employers</h2>
               <ul className="space-y-2">
-                <li>
-                  <a href="#" className="text-teal-600 hover:underline">
-                    PwC
-                  </a>
-                </li>
-                <li>
-                  <a href="#" className="text-teal-600 hover:underline">
-                    Google
-                  </a>
-                </li>
-                <li>
-                  <a href="#" className="text-teal-600 hover:underline">
-                    Amazon
-                  </a>
-                </li>
-                <li>
-                  <a href="#" className="text-teal-600 hover:underline">
-                    Apple
-                  </a>
-                </li>
+                <li><a href="#" className="text-teal-600 hover:underline">PwC</a></li>
+                <li><a href="#" className="text-teal-600 hover:underline">Google</a></li>
+                <li><a href="#" className="text-teal-600 hover:underline">Amazon</a></li>
+                <li><a href="#" className="text-teal-600 hover:underline">Apple</a></li>
               </ul>
             </section>
 
@@ -107,19 +90,13 @@ export default async function PostPage({ params }: PageProps) {
               <h2 className="text-lg font-semibold mb-3">Top Articles</h2>
               <ul className="space-y-2">
                 <li>
-                  <a href="#" className="text-teal-600 hover:underline">
-                    Article 1
-                  </a>
+                  <a href="#" className="text-teal-600 hover:underline">Article 1</a>
                 </li>
                 <li>
-                  <a href="#" className="text-teal-600 hover:underline">
-                    Article 2
-                  </a>
+                  <a href="#" className="text-teal-600 hover:underline">Article 2</a>
                 </li>
                 <li>
-                  <a href="#" className="text-teal-600 hover:underline">
-                    Article 3
-                  </a>
+                  <a href="#" className="text-teal-600 hover:underline">Article 3</a>
                 </li>
               </ul>
             </section>
