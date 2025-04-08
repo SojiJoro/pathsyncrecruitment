@@ -1,9 +1,20 @@
-// src/components/BlogSection.tsx
 "use client"
 import { blogPosts } from '@/data/blogPosts'
 import Link from 'next/link'
 import { IconArrowRight } from '@tabler/icons-react'
 import BlogCard from './BlogCard'
+
+// Define the BlogPost interface
+interface BlogPost {
+  id: string;
+  title: string;
+  slug: string;
+  excerpt: string;
+  date: string;
+  author: string;
+  category: string;
+  featuredImage: string;
+}
 
 export default function BlogSection() {
   const latestPosts = blogPosts.slice(0, 3)
@@ -22,7 +33,7 @@ export default function BlogSection() {
       </div>
 
       <div className="blog_grid">
-        {latestPosts.map((post) => (
+        {latestPosts.map((post: BlogPost) => (
           <BlogCard key={post.id} post={post} />
         ))}
       </div>

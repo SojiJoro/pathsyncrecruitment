@@ -112,3 +112,51 @@ Modern recruitment for IT talent is about more than just posting job ads. By lev
 `
   },
 ]
+export function BlogPostView({ postId }: { postId: number }) {
+  const post = blogPosts.find(post => post.id === postId);
+
+  if (!post) {
+    return <div className="text-center py-12">Post not found</div>;
+  }
+
+  return (
+    <div className="max-w-4xl mx-auto px-4 py-12">
+      <div className="mb-8">
+        <img
+          src={post.imageUrl}
+          alt={post.title}
+          className="w-full h-64 object-cover rounded-lg shadow-md"
+        />
+      </div>
+
+      <h1 className="text-3xl font-bold text-gray-900 mb-4">{post.title}</h1>
+
+      <div className="prose prose-lg max-w-none">
+        <div dangerouslySetInnerHTML={{ __html: marked(post.content) }} />
+      </div>
+
+      <div className="mt-12 pt-6 border-t border-gray-200">
+        <h3 className="text-xl font-semibold mb-4">Related Posts</h3>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+          {blogPosts
+            .filter(relatedPost => relatedPost.id !== post.id)
+            .slice(0, 2)
+            .map(relatedPost => (
+              <div key={relatedPost.id} className="border rounded-lg overflow-hidden shadow-sm hover:shadow-md transition">
+                <img
+                  src={relatedPost.imageUrl}
+                  alt={relatedPost.title}
+                  className="w-full h-40 object-cover"
+                />
+                <div className="p-4">
+                  <h4 className="font-semibold text-lg mb-2">{relatedPost.title}</h4>
+                  <p className="text-gray-600 text-sm">{relatedPost.summary}</p>
+                  <a href={relatedPost.link} className="mt-3 inline-block text-blue-600 font-medium">Read more →</a>
+                </div>
+              </div>
+            ))}
+        </div>
+      </div>
+    </div>
+  );
+}
