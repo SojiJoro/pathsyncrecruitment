@@ -3,10 +3,7 @@ export interface BlogPost {
   title: string;
   summary: string;
   imageUrl: string;
-  slug: string; // instead of "link"
+  link: string;
   content: string;
-  author?: string;
-  category?: string;
-  date?: string;
-  readTime?: string;
+  slug: string;
 }

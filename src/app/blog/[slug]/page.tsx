@@ -1,18 +1,15 @@
-// src/app/blog/[slug]/page.tsx
 import { blogPosts } from '@/data/blogPosts'
-import { BlogPost } from '@/types/blog'
 import { notFound } from 'next/navigation'
 import Image from 'next/image'
 import ReactMarkdown from 'react-markdown'
 
-export default async function Page(
+export default async function BlogPostPage(
   props: { params: { slug: string } }
 ): Promise<JSX.Element> {
-  // Force the props into a Promise by awaiting a resolved promise
-  const { params } = await Promise.resolve(props)
+  const { params } = props
   
-  const post: BlogPost | undefined = blogPosts.find(
-    (p: BlogPost) => p.slug === params.slug
+  const post = blogPosts.find(
+    (p) => p.slug === params.slug
   )
 
   if (!post) {
@@ -20,40 +17,47 @@ export default async function Page(
   }
 
   return (
-    <div className="bg-white min-h-screen">
-      <div className="max-w-6xl mx-auto py-8 px-4">
-        {post.imageUrl && (
-          <div className="mb-8">
-            <Image
-              src={post.imageUrl}
-              alt={post.title}
-              width={1200}
-              height={600}
-              className="w-full h-auto object-cover rounded"
-            />
-          </div>
-        )}
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-          <div className="col-span-2">
-            <h1 className="text-3xl font-bold mb-4">{post.title}</h1>
-            <article className="prose prose-teal md:prose-lg">
-              <ReactMarkdown>{post.content}</ReactMarkdown>
-            </article>
-          </div>
-          <aside className="col-span-1">
-            {/* Optional sidebar content */}
-          </aside>
+    <div className="max-w-4xl mx-auto px-4 py-12">
+      <div className="mb-8">
+        <Image
+          src={post.imageUrl}
+          alt={post.title}
+          width={1200}
+          height={600}
+          className="w-full h-64 object-cover rounded-lg shadow-md"
+        />
+      </div>
+
+      <h1 className="text-3xl font-bold text-gray-900 mb-4">{post.title}</h1>
+
+      <div className="prose prose-lg max-w-none">
+        <ReactMarkdown>{post.content}</ReactMarkdown>
+      </div>
+
+      <div className="mt-12 pt-6 border-t border-gray-200">
+        <h3 className="text-xl font-semibold mb-4">Related Posts</h3>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+          {blogPosts
+            .filter(relatedPost => relatedPost.id !== post.id)
+            .slice(0, 2)
+            .map(relatedPost => (
+              <div key={relatedPost.id} className="border rounded-lg overflow-hidden shadow-sm hover:shadow-md transition">
+                <Image
+                  src={relatedPost.imageUrl}
+                  alt={relatedPost.title}
+                  width={600}
+                  height={300}
+                  className="w-full h-40 object-cover"
+                />
+                <div className="p-4">
+                  <h4 className="font-semibold text-lg mb-2">{relatedPost.title}</h4>
+                  <p className="text-gray-600 text-sm">{relatedPost.summary}</p>
+                  <a href={`/blog/${relatedPost.slug}`} className="mt-3 inline-block text-blue-600 font-medium">Read more →</a>
+                </div>
+              </div>
+            ))}
         </div>
       </div>
     </div>
-  )
-}
-
-// tsconfig.json
-{
-  "compilerOptions": {
-    // other options
-    "jsx": "react-jsx";
-  }
-  }
+  );
 }
