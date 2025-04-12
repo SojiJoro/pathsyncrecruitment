@@ -1,17 +1,16 @@
+// src/app/blog/[slug]/page.tsx
 import { blogPosts } from '@/data/blogPosts'
 import { BlogPost } from '@/types/blog'
 import { notFound } from 'next/navigation'
 import Image from 'next/image'
 import ReactMarkdown from 'react-markdown'
 
-export default function PostPage({
-  params
-}: {
-  params: { slug: string }
-}) {
-  const post: BlogPost | undefined = blogPosts.find(p => p.slug === params.slug)
+export default function Page({ params }: { params: { slug: string } }) {
+  const post = blogPosts.find((p: BlogPost) => p.slug === params.slug)
 
-  if (!post) notFound()
+  if (!post) {
+    notFound()
+  }
 
   return (
     <div className="bg-white min-h-screen">
@@ -35,7 +34,7 @@ export default function PostPage({
             </article>
           </div>
           <aside className="col-span-1">
-            {/* Sidebar content (optional) */}
+            {/* Optional sidebar */}
           </aside>
         </div>
       </div>
