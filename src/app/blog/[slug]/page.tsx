@@ -5,8 +5,15 @@ import { notFound } from 'next/navigation'
 import Image from 'next/image'
 import ReactMarkdown from 'react-markdown'
 
-export default async function Page({ params }: { params: { slug: string } }): Promise<JSX.Element> {
-  const post: BlogPost | undefined = blogPosts.find((p: BlogPost) => p.slug === params.slug)
+export default async function Page(
+  props: { params: { slug: string } }
+): Promise<JSX.Element> {
+  // Force the props into a Promise by awaiting a resolved promise
+  const { params } = await Promise.resolve(props)
+  
+  const post: BlogPost | undefined = blogPosts.find(
+    (p: BlogPost) => p.slug === params.slug
+  )
 
   if (!post) {
     notFound()
@@ -40,4 +47,13 @@ export default async function Page({ params }: { params: { slug: string } }): Pr
       </div>
     </div>
   )
+}
+
+// tsconfig.json
+{
+  "compilerOptions": {
+    // other options
+    "jsx": "react-jsx";
+  }
+  }
 }
