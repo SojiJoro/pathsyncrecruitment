@@ -1,14 +1,17 @@
+// src/app/blog/[slug]/page.tsx
 import { blogPosts } from '@/data/blogPosts'
 import { BlogPost } from '@/types/blog'
 import { notFound } from 'next/navigation'
 import Image from 'next/image'
 import ReactMarkdown from 'react-markdown'
 
-interface PageProps {
-  params: { slug: string }
+type Props = {
+  params: {
+    slug: string
+  }
 }
 
-export default function PostPage({ params }: PageProps) {
+export default function PostPage({ params }: Props) {
   const post: BlogPost | undefined = blogPosts.find(p => p.slug === params.slug)
 
   if (!post) notFound()
@@ -34,7 +37,9 @@ export default function PostPage({ params }: PageProps) {
               <ReactMarkdown>{post.content}</ReactMarkdown>
             </article>
           </div>
-          <aside className="col-span-1">...sidebar...</aside>
+          <aside className="col-span-1">
+            {/* Sidebar content (you can keep yours here) */}
+          </aside>
         </div>
       </div>
     </div>
