@@ -34,7 +34,7 @@ export default function BlogSection() {
       </div>
 
       <div className="blog_grid">
-        {latestPosts.map((post: BlogPost) => (
+        {latestPosts.map((post) => (
           <BlogCard key={post.id} post={post} />
         ))}
       </div>
