@@ -1,4 +1,4 @@
-import { BlogPost } from '@/types/blog'
+import { BlogPost } from '@/types/blog';
 
 export const blogPosts: BlogPost[] = [
   {
@@ -7,7 +7,9 @@ export const blogPosts: BlogPost[] = [
     summary: 'Discover how to create compelling job ads that attract the best IT talent in the UK.',
     imageUrl: '/guide1.jpg',
     slug: 'effective-job-ad-writing',
-    content: `...`
+    content: `...`,
+    link: '/effective-job-ad-writing',
+    category: 'Recruitment'
   },
   {
     id: 2,
@@ -15,7 +17,9 @@ export const blogPosts: BlogPost[] = [
     summary: 'Prepare for your next tech interview with our curated list of questions and strategies.',
     imageUrl: '/guide2.jpg',
     slug: 'top-tech-interview-questions-2025',
-    content: `...`
+    content: `...`,
+    link: '/top-tech-interview-questions-2025',
+    category: 'Interviews'
   },
   {
     id: 3,
@@ -23,6 +27,8 @@ export const blogPosts: BlogPost[] = [
     summary: 'Explore modern methods and digital strategies to attract high-calibre IT professionals.',
     imageUrl: '/guide3.jpg',
     slug: 'modern-recruitment-strategies',
-    content: `...`
+    content: `...`,
+    link: '/modern-recruitment-strategies',
+    category: 'Recruitment'
   }
-]
+];

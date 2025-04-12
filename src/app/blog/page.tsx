@@ -1,31 +1,36 @@
-// src/app/blog/page.tsx
-import { Metadata } from 'next'
-import { blogPosts } from '@/data/blogPosts'
-import BlogCard from '@/components/blog/BlogCard'
-import Link from 'next/link'
+import React from 'react';
+import { Metadata } from 'next';
+import { blogPosts } from '@/data/blogPosts';
+import BlogCard from '@/components/blog/BlogCard';
+import Link from 'next/link';
 
 export const metadata: Metadata = {
   title: 'Blog - Pathsync Recruitment',
-  description: 'IT & Tech Recruitment Guides'
+  description: 'IT & Tech Recruitment Guides',
+};
+
+interface BlogPageProps {
+  searchParams: Promise<{ page?: string }>;
 }
 
-interface BlogProps {
-  searchParams: { page?: string }
-}
-
-export default function BlogPage({ searchParams }: BlogProps) {
-  const postsPerPage = 6
-  const currentPage = Number(searchParams.page || 1)
-  const totalPages = Math.ceil(blogPosts.length / postsPerPage)
-
-  const start = (currentPage - 1) * postsPerPage
-  const end = start + postsPerPage
-  const paginatedPosts = blogPosts.slice(start, end)
+export default async function BlogPage({
+  searchParams,
+}: BlogPageProps): Promise<React.ReactElement> {
+  // Await the promise for the search params
+  const resolvedSearchParams = await searchParams;
+  const postsPerPage = 6;
+  const currentPage = Number(resolvedSearchParams.page || 1);
+  const totalPages = Math.ceil(blogPosts.length / postsPerPage);
+  const start = (currentPage - 1) * postsPerPage;
+  const end = start + postsPerPage;
+  const paginatedPosts = blogPosts.slice(start, end);
 
   return (
     <div className="max-w-7xl mx-auto px-4 py-12">
       <div className="text-center mb-12">
-        <h1 className="text-4xl font-bold">CV Database Access with Every Job Posting</h1>
+        <h1 className="text-4xl font-bold">
+          CV Database Access with Every Job Posting
+        </h1>
         <p className="mt-4 text-gray-600 max-w-2xl mx-auto">
           Explore our CV database for a cost-effective way to find the IT talent you need.
         </p>
@@ -37,7 +42,6 @@ export default function BlogPage({ searchParams }: BlogProps) {
         ))}
       </div>
 
-      {/* Pagination */}
       <div className="flex justify-center gap-4 mt-16">
         {currentPage > 1 && (
           <Link
@@ -57,5 +61,5 @@ export default function BlogPage({ searchParams }: BlogProps) {
         )}
       </div>
     </div>
-  )
+  );
 }

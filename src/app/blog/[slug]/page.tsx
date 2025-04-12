@@ -1,19 +1,22 @@
-import { blogPosts } from '@/data/blogPosts'
-import { notFound } from 'next/navigation'
-import Image from 'next/image'
-import ReactMarkdown from 'react-markdown'
+import { blogPosts } from '@/data/blogPosts';
+import { notFound } from 'next/navigation';
+import Image from 'next/image';
+import ReactMarkdown from 'react-markdown';
 
-export default async function BlogPostPage(
-  props: { params: { slug: string } }
-): Promise<JSX.Element> {
-  const { params } = props
-  
-  const post = blogPosts.find(
-    (p) => p.slug === params.slug
-  )
+interface BlogPostPageProps {
+  params: Promise<{
+    slug: string;
+  }>;
+}
+
+export default async function BlogPostPage({
+  params,
+}: BlogPostPageProps): Promise<React.JSX.Element> {
+  const resolvedParams = await params; // Resolve the Promise
+  const post = blogPosts.find((p) => p.slug === resolvedParams.slug);
 
   if (!post) {
-    notFound()
+    notFound();
   }
 
   return (
@@ -38,10 +41,13 @@ export default async function BlogPostPage(
         <h3 className="text-xl font-semibold mb-4">Related Posts</h3>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           {blogPosts
-            .filter(relatedPost => relatedPost.id !== post.id)
+            .filter((relatedPost) => relatedPost.id !== post.id)
             .slice(0, 2)
-            .map(relatedPost => (
-              <div key={relatedPost.id} className="border rounded-lg overflow-hidden shadow-sm hover:shadow-md transition">
+            .map((relatedPost) => (
+              <div
+                key={relatedPost.id}
+                className="border rounded-lg overflow-hidden shadow-sm hover:shadow-md transition"
+              >
                 <Image
                   src={relatedPost.imageUrl}
                   alt={relatedPost.title}
@@ -52,7 +58,12 @@ export default async function BlogPostPage(
                 <div className="p-4">
                   <h4 className="font-semibold text-lg mb-2">{relatedPost.title}</h4>
                   <p className="text-gray-600 text-sm">{relatedPost.summary}</p>
-                  <a href={`/blog/${relatedPost.slug}`} className="mt-3 inline-block text-blue-600 font-medium">Read more →</a>
+                  <a
+                    href={`/blog/${relatedPost.slug}`}
+                    className="mt-3 inline-block text-blue-600 font-medium"
+                  >
+                    Read more →
+                  </a>
                 </div>
               </div>
             ))}

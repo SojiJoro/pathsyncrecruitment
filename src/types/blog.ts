@@ -3,7 +3,19 @@ export interface BlogPost {
   title: string;
   summary: string;
   imageUrl: string;
-  link: string;
-  content: string;
   slug: string;
+  content: string;
+  link?: string; // if you still want to include it
+  category?: string;
+  author?: string;
+  date?: string;
+  readTime?: string;
 }
+export interface BlogPostPageProps {
+  params: {
+    slug: string;
+  };
+}
+export interface BlogPostListProps {
+    posts: BlogPost[];
+  }
