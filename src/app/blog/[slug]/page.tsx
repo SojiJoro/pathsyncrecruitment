@@ -5,13 +5,11 @@ import { notFound } from 'next/navigation'
 import Image from 'next/image'
 import ReactMarkdown from 'react-markdown'
 
-type Props = {
-  params: {
-    slug: string
-  }
-}
-
-export default function PostPage({ params }: Props) {
+export default async function PostPage({
+  params
+}: {
+  params: { slug: string }
+}) {
   const post: BlogPost | undefined = blogPosts.find(p => p.slug === params.slug)
 
   if (!post) notFound()
@@ -38,7 +36,7 @@ export default function PostPage({ params }: Props) {
             </article>
           </div>
           <aside className="col-span-1">
-            {/* Sidebar content (you can keep yours here) */}
+            {/* Optional sidebar */}
           </aside>
         </div>
       </div>
