@@ -1,6 +1,6 @@
 import HeroSection from '@/components/HeroSection'
 import Features from '@/components/Features'
-import BlogSection from '@/components/BlogSection'
+import BlogSection from '@/components/blog/BlogSection'
 import JobsSection from '@/components/JobsSection'
 import TestimonialsSection from '@/components/TestimonialsSection'
 import ContactButtons from '@/components/ContactButtons' // displays the two options

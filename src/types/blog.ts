@@ -1,12 +1,12 @@
-// types/blog.ts (or wherever you keep your types)
 export interface BlogPost {
-  id: string | number;
+  id: number;
   title: string;
   summary: string;
   imageUrl: string;
-  link: string;
-  author: string;
-  category: string;  // Added this
-  date?: string;     // Optional
-  readTime?: string; // Optional
+  slug: string; // instead of "link"
+  content: string;
+  author?: string;
+  category?: string;
+  date?: string;
+  readTime?: string;
 }
