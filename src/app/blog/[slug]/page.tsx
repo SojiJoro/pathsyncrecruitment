@@ -5,8 +5,8 @@ import { notFound } from 'next/navigation'
 import Image from 'next/image'
 import ReactMarkdown from 'react-markdown'
 
-export default function Page({ params }: { params: { slug: string } }) {
-  const post = blogPosts.find((p: BlogPost) => p.slug === params.slug)
+export default async function Page({ params }: { params: { slug: string } }): Promise<JSX.Element> {
+  const post: BlogPost | undefined = blogPosts.find((p: BlogPost) => p.slug === params.slug)
 
   if (!post) {
     notFound()
@@ -34,7 +34,7 @@ export default function Page({ params }: { params: { slug: string } }) {
             </article>
           </div>
           <aside className="col-span-1">
-            {/* Optional sidebar */}
+            {/* Optional sidebar content */}
           </aside>
         </div>
       </div>
