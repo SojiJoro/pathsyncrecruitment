@@ -1,18 +1,17 @@
+// src/app/blog/[slug]/page.tsx
 import { blogPosts } from '@/data/blogPosts';
 import { notFound } from 'next/navigation';
 import Image from 'next/image';
 import ReactMarkdown from 'react-markdown';
 
 interface BlogPostPageProps {
-  params: Promise<{
-    slug: string;
-  }>;
+  params: Promise<{ slug: string }>;
 }
 
 export default async function BlogPostPage({
   params,
-}: BlogPostPageProps): Promise<React.JSX.Element> {
-  const resolvedParams = await params; // Resolve the Promise
+}: BlogPostPageProps): Promise<React.ReactElement> {
+  const resolvedParams = await params;
   const post = blogPosts.find((p) => p.slug === resolvedParams.slug);
 
   if (!post) {
@@ -20,25 +19,29 @@ export default async function BlogPostPage({
   }
 
   return (
-    <div className="max-w-4xl mx-auto px-4 py-12">
-      <div className="mb-8">
-        <Image
-          src={post.imageUrl}
-          alt={post.title}
-          width={1200}
-          height={600}
-          className="w-full h-64 object-cover rounded-lg shadow-md"
-        />
-      </div>
+    <div className="container mx-auto px-4 py-12">
+      {post.imageUrl && (
+        <div className="mb-8">
+          <Image
+            src={post.imageUrl}
+            alt={post.title}
+            width={1200}
+            height={600}
+            className="w-full h-64 object-cover rounded-lg shadow-md"
+          />
+        </div>
+      )}
 
-      <h1 className="text-3xl font-bold text-gray-900 mb-4">{post.title}</h1>
+      <h1 className="text-3xl font-bold text-gray-900 mb-6 text-center">
+        {post.title}
+      </h1>
 
-      <div className="prose prose-lg max-w-none">
+      <div className="prose prose-lg max-w-none mx-auto text-gray-800">
         <ReactMarkdown>{post.content}</ReactMarkdown>
       </div>
 
-      <div className="mt-12 pt-6 border-t border-gray-200">
-        <h3 className="text-xl font-semibold mb-4">Related Posts</h3>
+      <section className="mt-12 pt-6 border-t border-gray-200">
+        <h3 className="text-xl font-semibold mb-4 text-center">Related Posts</h3>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           {blogPosts
             .filter((relatedPost) => relatedPost.id !== post.id)
@@ -46,7 +49,7 @@ export default async function BlogPostPage({
             .map((relatedPost) => (
               <div
                 key={relatedPost.id}
-                className="border rounded-lg overflow-hidden shadow-sm hover:shadow-md transition"
+                className="border rounded-lg overflow-hidden shadow-sm hover:shadow-lg transition"
               >
                 <Image
                   src={relatedPost.imageUrl}
@@ -60,7 +63,7 @@ export default async function BlogPostPage({
                   <p className="text-gray-600 text-sm">{relatedPost.summary}</p>
                   <a
                     href={`/blog/${relatedPost.slug}`}
-                    className="mt-3 inline-block text-blue-600 font-medium"
+                    className="mt-3 inline-block text-blue-600 font-medium hover:underline"
                   >
                     Read more →
                   </a>
@@ -68,7 +71,7 @@ export default async function BlogPostPage({
               </div>
             ))}
         </div>
-      </div>
+      </section>
     </div>
   );
 }

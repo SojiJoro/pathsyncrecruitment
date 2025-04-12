@@ -1,3 +1,4 @@
+// src/app/blog/page.tsx
 import React from 'react';
 import { Metadata } from 'next';
 import { blogPosts } from '@/data/blogPosts';
@@ -16,7 +17,6 @@ interface BlogPageProps {
 export default async function BlogPage({
   searchParams,
 }: BlogPageProps): Promise<React.ReactElement> {
-  // Await the promise for the search params
   const resolvedSearchParams = await searchParams;
   const postsPerPage = 6;
   const currentPage = Number(resolvedSearchParams.page || 1);
@@ -26,27 +26,27 @@ export default async function BlogPage({
   const paginatedPosts = blogPosts.slice(start, end);
 
   return (
-    <div className="max-w-7xl mx-auto px-4 py-12">
-      <div className="text-center mb-12">
-        <h1 className="text-4xl font-bold">
+    <div className="container mx-auto px-4 py-12">
+      <header className="text-center mb-12">
+        <h1 className="text-4xl font-bold text-gray-800">
           CV Database Access with Every Job Posting
         </h1>
         <p className="mt-4 text-gray-600 max-w-2xl mx-auto">
           Explore our CV database for a cost-effective way to find the IT talent you need.
         </p>
-      </div>
+      </header>
 
-      <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
+      <section className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
         {paginatedPosts.map((post) => (
           <BlogCard key={post.id} post={post} />
         ))}
-      </div>
+      </section>
 
       <div className="flex justify-center gap-4 mt-16">
         {currentPage > 1 && (
           <Link
             href={`/blog?page=${currentPage - 1}`}
-            className="px-4 py-2 rounded border text-gray-700 hover:bg-gray-100"
+            className="px-5 py-2 bg-gray-100 text-gray-800 rounded hover:bg-gray-200 transition"
           >
             ← Previous
           </Link>
@@ -54,7 +54,7 @@ export default async function BlogPage({
         {currentPage < totalPages && (
           <Link
             href={`/blog?page=${currentPage + 1}`}
-            className="px-4 py-2 rounded border text-gray-700 hover:bg-gray-100"
+            className="px-5 py-2 bg-gray-100 text-gray-800 rounded hover:bg-gray-200 transition"
           >
             Next →
           </Link>
