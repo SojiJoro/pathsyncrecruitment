@@ -1,11 +1,10 @@
-// src/app/blog/[slug]/page.tsx
 import { blogPosts } from '@/data/blogPosts'
 import { BlogPost } from '@/types/blog'
 import { notFound } from 'next/navigation'
 import Image from 'next/image'
 import ReactMarkdown from 'react-markdown'
 
-export default async function PostPage({
+export default function PostPage({
   params
 }: {
   params: { slug: string }
@@ -36,7 +35,7 @@ export default async function PostPage({
             </article>
           </div>
           <aside className="col-span-1">
-            {/* Optional sidebar */}
+            {/* Sidebar content (optional) */}
           </aside>
         </div>
       </div>
