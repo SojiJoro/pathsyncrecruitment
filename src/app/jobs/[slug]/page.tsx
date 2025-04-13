@@ -1,7 +1,5 @@
 'use client';
 
-import { useRouter } from 'next/navigation';
-
 const jobMap: Record<string, { title: string; location: string; type: string }> = {
   'software-engineer': { title: 'Software Engineer', location: 'London', type: 'Full-time' },
   'devops-specialist': { title: 'DevOps Specialist', location: 'Remote', type: 'Contract' },
@@ -9,7 +7,6 @@ const jobMap: Record<string, { title: string; location: string; type: string }> 
 };
 
 export default function JobInterestPage({ params }: { params: { slug: string } }) {
-  const router = useRouter();
   const job = jobMap[params.slug];
 
   if (!job) {
