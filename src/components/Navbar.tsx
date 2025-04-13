@@ -35,12 +35,18 @@ export default function Navbar() {
             <Link href="/jobs" className="text-gray-600 hover:text-gray-800 transition">
               Jobs
             </Link>
-            <Link href="/candidate" className="text-gray-600 hover:text-gray-800 transition">
+            <a
+              href="https://www.pathsyncrecruitment.com/contact/candidate"
+              className="text-gray-600 hover:text-gray-800 transition"
+            >
               Candidates
-            </Link>
-            <Link href="/company" className="text-gray-600 hover:text-gray-800 transition">
+            </a>
+            <a
+              href="https://www.pathsyncrecruitment.com/contact/company"
+              className="text-gray-600 hover:text-gray-800 transition"
+            >
               Employers
-            </Link>
+            </a>
             <Link href="/contact" className="text-gray-600 hover:text-gray-800 transition">
               Contact
             </Link>
@@ -82,20 +88,20 @@ export default function Navbar() {
             >
               Jobs
             </Link>
-            <Link
-              href="/candidate"
+            <a
+              href="https://www.pathsyncrecruitment.com/contact/candidate"
               onClick={() => setMenuOpen(false)}
               className="block px-3 py-2 rounded-md text-base font-medium text-gray-600 hover:text-gray-800 hover:bg-gray-50 transition"
             >
               Candidates
-            </Link>
-            <Link
-              href="/company"
+            </a>
+            <a
+              href="https://www.pathsyncrecruitment.com/contact/company"
               onClick={() => setMenuOpen(false)}
               className="block px-3 py-2 rounded-md text-base font-medium text-gray-600 hover:text-gray-800 hover:bg-gray-50 transition"
             >
               Employers
-            </Link>
+            </a>
             <Link
               href="/contact"
               onClick={() => setMenuOpen(false)}
