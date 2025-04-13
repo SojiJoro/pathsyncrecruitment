@@ -1,5 +1,3 @@
-'use client'
-
 import { FaPhone, FaEnvelope, FaMapMarkerAlt, FaLinkedin, FaTwitter } from 'react-icons/fa'
 import ContactForm from '@/components/ContactForm'
 
@@ -14,7 +12,7 @@ export default function ContactPage() {
       <h1 className="text-3xl font-bold text-gray-800 mb-8">Contact Us</h1>
 
       <div className="grid md:grid-cols-2 gap-10 mb-12">
-        {/* Contact Information */}
+        {/* Contact Info */}
         <div className="space-y-6 text-gray-700">
           <div className="flex items-start gap-3">
             <FaMapMarkerAlt className="text-blue-600 mt-1" />
@@ -38,7 +36,6 @@ export default function ContactPage() {
             </a>
           </div>
 
-          {/* Socials */}
           <div className="flex gap-4 pt-2">
             <a href="https://linkedin.com/company/pathsyncrecruitment" target="_blank" rel="noopener noreferrer">
               <FaLinkedin className="text-blue-600 hover:text-blue-800 text-xl" />
