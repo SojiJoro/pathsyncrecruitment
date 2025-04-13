@@ -1,57 +1,81 @@
-import { FaPhone, FaEnvelope, FaMapMarkerAlt, FaLinkedin, FaTwitter } from 'react-icons/fa'
-import ContactForm from '@/components/ContactForm'
+'use client'
+import { useState, ChangeEvent, FormEvent } from 'react'
+import { motion } from 'framer-motion'
 
-export const metadata = {
-  title: 'Contact Us - Pathsync Recruitment',
-  description: 'Reach out to Pathsync Recruitment by phone, email, or our contact form.',
-}
+export default function ContactForm() {
+  const [formData, setFormData] = useState({
+    name: '',
+    email: '',
+    message: ''
+  })
 
-export default function ContactPage() {
+  function handleChange(e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) {
+    setFormData({ ...formData, [e.target.name]: e.target.value })
+  }
+
+  function handleSubmit(e: FormEvent<HTMLFormElement>) {
+    e.preventDefault()
+
+    const mailtoLink = `mailto:enquiry@pathsyncrecruitment.com?subject=Message from ${encodeURIComponent(
+      formData.name
+    )}&body=${encodeURIComponent(`Name: ${formData.name}\nEmail: ${formData.email}\n\n${formData.message}`)}`
+
+    window.location.href = mailtoLink
+  }
+
   return (
-    <div className="max-w-5xl mx-auto px-4 py-12">
-      <h1 className="text-3xl font-bold text-gray-800 mb-8">Contact Us</h1>
-
-      <div className="grid md:grid-cols-2 gap-10 mb-12">
-        {/* Contact Info */}
-        <div className="space-y-6 text-gray-700">
-          <div className="flex items-start gap-3">
-            <FaMapMarkerAlt className="text-blue-600 mt-1" />
-            <p>
-              Pathsync Recruitment<br />
-              27 High Street,<br />
-              Aldershot, Hampshire, GU11 1BH<br />
-              United Kingdom
-            </p>
-          </div>
-
-          <div className="flex items-center gap-3">
-            <FaPhone className="text-blue-600" />
-            <a href="tel:+441234567890" className="hover:underline">+44 1234 567 890</a>
-          </div>
-
-          <div className="flex items-center gap-3">
-            <FaEnvelope className="text-blue-600" />
-            <a href="mailto:enquiry@pathsyncrecruitment.com" className="hover:underline">
-              enquiry@pathsyncrecruitment.com
-            </a>
-          </div>
-
-          <div className="flex gap-4 pt-2">
-            <a href="https://linkedin.com/company/pathsyncrecruitment" target="_blank" rel="noopener noreferrer">
-              <FaLinkedin className="text-blue-600 hover:text-blue-800 text-xl" />
-            </a>
-            <a href="https://twitter.com/pathsyncrec" target="_blank" rel="noopener noreferrer">
-              <FaTwitter className="text-blue-600 hover:text-blue-800 text-xl" />
-            </a>
-          </div>
-        </div>
-
-        {/* Contact Form */}
-        <div>
-          <h2 className="text-xl font-semibold mb-4">Send Us a Message</h2>
-          <ContactForm />
-        </div>
+    <motion.form
+      onSubmit={handleSubmit}
+      className="space-y-4"
+      initial={{ opacity: 0 }}
+      whileInView={{ opacity: 1 }}
+      transition={{ duration: 0.5 }}
+    >
+      <div>
+        <label htmlFor="name" className="block text-sm font-medium text-gray-700">Name</label>
+        <input
+          type="text"
+          name="name"
+          id="name"
+          value={formData.name}
+          onChange={handleChange}
+          required
+          className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500"
+        />
       </div>
-    </div>
+
+      <div>
+        <label htmlFor="email" className="block text-sm font-medium text-gray-700">Email</label>
+        <input
+          type="email"
+          name="email"
+          id="email"
+          value={formData.email}
+          onChange={handleChange}
+          required
+          className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500"
+        />
+      </div>
+
+      <div>
+        <label htmlFor="message" className="block text-sm font-medium text-gray-700">Message</label>
+        <textarea
+          name="message"
+          id="message"
+          rows={4}
+          value={formData.message}
+          onChange={handleChange}
+          required
+          className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500"
+        />
+      </div>
+
+      <button
+        type="submit"
+        className="bg-blue-600 text-white px-6 py-2 rounded-md hover:bg-blue-700 transition"
+      >
+        Send Message
+      </button>
+    </motion.form>
   )
 }
