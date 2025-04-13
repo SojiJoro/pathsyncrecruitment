@@ -1,7 +1,7 @@
 // src/app/jobs/[slug]/page.tsx
 import { notFound } from 'next/navigation';
 
-interface JobDetailsPageProps {
+interface PageProps {
   params: {
     slug: string;
   };
@@ -34,16 +34,16 @@ const jobMap: Record<
   },
 };
 
-export default function JobDetailsPage({ params }: JobDetailsPageProps) {
+export default function JobDetailsPage({ params }: PageProps) {
   const job = jobMap[params.slug];
 
   if (!job) {
     notFound();
   }
 
-  const mailtoLink = `mailto:enquiry@pathsyncrecruitment.com?subject=I%27m%20interested%20in%20the%20${encodeURIComponent(
+  const mailtoLink = `mailto:enquiry@pathsyncrecruitment.com?subject=I%27m%20interested%20in%20${encodeURIComponent(
     job.title
-  )}%20role`;
+  )}`;
 
   return (
     <div className="max-w-3xl mx-auto px-4 py-10">
