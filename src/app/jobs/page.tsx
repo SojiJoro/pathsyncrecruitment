@@ -1,9 +1,25 @@
+// src/app/jobs/page.tsx
 import Link from 'next/link';
 
 const jobs = [
-  { title: 'Software Engineer', location: 'London', type: 'Full-time', slug: 'software-engineer' },
-  { title: 'DevOps Specialist', location: 'Remote', type: 'Contract', slug: 'devops-specialist' },
-  { title: 'Data Analyst', location: 'Manchester', type: 'Part-time', slug: 'data-analyst' },
+  {
+    title: 'Software Engineer',
+    location: 'London',
+    type: 'Full-time',
+    link: '/jobs/software-engineer',
+  },
+  {
+    title: 'DevOps Specialist',
+    location: 'Remote',
+    type: 'Contract',
+    link: '/jobs/devops-specialist',
+  },
+  {
+    title: 'Data Analyst',
+    location: 'Manchester',
+    type: 'Part-time',
+    link: '/jobs/data-analyst',
+  },
 ];
 
 export default function JobsPage() {
@@ -20,14 +36,17 @@ export default function JobsPage() {
           </tr>
         </thead>
         <tbody>
-          {jobs.map((job) => (
-            <tr key={job.slug} className="border-t">
+          {jobs.map((job, index) => (
+            <tr key={index} className="border-t">
               <td className="p-3 font-medium">{job.title}</td>
               <td className="p-3">{job.location}</td>
               <td className="p-3">{job.type}</td>
               <td className="p-3">
-                <Link href={`/jobs/${job.slug}`} className="text-blue-600 hover:underline">
-                  I&apos;m Interested
+                <Link
+                  href={job.link}
+                  className="text-blue-600 hover:underline"
+                >
+                  I'm Interested
                 </Link>
               </td>
             </tr>
