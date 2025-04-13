@@ -1,67 +1,77 @@
-"use client"
+'use client'
+
 import Link from 'next/link'
 import Image from 'next/image'
-import { FaLinkedin, FaTwitter } from 'react-icons/fa'
+import { FaTwitter, FaLinkedin } from 'react-icons/fa'
 
 export default function Footer() {
   return (
-    <footer className="site_footer">
-      <div className="footer_top">
-        <div className="footer_col">
-          <Link href="/" className="footer_logo">
+    <footer className="bg-teal-900 text-white py-10 px-4">
+      <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-8 footer_top">
+        {/* Logo & Description */}
+        <div className="footer_col space-y-4">
+          <Link href="/" className="flex items-center space-x-2">
             <Image src="/logo.png" alt="Logo" width={50} height={50} />
-            <span>Pathsync Recruitment</span>
+            <span className="text-xl font-semibold">Pathsync Recruitment</span>
           </Link>
-          <p className="footer_brand_text">
+          <p>
             Pathsync Recruitment is your trusted partner for sourcing top tech and IT talent across the UK and beyond.
           </p>
         </div>
 
+        {/* Resources */}
         <div className="footer_col">
-          <h3>Resources</h3>
-          <ul>
-            <li><Link href="/blog">Blog</Link></li>
-            <li><Link href="/guides">Guides</Link></li>
-            <li><Link href="/faq">FAQ</Link></li>
+          <h3 className="text-lg font-semibold mb-2">Resources</h3>
+          <ul className="space-y-1">
+            <li><Link href="/blog" className="hover:underline">Blog</Link></li>
+            <li><Link href="/guides" className="hover:underline">Guides</Link></li>
+            <li><Link href="/faq" className="hover:underline">FAQ</Link></li>
           </ul>
         </div>
 
+        {/* Jobs */}
         <div className="footer_col">
-          <h3>Jobs</h3>
-          <ul>
-            <li><Link href="/jobs">Find a Job</Link></li>
-            <li><Link href="/jobs/post">Post a Job</Link></li>
+          <h3 className="text-lg font-semibold mb-2">Jobs</h3>
+          <ul className="space-y-1">
+            <li><Link href="/jobs" className="hover:underline">Find a Job</Link></li>
+            <li><Link href="/jobs/post" className="hover:underline">Post a Job</Link></li>
           </ul>
         </div>
 
+        {/* Company */}
         <div className="footer_col">
-          <h3>Company</h3>
-          <ul>
-            <li><Link href="/about">About Us</Link></li>
-            <li><Link href="/contact">Contact</Link></li>
-            <li><Link href="/privacy">Privacy Policy</Link></li>
+          <h3 className="text-lg font-semibold mb-2">Company</h3>
+          <ul className="space-y-1">
+            <li><Link href="/about" className="hover:underline">About Us</Link></li>
+            <li><Link href="/contact" className="hover:underline">Contact</Link></li>
+            <li><Link href="/privacy" className="hover:underline">Privacy Policy</Link></li>
           </ul>
         </div>
       </div>
 
-      <div className="footer_bottom">
-        <div className="footer_disclaimer text-sm text-gray-500 space-y-2">
-          <p>&copy; {new Date().getFullYear()} Pathsync Recruitment. All rights reserved.</p>
-          <p>
-            Pathsync Recruitment is a brand of <strong>Joro Services Ltd</strong>, a registered company in England and Wales. Company number: <strong>14979338</strong>.
-          </p>
-          <p>
-            Read our <Link href="/terms" className="underline">Terms and Conditions</Link> and <Link href="/privacy" className="underline">Privacy Policy</Link>.
-          </p>
-        </div>
+      {/* Footer Bottom */}
+      <div className="border-t border-white/20 mt-10 pt-6 text-sm text-white">
+        <div className="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-4">
+          <div className="text-white/70 text-center md:text-left">
+            <p>&copy; {new Date().getFullYear()} Pathsync Recruitment. All rights reserved.</p>
+            <p>
+              Pathsync Recruitment is a brand of <span className="font-semibold">Joro Services Ltd</span>,
+              a registered company in England and Wales. Company number: <span className="font-semibold">14979338</span>.
+            </p>
+            <p>
+              Read our <Link href="/terms" className="underline hover:text-white">Terms and Conditions</Link> and{' '}
+              <Link href="/privacy" className="underline hover:text-white">Privacy Policy</Link>.
+            </p>
+          </div>
 
-        <div className="footer_social flex gap-4 pt-4 text-xl">
-          <a href="https://linkedin.com/company/pathsyncrecruitment" target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:text-blue-800">
-            <FaLinkedin />
-          </a>
-          <a href="https://twitter.com/pathsyncrec" target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:text-blue-800">
-            <FaTwitter />
-          </a>
+          <div className="flex gap-4 text-xl">
+            <a href="https://linkedin.com/company/pathsyncrecruitment" target="_blank" rel="noopener noreferrer">
+              <FaLinkedin className="hover:text-blue-400 transition" />
+            </a>
+            <a href="https://twitter.com/pathsyncrec" target="_blank" rel="noopener noreferrer">
+              <FaTwitter className="hover:text-blue-400 transition" />
+            </a>
+          </div>
         </div>
       </div>
     </footer>

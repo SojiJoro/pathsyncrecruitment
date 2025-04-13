@@ -17,15 +17,15 @@ export default function ContactPage() {
             <FaMapMarkerAlt className="text-blue-600 mt-1" />
             <p>
               Pathsync Recruitment<br />
-              27 High Street,<br />
-              Aldershot, Hampshire, GU11 1BH<br />
+              Kemp House, 152-160 City Road,<br />
+              London, England, EC1V 2NX<br />
               United Kingdom
             </p>
           </div>
 
           <div className="flex items-center gap-3">
             <FaPhone className="text-blue-600" />
-            <a href="tel:+441234567890" className="hover:underline">+44 1234 567 890</a>
+            <a href="tel:+447700183964" className="hover:underline">+44 7700 183964</a>
           </div>
 
           <div className="flex items-center gap-3">
@@ -39,7 +39,7 @@ export default function ContactPage() {
             <a href="https://linkedin.com/company/pathsyncrecruitment" target="_blank" rel="noopener noreferrer">
               <FaLinkedin className="text-blue-600 hover:text-blue-800 text-xl" />
             </a>
-            <a href="https://twitter.com/pathsyncrec" target="_blank" rel="noopener noreferrer">
+            <a href="https://twitter.com/pathsyncrecruitment" target="_blank" rel="noopener noreferrer">
               <FaTwitter className="text-blue-600 hover:text-blue-800 text-xl" />
             </a>
           </div>
