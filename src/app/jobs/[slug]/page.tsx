@@ -1,49 +1,53 @@
 // src/app/jobs/[slug]/page.tsx
+
 import { notFound } from 'next/navigation';
 
-interface PageProps {
-  params: {
-    slug: string;
-  };
+interface JobParams {
+  params: { slug: string };
 }
 
 const jobMap: Record<
   string,
-  { title: string; location: string; type: string; description: string }
+  {
+    title: string;
+    location: string;
+    type: string;
+    description: string;
+  }
 > = {
   'software-engineer': {
     title: 'Software Engineer',
     location: 'London',
     type: 'Full-time',
     description:
-      'We are looking for a skilled Software Engineer to join our dynamic development team.',
+      'We are looking for a skilled Software Engineer to join our dynamic development team and help build modern applications for our clients.',
   },
   'devops-specialist': {
     title: 'DevOps Specialist',
     location: 'Remote',
     type: 'Contract',
     description:
-      'Seeking a DevOps expert to maintain and improve our cloud infrastructure and CI/CD pipelines.',
+      'Seeking a DevOps expert to improve our deployment pipelines and cloud infrastructure across AWS and Kubernetes.',
   },
   'it-support-analyst': {
     title: 'IT Support Analyst',
     location: 'Manchester',
     type: 'Part-time',
     description:
-      'Join our IT support team to help end-users with hardware and software issues.',
+      'Join our IT support team to provide technical assistance, resolve software and hardware issues, and deliver excellent customer service.',
   },
 };
 
-export default function JobDetailsPage({ params }: PageProps) {
+export default function JobDetailsPage({ params }: JobParams) {
   const job = jobMap[params.slug];
 
   if (!job) {
     notFound();
   }
 
-  const mailtoLink = `mailto:enquiry@pathsyncrecruitment.com?subject=I%27m%20interested%20in%20${encodeURIComponent(
+  const mailtoLink = `mailto:enquiry@pathsyncrecruitment.com?subject=I'm%20interested%20in%20the%20${encodeURIComponent(
     job.title
-  )}`;
+  )}%20position`;
 
   return (
     <div className="max-w-3xl mx-auto px-4 py-10">
@@ -60,7 +64,7 @@ export default function JobDetailsPage({ params }: PageProps) {
         href={mailtoLink}
         className="inline-block bg-blue-600 text-white px-6 py-3 rounded hover:bg-blue-700 transition"
       >
-        I&apos;m Interested
+        I'm Interested
       </a>
     </div>
   );
