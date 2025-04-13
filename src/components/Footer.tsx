@@ -1,6 +1,7 @@
 "use client"
 import Link from 'next/link'
 import Image from 'next/image'
+import { FaLinkedin, FaTwitter } from 'react-icons/fa'
 
 export default function Footer() {
   return (
@@ -12,7 +13,7 @@ export default function Footer() {
             <span>Pathsync Recruitment</span>
           </Link>
           <p className="footer_brand_text">
-            Your tagline or short description goes here. We help you find the best IT and tech talent.
+            Pathsync Recruitment is your trusted partner for sourcing top tech and IT talent across the UK and beyond.
           </p>
         </div>
 
@@ -38,23 +39,29 @@ export default function Footer() {
           <ul>
             <li><Link href="/about">About Us</Link></li>
             <li><Link href="/contact">Contact</Link></li>
-            <li><Link href="/privacy">Privacy</Link></li>
+            <li><Link href="/privacy">Privacy Policy</Link></li>
           </ul>
         </div>
       </div>
 
       <div className="footer_bottom">
-        <div className="footer_disclaimer">
+        <div className="footer_disclaimer text-sm text-gray-500 space-y-2">
           <p>&copy; {new Date().getFullYear()} Pathsync Recruitment. All rights reserved.</p>
           <p>
-            Disclaimer text goes here. Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-            <Link href="/terms"> Terms and Conditions</Link>
+            Pathsync Recruitment is a brand of <strong>Joro Services Ltd</strong>, a registered company in England and Wales. Company number: <strong>14979338</strong>.
+          </p>
+          <p>
+            Read our <Link href="/terms" className="underline">Terms and Conditions</Link> and <Link href="/privacy" className="underline">Privacy Policy</Link>.
           </p>
         </div>
-        <div className="footer_social">
-          <a href="https://www.linkedin.com" target="_blank" rel="noopener noreferrer">LinkedIn</a>
-          <a href="https://twitter.com" target="_blank" rel="noopener noreferrer">Twitter</a>
-          <a href="https://facebook.com" target="_blank" rel="noopener noreferrer">Facebook</a>
+
+        <div className="footer_social flex gap-4 pt-4 text-xl">
+          <a href="https://linkedin.com/company/pathsyncrecruitment" target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:text-blue-800">
+            <FaLinkedin />
+          </a>
+          <a href="https://twitter.com/pathsyncrec" target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:text-blue-800">
+            <FaTwitter />
+          </a>
         </div>
       </div>
     </footer>
