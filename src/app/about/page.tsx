@@ -9,12 +9,20 @@ export default function AboutPage() {
   return (
     <div className="container mx-auto px-4 py-12 space-y-12">
       {/* Hero Section */}
-      <section className="relative h-64 md:h-80">
-        <div className="absolute inset-0 bg-gray-300 flex items-center justify-center">
-          {/* Replace background with an image if available */}
-          <h1 className="text-4xl font-bold text-gray-800">About Us</h1>
-        </div>
-      </section>
+      {/* Hero Section with image */}
+<section className="relative h-64 md:h-96">
+  <div className="absolute inset-0">
+    <img
+      src="/images/about-hero.jpg" // Replace with your actual filename
+      alt="Team working at Pathsync Recruitment"
+      className="w-full h-full object-cover object-center"
+    />
+    <div className="absolute inset-0 bg-black bg-opacity-40 flex items-center justify-center">
+      <h1 className="text-4xl md:text-5xl font-bold text-white">About Us</h1>
+    </div>
+  </div>
+</section>
+
 
       {/* Our Story */}
       <section>
@@ -50,9 +58,14 @@ export default function AboutPage() {
         </div>
         <div className="flex-1">
           {/* Placeholder for Team Image */}
-          <div className="w-full h-48 bg-gray-300 flex items-center justify-center">
-            <span className="text-gray-600">Team Image Placeholder</span>
-          </div>
+          <div className="w-full h-48">
+  <img
+    src="/images/team-placeholder.jpg" // Replace with your actual filename
+    alt="Our team at Pathsync"
+    className="w-full h-full object-cover rounded-md shadow"
+  />
+</div>
+
         </div>
       </section>
     </div>
