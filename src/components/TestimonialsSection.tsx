@@ -4,30 +4,30 @@ import { IconQuote } from '@tabler/icons-react'
 export default function TestimonialsSection() {
   const testimonials = [
     {
-      quote: "Thanks to Pathsync Recruitment, we hired a senior DevOps Engineer in under two weeks. Their expertise in tech hiring is unmatched.",
-      name: "Michael Andrews",
-      position: "Head of Talent Acquisition, Nexa Solutions"
-    },
-    {
-      quote: "Working with Pathsync was seamless. They understood our unique needs and presented top-tier candidates with impressive speed.",
-      name: "Rebecca Liu",
-      position: "HR Manager, Quantum Systems"
-    },
-    {
-      quote: "Pathsync Recruitment helped me land a role that aligned perfectly with my skills and career goals. Highly recommended for any tech professional!",
+      quote: "Pathsync Recruitment helped me find a remote role that fits my lifestyle perfectly. The process was quick and smooth.",
       name: "Daniel Osei",
-      position: "Senior Software Engineer"
+      position: "Frontend Developer"
     },
     {
-      quote: "We struggled to fill our cybersecurity roles until Pathsync stepped in. Their team is knowledgeable, responsive, and incredibly professional.",
+      quote: "I was struggling to transition into tech from another field, but Pathsync believed in me and found the perfect opportunity.",
       name: "Aisha Thompson",
-      position: "CTO, CybSecure Ltd"
+      position: "Junior Software Engineer"
+    },
+    {
+      quote: "The team at Pathsync guided me through the interview process and offered great advice along the way.",
+      name: "Chukwuemeka Johnson",
+      position: "Cloud Support Associate"
+    },
+    {
+      quote: "I had been applying for months with no luck. Within a week of contacting Pathsync, I got two interviews and one offer.",
+      name: "Fatima Ahmed",
+      position: "IT Support Specialist"
     }
   ]
 
   return (
     <section className="testimonials_section py-12 bg-gray-50">
-      <h2 className="text-3xl font-bold text-center text-gray-800 mb-8">What People Are Saying</h2>
+      <h2 className="text-3xl font-bold text-center text-gray-800 mb-8">What Our Candidates Say</h2>
       <div className="testimonials_container grid grid-cols-1 md:grid-cols-2 gap-8 max-w-6xl mx-auto px-4">
         {testimonials.map((testimonial, index) => (
           <div key={index} className="testimonial_card bg-white p-6 shadow rounded-lg relative">
