@@ -34,7 +34,9 @@ const jobMap: Record<string, Job> = {
 };
 
 interface PageProps {
-  params: { slug: string };
+  params: {
+    slug: string;
+  };
 }
 
 export default function JobDetailsPage({ params }: PageProps) {
