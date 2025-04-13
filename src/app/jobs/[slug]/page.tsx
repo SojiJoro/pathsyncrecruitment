@@ -1,32 +1,50 @@
-'use client';
+import { notFound } from 'next/navigation';
+import Link from 'next/link';
 
 const jobMap: Record<string, { title: string; location: string; type: string }> = {
-  'software-engineer': { title: 'Software Engineer', location: 'London', type: 'Full-time' },
-  'devops-specialist': { title: 'DevOps Specialist', location: 'Remote', type: 'Contract' },
-  'data-analyst': { title: 'Data Analyst', location: 'Manchester', type: 'Part-time' },
+  'software-engineer': {
+    title: 'Software Engineer',
+    location: 'London',
+    type: 'Full-time',
+  },
+  'frontend-developer': {
+    title: 'Frontend Developer',
+    location: 'Manchester',
+    type: 'Part-time',
+  },
+  // Add more jobs here
 };
 
-export default function JobInterestPage({ params }: { params: { slug: string } }) {
+interface PageProps {
+  params: {
+    slug: string;
+  };
+}
+
+export default function JobDetailsPage({ params }: PageProps) {
   const job = jobMap[params.slug];
 
   if (!job) {
-    return <div className="text-center py-20 text-red-600 font-medium">Job not found</div>;
+    notFound();
   }
 
-  const mailToLink = `mailto:enquiry@pathsyncrecruitment.com?subject=Interest in ${job.title}&body=Hi,%0D%0A%0D%0AI am interested in the ${job.title} role at Pathsync Recruitment.%0D%0A%0D%0AMy details:%0D%0AFull Name: %0D%0AEmail: %0D%0ACover Note: %0D%0A%0D%0AThank you!`;
-
   return (
-    <div className="max-w-2xl mx-auto py-12 px-4">
-      <h1 className="text-3xl font-bold mb-4 text-gray-800">{job.title}</h1>
-      <p className="mb-2 text-gray-700"><strong>Location:</strong> {job.location}</p>
-      <p className="mb-6 text-gray-700"><strong>Type:</strong> {job.type}</p>
+    <div className="max-w-2xl mx-auto px-4 py-12">
+      <h1 className="text-3xl font-bold mb-4">{job.title}</h1>
+      <p className="text-gray-700 mb-2">Location: {job.location}</p>
+      <p className="text-gray-700 mb-6">Type: {job.type}</p>
 
-      <a
-        href={mailToLink}
-        className="inline-block bg-teal-600 text-white px-6 py-2 rounded hover:bg-teal-700 transition"
+      <h2 className="text-xl font-semibold mb-2">Apply Now</h2>
+      <p className="text-gray-600 mb-4">
+        Interested in this position? Click below to send us your CV and cover letter.
+      </p>
+
+      <Link
+        href={`mailto:enquiry@pathsyncrecruitment.com?subject=I'm interested in the ${job.title} role&body=Hi Pathsync Recruitment,%0D%0A%0D%0AI saw the ${job.title} role on your website and would like to apply.%0D%0A%0D%0AMy name is ________ and I have experience in ________.%0D%0A%0D%0A[Attach your CV and cover letter here]%0D%0A%0D%0ARegards,%0D%0A[Your Name]`}
+        className="inline-block bg-blue-600 text-white px-5 py-2 rounded-md hover:bg-blue-700 transition"
       >
-        Submit Interest
-      </a>
+        I'm Interested
+      </Link>
     </div>
   );
 }
