@@ -41,7 +41,9 @@ export default function JobDetailsPage({ params }: JobDetailsPageProps) {
     notFound();
   }
 
-  const mailtoLink = `mailto:enquiry@pathsyncrecruitment.com?subject=I'm interested in the ${job.title} role`;
+  const mailtoLink = `mailto:enquiry@pathsyncrecruitment.com?subject=I%27m%20interested%20in%20the%20${encodeURIComponent(
+    job.title
+  )}%20role`;
 
   return (
     <div className="max-w-3xl mx-auto px-4 py-10">
@@ -55,10 +57,10 @@ export default function JobDetailsPage({ params }: JobDetailsPageProps) {
       <p className="text-gray-700 mb-8">{job.description}</p>
 
       <a
-        href={mailtoLink.replace("I'm", "I%27m")} // escaped for safety
+        href={mailtoLink}
         className="inline-block bg-blue-600 text-white px-6 py-3 rounded hover:bg-blue-700 transition"
       >
-        I'm Interested
+        I&apos;m Interested
       </a>
     </div>
   );
