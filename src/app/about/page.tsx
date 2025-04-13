@@ -10,18 +10,17 @@ export default function AboutPage() {
     <div className="container mx-auto px-4 py-12 space-y-12">
       {/* Hero Section */}
       {/* Hero Section with image */}
-<section className="relative h-64 md:h-96">
-  <div className="absolute inset-0">
-    <img
-      src="/images/about-hero.jpg" // Replace with your actual filename
-      alt="Team working at Pathsync Recruitment"
-      className="w-full h-full object-cover object-center"
-    />
-    <div className="absolute inset-0 bg-black bg-opacity-40 flex items-center justify-center">
-      <h1 className="text-4xl md:text-5xl font-bold text-white">About Us</h1>
-    </div>
+      <section className="relative h-72 md:h-96">
+  <img
+    src="/images/about-hero.jpg"
+    alt="Pathsync Recruitment team hero"
+    className="absolute inset-0 w-full h-full object-cover object-center"
+  />
+  <div className="absolute inset-0 bg-black bg-opacity-50 flex items-center justify-center">
+    <h1 className="text-4xl md:text-5xl font-bold text-white">About Us</h1>
   </div>
 </section>
+
 
 
       {/* Our Story */}
@@ -58,13 +57,14 @@ export default function AboutPage() {
         </div>
         <div className="flex-1">
           {/* Placeholder for Team Image */}
-          <div className="w-full h-48">
+          <div className="w-full h-64 md:h-72 mt-6">
   <img
-    src="/images/team-placeholder.jpg" // Replace with your actual filename
-    alt="Our team at Pathsync"
-    className="w-full h-full object-cover rounded-md shadow"
+    src="/images/team-placeholder.jpg"
+    alt="Pathsync team group photo"
+    className="w-full h-full object-cover rounded-lg shadow-md"
   />
 </div>
+
 
         </div>
       </section>
