@@ -12,15 +12,15 @@ export const metadata = {
   
         <div className="text-gray-700 mb-8">
           <p>
-            We’re seeking an experienced IT project manager to lead multiple software implementations. You will coordinate cross-functional teams, manage timelines, and ensure project goals are met.
+            We are seeking an experienced IT project manager to lead multiple software implementations. You will coordinate cross-functional teams, manage timelines, and ensure project goals are met.
           </p>
         </div>
   
         <a
-          href="mailto:enquiry@pathsyncrecruitment.com?subject=Interested in IT Project Manager role"
+          href="mailto:enquiry@pathsyncrecruitment.com?subject=I%20am%20interested%20in%20the%20IT%20Project%20Manager%20role"
           className="inline-block bg-blue-600 text-white px-6 py-3 rounded-lg shadow hover:bg-blue-700 transition"
         >
-          I'm Interested
+          I am Interested
         </a>
       </div>
     );

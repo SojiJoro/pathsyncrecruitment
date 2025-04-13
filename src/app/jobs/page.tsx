@@ -46,7 +46,7 @@ export default function JobsPage() {
                   href={job.link}
                   className="text-blue-600 hover:underline"
                 >
-                  I'm Interested
+                  I am Interested
                 </Link>
               </td>
             </tr>
