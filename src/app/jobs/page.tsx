@@ -27,7 +27,7 @@ export default function JobsPage() {
               <td className="p-3">{job.type}</td>
               <td className="p-3">
                 <Link href={`/jobs/${job.slug}`} className="text-blue-600 hover:underline">
-                  I'm Interested
+                  I&apos;m Interested
                 </Link>
               </td>
             </tr>

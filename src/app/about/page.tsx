@@ -1,4 +1,5 @@
-// src/app/about/page.tsx
+import Image from 'next/image';
+
 export const metadata = {
   title: 'About Us - Pathsync Recruitment',
   description:
@@ -8,20 +9,19 @@ export const metadata = {
 export default function AboutPage() {
   return (
     <div className="container mx-auto px-4 py-12 space-y-12">
-      {/* Hero Section */}
       {/* Hero Section with image */}
       <section className="relative h-72 md:h-96">
-  <img
-    src="/images/about-hero.jpg"
-    alt="Pathsync Recruitment team hero"
-    className="absolute inset-0 w-full h-full object-cover object-center"
-  />
-  <div className="absolute inset-0 bg-black bg-opacity-50 flex items-center justify-center">
-    <h1 className="text-4xl md:text-5xl font-bold text-white">About Us</h1>
-  </div>
-</section>
-
-
+        <Image
+          src="/images/about-hero.jpg"
+          alt="Pathsync Recruitment team hero"
+          fill
+          className="object-cover object-center"
+          style={{ zIndex: -1 }}
+        />
+        <div className="absolute inset-0 bg-black bg-opacity-50 flex items-center justify-center">
+          <h1 className="text-4xl md:text-5xl font-bold text-white">About Us</h1>
+        </div>
+      </section>
 
       {/* Our Story */}
       <section>
@@ -56,16 +56,14 @@ export default function AboutPage() {
           </ul>
         </div>
         <div className="flex-1">
-          {/* Placeholder for Team Image */}
-          <div className="w-full h-64 md:h-72 mt-6">
-  <img
-    src="/images/team-placeholder.jpg"
-    alt="Pathsync team group photo"
-    className="w-full h-full object-cover rounded-lg shadow-md"
-  />
-</div>
-
-
+          <div className="w-full h-64 md:h-72 relative">
+            <Image
+              src="/images/team-placeholder.jpg"
+              alt="Pathsync team group photo"
+              fill
+              className="object-cover rounded-lg shadow-md"
+            />
+          </div>
         </div>
       </section>
     </div>
