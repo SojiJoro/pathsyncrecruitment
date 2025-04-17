@@ -1,10 +1,17 @@
+/** @type {import('tailwindcss').Config} */
 module.exports = {
   content: [
-    "./src/**/*.{js,ts,jsx,tsx}",
-    "./public/index.html"
+    './pages/**/*.{js,ts,jsx,tsx}',
+    './components/**/*.{js,ts,jsx,tsx}'
   ],
   theme: {
-    extend: {},
+    extend: {
+      colors: {
+        primary: '#1E40AF',
+        secondary: '#FBBF24',
+        accent: '#F87171'
+      }
+    }
   },
-  plugins: [require('@tailwindcss/typography')],
-};
+  plugins: []
+}
