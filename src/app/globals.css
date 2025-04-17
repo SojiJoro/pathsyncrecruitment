@@ -73,6 +73,7 @@ header {
   justify-content: space-between;
   max-width: 1200px;
   margin: 0 auto;
+  padding: 0 1rem; /* Add padding for better spacing on smaller screens */
 }
 
 .logo {
@@ -81,25 +82,46 @@ header {
   gap: 0.5rem;
   color: var(--white);
   font-weight: bold;
-  font-size: 1.25rem;
+  font-size: 1.5rem; /* Slightly larger for better visibility */
   text-decoration: none;
+  transition: color 0.3s ease; /* Add smooth transition for hover effects */
+}
+
+.logo:hover {
+  color: var(--teal-light); /* Add hover effect for the logo */
 }
 
 .nav_links {
   list-style: none;
   display: flex;
-  gap: 1rem;
+  gap: 1.5rem; /* Increase gap for better spacing */
+  margin: 0;
+  padding: 0;
 }
 
 .nav_links a {
   color: var(--white);
   text-decoration: none;
   font-weight: 500;
-  transition: color 0.2s ease-in-out;
+  font-size: 1rem; /* Ensure consistent font size */
+  transition: color 0.3s ease; /* Smooth transition for hover effects */
 }
 
 .nav_links a:hover {
   color: var(--teal-light);
+  text-decoration: underline; /* Add underline on hover for better accessibility */
+}
+
+@media (max-width: 768px) {
+  .nav_container {
+    flex-direction: column; /* Stack navigation items on smaller screens */
+    align-items: flex-start;
+  }
+
+  .nav_links {
+    flex-direction: column; /* Stack links vertically */
+    gap: 1rem;
+  }
 }
 
 /* Hero section */
@@ -115,8 +137,6 @@ header {
   color: var(--light-text);
   width: 100%;
 }
-
-
 
 /* Container for Next.js Image */
 .hero_bg_image_container {

@@ -28,7 +28,7 @@ export default function Navbar() {
           </div>
 
           {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center space-x-8">
+          <div className="hidden md:flex items-center space-x-6">
             <Link href="/about" className="text-gray-600 hover:text-gray-800 transition">
               About
             </Link>
@@ -73,7 +73,7 @@ export default function Navbar() {
       {/* Mobile Menu */}
       {menuOpen && (
         <div className="md:hidden bg-white shadow">
-          <div className="px-2 pt-2 pb-3 space-y-1">
+          <div className="px-4 pt-4 pb-4 space-y-2">
             <Link
               href="/about"
               onClick={() => setMenuOpen(false)}
