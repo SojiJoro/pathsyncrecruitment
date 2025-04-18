@@ -1,6 +1,7 @@
 "use client"
 import Image from 'next/image'
 import { motion } from 'framer-motion'
+import Link from 'next/link' // Import Link from Next.js
 
 export default function HeroSection() {
   return (
@@ -25,10 +26,13 @@ export default function HeroSection() {
       >
         <h1>Your IT and Tech Recruitment Solution</h1>
         <p>We help you find the best talent for your organisation</p>
-        <button className="hero_button">
+        <a
+          href="https://www.pathsyncrecruitment.com/contact"
+          className="hero_button"
+        >
           Get Started
           <span className="button_arrow">→</span>
-        </button>
+        </a>
       </motion.div>
     </section>
   )

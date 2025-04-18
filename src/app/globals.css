@@ -182,19 +182,31 @@ header {
 }
 
 .hero_button {
-  background-color: var(--white);
-  color: var(--teal-dark);
-  border: none;
-  padding: 0.75rem 1.5rem;
-  font-weight: bold;
-  border-radius: 4px;
-  cursor: pointer;
-  transition: background-color 0.2s ease-in-out;
+  display: inline-flex; /* Ensures the button only takes up as much space as its content */
+  align-items: center; /* Centers the content vertically */
+  justify-content: center; /* Centers the content horizontally */
+  padding: 0.5rem 1rem; /* Adjust padding for a smaller size */
+  font-size: 1rem; /* Adjust font size */
+  font-weight: 600; /* Make the text bold */
+  color: #fff; /* Button text color */
+  background-color: var(--teal-dark); /* Button background color */
+  border-radius: 0.25rem; /* Slightly rounded corners */
+  text-decoration: none; /* Remove underline */
+  transition: background-color 0.3s ease; /* Smooth hover effect */
+  text-align: center; /* Center-align the text */
+  width: auto; /* Ensure the button width adjusts to its content */
+  white-space: nowrap; /* Prevent the text from wrapping */
+  box-shadow: 0 4px 15px rgba(15, 89, 103, 0.2); /* Add subtle shadow */
 }
 
 .hero_button:hover {
-  background-color: var(--teal-light);
-  color: var(--white);
+  background-color: var(--teal-light); /* Change background color on hover */
+  box-shadow: 0 6px 20px rgba(15, 89, 103, 0.3); /* Enhance shadow on hover */
+}
+
+.button_arrow {
+  margin-left: 0.5rem; /* Add spacing between text and arrow */
+  font-size: 1rem; /* Ensure the arrow matches the text size */
 }
 
 /* Responsive adjustments */
