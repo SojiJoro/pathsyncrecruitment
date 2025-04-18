@@ -35,6 +35,9 @@ export default function Navbar() {
             <Link href="/jobs" className="text-gray-600 hover:text-gray-800 transition">
               Jobs
             </Link>
+            <Link href="/blog" className="text-gray-600 hover:text-gray-800 transition">
+              Blog
+            </Link>
             <a
               href="https://www.pathsyncrecruitment.com/contact/candidate"
               className="text-gray-600 hover:text-gray-800 transition"
@@ -87,6 +90,13 @@ export default function Navbar() {
               className="block px-3 py-2 rounded-md text-base font-medium text-gray-600 hover:text-gray-800 hover:bg-gray-50 transition"
             >
               Jobs
+            </Link>
+            <Link
+              href="/blog"
+              onClick={() => setMenuOpen(false)}
+              className="block px-3 py-2 rounded-md text-base font-medium text-gray-600 hover:text-gray-800 hover:bg-gray-50 transition"
+            >
+              Blog
             </Link>
             <a
               href="https://www.pathsyncrecruitment.com/contact/candidate"

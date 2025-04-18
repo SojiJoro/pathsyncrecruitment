@@ -1,0 +1,9 @@
+# *
+User-agent: *
+Allow: /
+
+# Host
+Host: https://www.pathsyncrecruitment.com
+
+# Sitemaps
+Sitemap: https://www.pathsyncrecruitment.com/sitemap.xml
