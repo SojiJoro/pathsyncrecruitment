@@ -3,6 +3,7 @@ import Features from '@/components/Features';
 import JobsSection from '@/components/JobsSection';
 import TestimonialsSection from '@/components/TestimonialsSection';
 import ContactButtons from '@/components/ContactButtons';
+import CareerBuilderSection from '@/components/CareerBuilderSection';
 
 export const metadata = {
   title: 'Pathsync Recruitment',
@@ -11,11 +12,12 @@ export const metadata = {
 
 export default function Home() {
   return (
-    <main>
+    <main className="p-6 space-y-10">
       <HeroSection />
       <Features />
       <ContactButtons />
       <JobsSection />
+      <CareerBuilderSection />
       <TestimonialsSection />
     </main>
   );
