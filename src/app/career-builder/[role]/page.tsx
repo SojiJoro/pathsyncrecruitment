@@ -35,10 +35,9 @@ export async function generateMetadata(
 }
 
 // Page component for a single role
-export default function RolePage(
-  { params }: { params: { role: string } }
-) {
-  const role = roles.find(r => r.slug === params.role)
+export default function RolePage(props: any) {
+  const { params } = props
+  const role = roles.find((r) => r.slug === params.role)
   if (!role) {
     notFound()
   }
@@ -47,8 +46,8 @@ export default function RolePage(
     <main className="p-6 max-w-4xl mx-auto space-y-10">
       {/* Breadcrumbs */}
       <nav aria-label="Breadcrumb" className="text-sm text-gray-500 mb-4">
-        <Link href="/" className="hover:underline">Home</Link> {'>'} {' '}
-        <Link href="/career-builder" className="hover:underline">Career Builder</Link> {'>'} {' '}
+        <Link href="/" className="hover:underline">Home</Link>{' > '}
+        <Link href="/career-builder" className="hover:underline">Career Builder</Link>{' > '}
         <span>{role.title}</span>
       </nav>
 
@@ -62,7 +61,7 @@ export default function RolePage(
       <section>
         <h2 className="text-2xl font-semibold mb-3">Key Skills</h2>
         <div className="flex flex-wrap gap-2">
-          {role.skills.map(skill => (
+          {role.skills.map((skill) => (
             <span
               key={skill}
               className="bg-teal-100 text-teal-800 px-3 py-1 rounded-full text-sm"
@@ -78,7 +77,7 @@ export default function RolePage(
         <section>
           <h2 className="text-2xl font-semibold mb-3">Recommended Certifications</h2>
           <ul className="list-disc pl-5 text-gray-700">
-            {role.certifications.map(cert => (
+            {role.certifications.map((cert) => (
               <li key={cert}>{cert}</li>
             ))}
           </ul>
