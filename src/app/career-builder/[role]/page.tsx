@@ -34,6 +34,8 @@ export async function generateMetadata({ params }: { params: { role: string } })
 }
 
 // Dynamic role page component
+
+
 export default async function RolePage({ params }: { params: { role: string } }) {
   const role = roles.find(r => r.slug === params.role)
   if (!role) return notFound()
