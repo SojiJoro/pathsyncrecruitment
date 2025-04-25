@@ -4,19 +4,23 @@ import { roles } from '@/data/roles'
 import { notFound } from 'next/navigation'
 import LearningPathMap from '@/components/LearningPathMap'
 
+// Define parameter type for clarity
+interface Params {
+  role: string
+}
+
 // Generate static paths for all roles
-export async function generateStaticParams() {
-  return roles.map(role => ({ role: role.slug }))
+export async function generateStaticParams(): Promise<Params[]> {
+  return roles.map((role) => ({ role: role.slug }))
 }
 
 // Generate dynamic metadata for each role
-export async function generateMetadata(
-  { params }: { params: { role: string } }
-): Promise<Metadata> {
-  const role = roles.find(r => r.slug === params.role)
+export async function generateMetadata({ params }: { params: Params }): Promise<Metadata> {
+  const role = roles.find((r) => r.slug === params.role)
   if (!role) {
     return { title: 'Role Not Found' }
   }
+
   return {
     title: `${role.title} • Pathsync Career Builder`,
     description: role.summary,
@@ -35,8 +39,11 @@ export async function generateMetadata(
 }
 
 // Page component for a single role
-export default function RolePage(props: any) {
-  const { params } = props
+interface RolePageProps {
+  params: Params
+}
+
+export default function RolePage({ params }: RolePageProps) {
   const role = roles.find((r) => r.slug === params.role)
   if (!role) {
     notFound()
@@ -44,10 +51,10 @@ export default function RolePage(props: any) {
 
   return (
     <main className="p-6 max-w-4xl mx-auto space-y-10">
-      {/* Breadcrumbs */}
+      {/* Breadcrumb navigation */}
       <nav aria-label="Breadcrumb" className="text-sm text-gray-500 mb-4">
-        <Link href="/" className="hover:underline">Home</Link>{' > '}
-        <Link href="/career-builder" className="hover:underline">Career Builder</Link>{' > '}
+        <Link href="/" className="hover:underline">Home</Link> {'>'} {' '}
+        <Link href="/career-builder" className="hover:underline">Career Builder</Link> {'>'} {' '}
         <span>{role.title}</span>
       </nav>
 
