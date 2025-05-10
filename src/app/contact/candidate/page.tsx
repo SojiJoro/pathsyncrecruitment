@@ -1,5 +1,7 @@
+// File: app/contact/candidate/page.tsx
 'use client'
-import { useState } from 'react'
+
+import { useState, FormEvent } from 'react'
 import { motion } from 'framer-motion'
 
 export default function CandidateContactPage() {
@@ -17,8 +19,8 @@ export default function CandidateContactPage() {
     message: '',
     consent: false
   })
+  const [status, setStatus] = useState<string>('')
 
-  // A list of major UK cities for current location and preferred work location
   const locations = [
     "London", "Birmingham", "Leeds", "Glasgow", "Sheffield", "Bradford", "Liverpool",
     "Edinburgh", "Manchester", "Bristol", "Wakefield", "Coventry", "Kingston upon Hull",
@@ -32,7 +34,6 @@ export default function CandidateContactPage() {
     "Northampton", "Aldershot"
   ]
 
-  // List of common tech job types for candidates
   const jobTypes = [
     "Software Engineer", "Frontend Developer", "Backend Developer", "Fullstack Developer",
     "DevOps Engineer", "Data Analyst", "Data Scientist", "Cloud Architect",
@@ -46,10 +47,24 @@ export default function CandidateContactPage() {
     setFormData({ ...formData, [name]: newValue })
   }
 
-  function handleSubmit(e: React.FormEvent) {
+  async function handleSubmit(e: FormEvent<HTMLFormElement>) {
     e.preventDefault()
-    console.log('Candidate contact form submitted:', formData)
-    // TODO: Process the form data via your backend or email service
+    setStatus('Sending…')
+
+    const fd = new FormData(e.currentTarget)
+    const res = await fetch('/api/contact', { method: 'POST', body: fd })
+
+    if (res.ok) {
+      setStatus('Thanks – we’ll be in touch soon.')
+      setFormData({
+        firstName: '', lastName: '', email: '', phone: '', linkedIn: '',
+        desiredPosition: '', currentLocation: '', locationPreference: '',
+        salaryExpectation: '', availableStartDate: '', message: '', consent: false
+      })
+      e.currentTarget.reset()
+    } else {
+      setStatus('Sorry – something went wrong.')
+    }
   }
 
   return (
@@ -61,7 +76,7 @@ export default function CandidateContactPage() {
         transition={{ duration: 0.6 }}
       >
         <h2 className="contact_title">Get in Touch</h2>
-        <form className="contact_form" onSubmit={handleSubmit}>
+        <form className="contact_form" onSubmit={handleSubmit} encType="multipart/form-data">
           <input
             type="text"
             name="firstName"
@@ -70,7 +85,6 @@ export default function CandidateContactPage() {
             value={formData.firstName}
             onChange={handleChange}
           />
-
           <input
             type="text"
             name="lastName"
@@ -79,7 +93,6 @@ export default function CandidateContactPage() {
             value={formData.lastName}
             onChange={handleChange}
           />
-
           <input
             type="email"
             name="email"
@@ -88,7 +101,6 @@ export default function CandidateContactPage() {
             value={formData.email}
             onChange={handleChange}
           />
-
           <input
             type="tel"
             name="phone"
@@ -97,15 +109,13 @@ export default function CandidateContactPage() {
             value={formData.phone}
             onChange={handleChange}
           />
-
           <input
             type="text"
             name="linkedIn"
-            placeholder="Your LinkedIn Profile URL (optional)"
+            placeholder="LinkedIn Profile URL (optional)"
             value={formData.linkedIn}
             onChange={handleChange}
           />
-
           <select
             name="desiredPosition"
             required
@@ -117,7 +127,6 @@ export default function CandidateContactPage() {
               <option key={job} value={job}>{job}</option>
             ))}
           </select>
-
           <select
             name="currentLocation"
             required
@@ -129,7 +138,6 @@ export default function CandidateContactPage() {
               <option key={loc} value={loc}>{loc}</option>
             ))}
           </select>
-
           <select
             name="locationPreference"
             required
@@ -141,7 +149,6 @@ export default function CandidateContactPage() {
               <option key={loc} value={loc}>{loc}</option>
             ))}
           </select>
-
           <input
             type="text"
             name="salaryExpectation"
@@ -150,7 +157,6 @@ export default function CandidateContactPage() {
             value={formData.salaryExpectation}
             onChange={handleChange}
           />
-
           <input
             type="date"
             name="availableStartDate"
@@ -159,14 +165,12 @@ export default function CandidateContactPage() {
             value={formData.availableStartDate}
             onChange={handleChange}
           />
-
           <textarea
             name="message"
             placeholder="Tell us more about yourself (optional)"
             value={formData.message}
             onChange={handleChange}
           />
-
           <label className="consent_label">
             <input
               type="checkbox"
@@ -177,10 +181,10 @@ export default function CandidateContactPage() {
             />
             I confirm that I have read and accept the Terms and Conditions and Privacy Policy.
           </label>
-
           <button className="submit_button" type="submit">
             Submit <span className="button_arrow">&rarr;</span>
           </button>
+          {status && <p className="mt-2 text-center">{status}</p>}
         </form>
       </motion.div>
     </section>
