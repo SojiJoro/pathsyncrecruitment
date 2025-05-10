@@ -7,14 +7,14 @@ import {
 } from 'react-icons/fa'
 
 export const metadata = {
-  title: 'CV & Interview Help - Pathsync Recruitment',
-  description: 'Book a free session to improve your CV or prepare for tech interviews.',
+  title: 'Contact us - Pathsync Recruitment',
+  description: 'Get in touch for recruitment help including CV review, interview prep, training or job search support.',
 }
 
 export default function ContactPage() {
   return (
     <div className="max-w-5xl mx-auto px-4 py-12">
-      <h1 className="text-3xl font-bold text-gray-800 mb-8">Book CV or Interview Support</h1>
+      <h1 className="text-3xl font-bold text-gray-800 mb-8">Contact us</h1>
 
       <div className="grid md:grid-cols-2 gap-10 mb-12">
         {/* Contact Info */}
@@ -23,8 +23,8 @@ export default function ContactPage() {
             <FaMapMarkerAlt className="text-teal-600 mt-1" />
             <p>
               Pathsync Recruitment<br />
-              Kemp House, 152-160 City Road,<br />
-              London, England, EC1V 2NX<br />
+              Kemp House, 152 160 City Road,<br />
+              London England EC1V 2NX<br />
               United Kingdom
             </p>
           </div>
@@ -36,8 +36,8 @@ export default function ContactPage() {
 
           <div className="flex items-center gap-3">
             <FaEnvelope className="text-teal-600" />
-            <a href="mailto:enquiry@pathsyncrecruitment.com" className="hover:underline">
-              enquiry@pathsyncrecruitment.com
+            <a href="mailto:info@pathsyncrecruitment.com" className="hover:underline">
+              info@pathsyncrecruitment.com
             </a>
           </div>
 
@@ -51,40 +51,72 @@ export default function ContactPage() {
           </div>
         </div>
 
-        {/* CV/Interview Help Form */}
+        {/* Recruitment Support Form */}
         <div>
-          <h2 className="text-xl font-semibold mb-4">Request Support</h2>
+          <h2 className="text-xl font-semibold mb-4">Request recruitment support</h2>
           <form
-            action="https://formspree.io/f/xrbqbbgd"
+            action="https://formspree.io/f/yourFormID"
             method="POST"
+            encType="multipart/form-data"
             className="space-y-4"
           >
+            <input type="hidden" name="_to" value="info@pathsyncrecruitment.com" />
+
             <input
               type="text"
               name="Name"
-              placeholder="Your Full Name"
+              placeholder="Your full name"
               className="w-full px-4 py-2 border rounded"
               required
             />
             <input
               type="email"
               name="Email"
-              placeholder="Your Email Address"
+              placeholder="Your email address"
               className="w-full px-4 py-2 border rounded"
               required
             />
+            <div>
+              <label className="block mb-1">Select needed service</label>
+              <select
+                name="Service"
+                className="w-full px-4 py-2 border rounded"
+                required
+              >
+                <option value="">Choose an option</option>
+                <option value="CV review">CV review</option>
+                <option value="Interview prep">Interview prep</option>
+                <option value="Tech training">Tech training</option>
+                <option value="Job search assistance">Job search assistance</option>
+              </select>
+            </div>
+            <input
+              type="text"
+              name="Desired_Position"
+              placeholder="Desired role or position"
+              className="w-full px-4 py-2 border rounded"
+            />
+            <div>
+              <label className="block mb-1">Attach your CV</label>
+              <input
+                type="file"
+                name="CV"
+                accept=".pdf,.doc,.docx"
+                className="w-full"
+                required
+              />
+            </div>
             <textarea
-              name="Support_Needed"
-              placeholder="Briefly describe your support need (CV review, interview prep, etc.)"
+              name="Additional_Details"
+              placeholder="Any additional details"
               className="w-full px-4 py-2 border rounded"
               rows={5}
-              required
             />
             <button
               type="submit"
               className="bg-teal-600 text-white px-6 py-2 rounded hover:bg-teal-700 transition"
             >
-              Send Request
+              Send request
             </button>
           </form>
         </div>
