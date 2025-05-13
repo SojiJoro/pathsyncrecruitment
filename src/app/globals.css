@@ -1333,3 +1333,80 @@ html {
 .footer_social a:hover {
   color: var(--teal-light);
 }
+/* Career Incubator Forms */
+.incubator_form_wrapper {
+  max-width: 700px;
+  margin: 4rem auto;
+  padding: 2rem;
+  background: var(--white);
+  border-radius: 12px;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.06);
+}
+
+.incubator_form_wrapper h1 {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+  color: var(--teal-dark);
+  text-align: center;
+}
+
+.incubator_form_wrapper p {
+  text-align: center;
+  margin-bottom: 2rem;
+  color: #666;
+}
+
+.incubator_form_wrapper form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.incubator_form_wrapper label {
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+  display: block;
+  color: var(--teal-dark);
+}
+
+.incubator_form_wrapper input,
+.incubator_form_wrapper textarea,
+.incubator_form_wrapper select {
+  width: 100%;
+  padding: 0.75rem;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  font-size: 1rem;
+}
+
+.incubator_form_wrapper input:focus,
+.incubator_form_wrapper textarea:focus,
+.incubator_form_wrapper select:focus {
+  outline: 2px solid var(--teal-mid);
+}
+
+.incubator_form_wrapper button {
+  background: linear-gradient(45deg, var(--teal-dark), var(--teal-mid));
+  color: var(--white);
+  border: none;
+  padding: 1rem 2rem;
+  border-radius: 8px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.incubator_form_wrapper button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(15, 89, 103, 0.3);
+}
+
+.form_success {
+  color: green;
+  text-align: center;
+}
+
+.form_error {
+  color: red;
+  text-align: center;
+}

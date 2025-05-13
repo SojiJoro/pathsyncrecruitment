@@ -38,6 +38,16 @@ export default function Navbar() {
             <Link href="/blog" className="text-gray-600 hover:text-gray-800 transition">
               Blog
             </Link>
+
+            {/* Updated Get into Tech link */}
+            <Link
+              href="/career-incubator"
+              title="Get into Tech: guided training and job placement"
+              className="text-gray-600 hover:text-gray-800 transition"
+            >
+              Get into Tech
+            </Link>
+
             <a
               href="https://www.pathsyncrecruitment.com/contact/candidate"
               className="text-gray-600 hover:text-gray-800 transition"
@@ -98,6 +108,17 @@ export default function Navbar() {
             >
               Blog
             </Link>
+
+            {/* Updated Mobile Get into Tech */}
+            <Link
+              href="/career-incubator"
+              onClick={() => setMenuOpen(false)}
+              title="Get into Tech: guided training and job placement"
+              className="block px-3 py-2 rounded-md text-base font-medium text-gray-600 hover:text-gray-800 hover:bg-gray-50 transition"
+            >
+              Get into Tech
+            </Link>
+
             <a
               href="https://www.pathsyncrecruitment.com/contact/candidate"
               onClick={() => setMenuOpen(false)}
