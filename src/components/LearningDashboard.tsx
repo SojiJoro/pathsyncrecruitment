@@ -24,8 +24,8 @@ export default function LearningDashboard() {
         if (!res.ok) throw new Error(`Failed to fetch paths (${res.status})`)
         const data = await res.json()
         setPaths(data.paths)
-      } catch (err: Error) {
-        setError(err.message || 'An unknown error occurred')
+      } catch (err) {
+        setError(err instanceof Error ? err.message : 'An unknown error occurred')
       } finally {
         setLoading(false)
       }

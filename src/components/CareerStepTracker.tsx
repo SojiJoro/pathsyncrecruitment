@@ -65,8 +65,8 @@ export default function CareerStepTracker({ slug }: CareerStepTrackerProps) {
         )
 
         setSteps(stepsWithLabs)
-      } catch (err: Error) {
-        setError(err.message || 'An unknown error occurred')
+      } catch (err) {
+        setError(err instanceof Error ? err.message : 'An unknown error occurred')
       } finally {
         setLoading(false)
       }
