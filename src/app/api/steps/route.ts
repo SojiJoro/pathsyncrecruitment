@@ -33,7 +33,7 @@ export async function GET(request: NextRequest) {
     }
 
     // 3) Fetch lessons for those steps (using prisma.lesson)
-    const stepIds = steps.map((step) => step.id)
+    const stepIds = steps.map((step: { id: string; title: string; orderIndex: number }) => step.id)
     const lessons = await prisma.lesson.findMany({
       where: { stepId: { in: stepIds } },
       orderBy: { createdAt: 'asc' },
@@ -72,7 +72,7 @@ export async function GET(request: NextRequest) {
     }
 
     // 5) Merge lessons into each step object
-    const stepsWithLessons = steps.map((step) => ({
+    const stepsWithLessons = steps.map((step: { id: string; title: string; orderIndex: number }) => ({
       id: step.id,
       title: step.title,
       orderIndex: step.orderIndex,
