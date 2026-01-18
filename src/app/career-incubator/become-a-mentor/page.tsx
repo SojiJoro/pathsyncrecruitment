@@ -53,7 +53,7 @@ export default function BecomeMentorPage() {
         <div>
           <label className="block font-semibold">LinkedIn or GitHub</label>
           <input
-            name="role"
+            name="profile"
             placeholder="Paste your profile URL"
             required
             className="w-full border p-2 rounded"
@@ -63,7 +63,7 @@ export default function BecomeMentorPage() {
         <div>
           <label className="block font-semibold">Area of Expertise</label>
           <input
-            name="details"
+            name="expertise"
             placeholder="e.g. DevOps, Security, Frontend"
             required
             className="w-full border p-2 rounded"
@@ -73,7 +73,7 @@ export default function BecomeMentorPage() {
         <div>
           <label className="block font-semibold">Monthly Availability (in hours)</label>
           <input
-            name="cv"
+            name="availability"
             type="text"
             placeholder="e.g. 2–4 hours"
             required

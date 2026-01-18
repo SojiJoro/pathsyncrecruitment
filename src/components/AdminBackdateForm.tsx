@@ -4,16 +4,37 @@ export default function AdminBackdateForm() {
   const [email, setEmail] = useState('')
   const [activity, setActivity] = useState('')
   const [dateTime, setDateTime] = useState('')
+  const [isSubmitting, setIsSubmitting] = useState(false)
+  const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle')
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
-    // Call your API endpoint to save a backdated log
-    // Example:
-    // fetch('/learning-hub/api/backdate', { method: 'POST', body: JSON.stringify({ email, activity, dateTime }) })
-    alert(`Backdated activity for ${email} at ${dateTime}`)
-    setEmail('')
-    setActivity('')
-    setDateTime('')
+    setIsSubmitting(true)
+    setSubmitStatus('idle')
+
+    try {
+      const response = await fetch('/learning-hub/api/backdate', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ email, activity, dateTime })
+      })
+
+      if (response.ok) {
+        setSubmitStatus('success')
+        setEmail('')
+        setActivity('')
+        setDateTime('')
+      } else {
+        setSubmitStatus('error')
+      }
+    } catch (error) {
+      console.error('Backdate submission error:', error)
+      setSubmitStatus('error')
+    } finally {
+      setIsSubmitting(false)
+    }
   }
 
   return (
@@ -42,8 +63,25 @@ export default function AdminBackdateForm() {
         className="border rounded p-2 w-full"
         required
       />
-      <button type="submit" className="bg-black text-white px-4 py-2 rounded">
-        Submit
+
+      {submitStatus === 'success' && (
+        <div className="text-green-600 p-3 bg-green-50 rounded">
+          Activity backdated successfully!
+        </div>
+      )}
+
+      {submitStatus === 'error' && (
+        <div className="text-red-600 p-3 bg-red-50 rounded">
+          Failed to backdate activity. Please try again.
+        </div>
+      )}
+
+      <button
+        type="submit"
+        className="bg-black text-white px-4 py-2 rounded disabled:opacity-50"
+        disabled={isSubmitting}
+      >
+        {isSubmitting ? 'Submitting...' : 'Submit'}
       </button>
     </form>
   )
