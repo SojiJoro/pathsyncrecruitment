@@ -3,8 +3,8 @@ import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 
 export const metadata = {
-  title: 'Pathsync Recruitment',
-  description: 'IT and Tech Recruitment Solutions',
+  title: 'PathSync - Career Infrastructure Platform',
+  description: 'Structured learning, skill validation, and employment readiness through evidence-based progression',
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {

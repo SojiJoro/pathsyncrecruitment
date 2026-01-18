@@ -1,78 +1,77 @@
 'use client'
 
 import Link from 'next/link'
-import Image from 'next/image'
-import { FaTwitter, FaLinkedin } from 'react-icons/fa'
 
 const currentYear = new Date().getFullYear();
 
 export default function Footer() {
   return (
-    <footer className="bg-teal-900 text-white py-12 px-4">
-      <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-8 footer_top">
-        {/* Logo & Description */}
-        <div className="footer_col space-y-4">
-          <Link href="/" className="flex items-center space-x-2">
-            <Image src="/logo.png" alt="Logo" width={50} height={50} />
-            <span className="text-xl font-semibold text-white">Pathsync Recruitment</span>
-          </Link>
-          <p className="text-white">
-            Pathsync Recruitment is your trusted partner for sourcing top tech and IT talent across the UK and beyond.
-          </p>
-        </div>
-
-        {/* Resources */}
-        <div className="footer_col">
-          <h3 className="text-lg font-semibold text-white mb-2">Resources</h3>
-          <ul className="space-y-1">
-            <li><Link href="/blog" className="hover:underline text-white">Blog</Link></li>
-            <li><Link href="/guides" className="hover:underline text-white">Guides</Link></li>
-            <li><Link href="/faq" className="hover:underline text-white">FAQ</Link></li>
-          </ul>
-        </div>
-
-        {/* Jobs */}
-        <div className="footer_col">
-          <h3 className="text-lg font-semibold text-white mb-2">Jobs</h3>
-          <ul className="space-y-1">
-            <li><Link href="/jobs" className="hover:underline text-white">Find a Job</Link></li>
-            <li><Link href="/jobs/post" className="hover:underline text-white">Post a Job</Link></li>
-          </ul>
-        </div>
-
-        {/* Company */}
-        <div className="footer_col">
-          <h3 className="text-lg font-semibold text-white mb-2">Company</h3>
-          <ul className="space-y-1">
-            <li><Link href="/about" className="hover:underline text-white">About Us</Link></li>
-            <li><Link href="/contact" className="hover:underline text-white">Contact</Link></li>
-            <li><Link href="/privacy" className="hover:underline text-white">Privacy Policy</Link></li>
-          </ul>
-        </div>
-      </div>
-
-      {/* Footer Bottom */}
-      <div className="border-t border-white/50 mt-10 pt-6 text-sm">
-        <div className="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-4">
-          <div className="text-center md:text-left">
-            <p className="text-white">&copy; {currentYear} Pathsync Recruitment. All rights reserved.</p>
-            <p className="text-white">
-              Pathsync Recruitment is a brand of <span className="font-semibold text-white">Joro Services Ltd</span>,
-              a registered company in England and Wales. Company number: <span className="font-semibold text-white">14979338</span>.
-            </p>
-            <p className="text-white">
-              Read our <Link href="/terms" className="underline text-white">Terms and Conditions</Link> and{' '}
-              <Link href="/privacy" className="underline text-white">Privacy Policy</Link>.
+    <footer className="bg-slate-900 text-white py-16">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-12">
+          {/* Brand & Description */}
+          <div className="space-y-4">
+            <div className="flex items-center">
+              <div className="w-8 h-8 bg-blue-500 rounded flex items-center justify-center font-bold text-sm mr-3">
+                PS
+              </div>
+              <span className="text-xl font-semibold">PathSync</span>
+            </div>
+            <p className="text-slate-300 text-sm leading-relaxed">
+              Career infrastructure platform providing structured learning, mentor validation, 
+              and evidence-based employment readiness.
             </p>
           </div>
 
-          <div className="flex gap-4 text-xl">
-            <a href="https://linkedin.com/company/pathsyncrecruitment" target="_blank" rel="noopener noreferrer">
-              <FaLinkedin className="text-white hover:text-gray-300 transition" />
-            </a>
-            <a href="https://twitter.com/pathsyncrec" target="_blank" rel="noopener noreferrer">
-              <FaTwitter className="text-white hover:text-gray-300 transition" />
-            </a>
+          {/* Platform */}
+          <div>
+            <h3 className="text-lg font-semibold mb-4">Platform</h3>
+            <ul className="space-y-2 text-sm">
+              <li><Link href="/learners" className="text-slate-300 hover:text-white transition">Learners</Link></li>
+              <li><Link href="/mentors" className="text-slate-300 hover:text-white transition">Mentors</Link></li>
+              <li><Link href="/employers" className="text-slate-300 hover:text-white transition">Employers</Link></li>
+              <li><Link href="/platform" className="text-slate-300 hover:text-white transition">Architecture</Link></li>
+            </ul>
+          </div>
+
+          {/* Resources */}
+          <div>
+            <h3 className="text-lg font-semibold mb-4">Resources</h3>
+            <ul className="space-y-2 text-sm">
+              <li><Link href="/impact" className="text-slate-300 hover:text-white transition">Impact Report</Link></li>
+              <li><Link href="/learning-hub/dashboard" className="text-slate-300 hover:text-white transition">Learning Hub</Link></li>
+              <li><Link href="/access" className="text-slate-300 hover:text-white transition">Platform Access</Link></li>
+              <li><Link href="/blog" className="text-slate-300 hover:text-white transition">Documentation</Link></li>
+            </ul>
+          </div>
+
+          {/* Company */}
+          <div>
+            <h3 className="text-lg font-semibold mb-4">Company</h3>
+            <ul className="space-y-2 text-sm">
+              <li><Link href="/about" className="text-slate-300 hover:text-white transition">About</Link></li>
+              <li><Link href="/contact" className="text-slate-300 hover:text-white transition">Contact</Link></li>
+              <li><Link href="/privacy" className="text-slate-300 hover:text-white transition">Privacy</Link></li>
+              <li><Link href="/terms" className="text-slate-300 hover:text-white transition">Terms</Link></li>
+            </ul>
+          </div>
+        </div>
+
+        {/* Footer Bottom */}
+        <div className="border-t border-slate-700 pt-8">
+          <div className="flex flex-col md:flex-row justify-between items-center gap-4">
+            <div className="text-center md:text-left">
+              <p className="text-slate-400 text-sm">
+                © {currentYear} PathSync Career Infrastructure Platform. All rights reserved.
+              </p>
+              <p className="text-slate-500 text-xs mt-1">
+                Operated by Joro Services Ltd. Company number: 14979338
+              </p>
+            </div>
+            
+            <div className="text-slate-400 text-sm">
+              <span>Built for measurable career outcomes</span>
+            </div>
           </div>
         </div>
       </div>

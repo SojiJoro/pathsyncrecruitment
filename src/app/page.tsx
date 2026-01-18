@@ -1,24 +1,25 @@
-import HeroSection from '@/components/HeroSection';
-import Features from '@/components/Features';
-import JobsSection from '@/components/JobsSection';
-import TestimonialsSection from '@/components/TestimonialsSection';
-import ContactButtons from '@/components/ContactButtons';
-import CareerBuilderSection from '@/components/CareerBuilderSection';
+// app/page.tsx
+
+import Link from 'next/link'
+import HeroSection from '@/components/HeroSection'
+import ProgressionModel from '@/components/ProgressionModel'
+import PlatformSections from '@/components/PlatformSections'
+import ImpactMetrics from '@/components/ImpactMetrics'
+import SystemArchitecture from '@/components/SystemArchitecture'
 
 export const metadata = {
-  title: 'Pathsync Recruitment',
-  description: 'IT and Tech Recruitment Solutions',
-};
+  title: 'PathSync - Career Infrastructure Platform',
+  description: 'Structured learning, skill validation, and employment readiness through evidence-based progression',
+}
 
 export default function Home() {
   return (
-    <main className="p-6 space-y-10">
+    <main className="min-h-screen">
       <HeroSection />
-      <Features />
-      <ContactButtons />
-      <JobsSection />
-      <CareerBuilderSection />
-      <TestimonialsSection />
+      <ProgressionModel />
+      <PlatformSections />
+      <SystemArchitecture />
+      <ImpactMetrics />
     </main>
-  );
+  )
 }

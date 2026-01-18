@@ -1,0 +1,109 @@
+// prisma/schema.prisma
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+model User {
+  id                     String           @id @default(uuid())
+  name                   String
+  email                  String           @unique
+  role                   Role
+  approved               Boolean          @default(false)
+  createdAt              DateTime         @default(now())
+
+  CareerPaths            CareerPath[]     @relation("CreatedPaths")
+  ProgressLogs           ProgressLog[]
+  MentorSessionsAsMentor MentorSession[]  @relation("AsMentor")
+  MentorSessionsAsLearner MentorSession[] @relation("AsLearner")
+}
+
+model CareerPath {
+  id          String   @id @default(uuid())
+  title       String
+  description String?
+  slug        String   @unique
+  createdBy   String
+  createdAt   DateTime @default(now())
+
+  creator User      @relation("CreatedPaths", fields: [createdBy], references: [id])
+  Steps   Step[]
+}
+
+model Step {
+  id         String         @id @default(uuid())
+  pathId     String
+  title      String
+  orderIndex Int
+  createdAt  DateTime       @default(now())
+
+  path     CareerPath   @relation(fields: [pathId], references: [id])
+  Progress ProgressLog[]
+  lessons  Lesson[]
+  labs     Lab[]         // ← New relation for Labs
+}
+
+model Lesson {
+  id        String   @id @default(uuid())
+  stepId    String
+  title     String
+  body      String
+  videoUrl  String?
+  resource  String?
+  createdAt DateTime @default(now())
+
+  step Step @relation(fields: [stepId], references: [id])
+}
+
+model Lab {
+  id           String   @id @default(uuid())
+  stepId       String
+  title        String
+  instructions String   // Markdown instructions for the lab
+  embedUrl     String?  // e.g. CodeSandbox / Gitpod URL
+  starterRepo  String?  // e.g. GitHub repo link with starter code
+  createdAt    DateTime @default(now())
+
+  step Step @relation(fields: [stepId], references: [id])
+}
+
+model ProgressLog {
+  id          String         @id @default(uuid())
+  userId      String
+  stepId      String
+  status      ProgressStatus
+  completedAt DateTime?
+  backdated   Boolean        @default(false)
+
+  user User @relation(fields: [userId], references: [id])
+  step Step @relation(fields: [stepId], references: [id])
+}
+
+model MentorSession {
+  id           String   @id @default(uuid())
+  mentorId     String
+  learnerId    String
+  topic        String?
+  notes        String?
+  sessionDate  DateTime
+  backdated    Boolean  @default(false)
+
+  mentor  User @relation("AsMentor", fields: [mentorId], references: [id])
+  learner User @relation("AsLearner", fields: [learnerId], references: [id])
+}
+
+enum Role {
+  learner
+  mentor
+  admin
+}
+
+enum ProgressStatus {
+  started
+  completed
+}

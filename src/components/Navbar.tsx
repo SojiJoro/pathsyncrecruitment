@@ -9,59 +9,43 @@ export default function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false);
 
   return (
-    <nav className="bg-white shadow sticky top-0 z-50">
+    <nav className="bg-slate-900 text-white sticky top-0 z-50 border-b border-slate-700">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between h-16">
           {/* Logo and Brand */}
           <div className="flex items-center">
             <Link href="/" className="flex items-center">
-              <Image
-                src="/logo.png"
-                alt="Pathsync Logo"
-                width={40}
-                height={40}
-              />
-              <span className="ml-2 font-bold text-xl text-gray-800">
-                Pathsync
+              <div className="w-8 h-8 bg-blue-500 rounded flex items-center justify-center font-bold text-sm">
+                PS
+              </div>
+              <span className="ml-3 font-semibold text-lg">
+                PathSync
               </span>
             </Link>
           </div>
 
           {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center space-x-6">
-            <Link href="/about" className="text-gray-600 hover:text-gray-800 transition">
-              About
+          <div className="hidden md:flex items-center space-x-8">
+            <Link href="/learners" className="text-slate-300 hover:text-white transition font-medium">
+              Learners
             </Link>
-            <Link href="/jobs" className="text-gray-600 hover:text-gray-800 transition">
-              Jobs
+            <Link href="/mentors" className="text-slate-300 hover:text-white transition font-medium">
+              Mentors
             </Link>
-            <Link href="/blog" className="text-gray-600 hover:text-gray-800 transition">
-              Blog
-            </Link>
-
-            {/* Updated Get into Tech link */}
-            <Link
-              href="/career-incubator"
-              title="Get into Tech: guided training and job placement"
-              className="text-gray-600 hover:text-gray-800 transition"
-            >
-              Get into Tech
-            </Link>
-
-            <a
-              href="https://www.pathsyncrecruitment.com/contact/candidate"
-              className="text-gray-600 hover:text-gray-800 transition"
-            >
-              Candidates
-            </a>
-            <a
-              href="https://www.pathsyncrecruitment.com/contact/company"
-              className="text-gray-600 hover:text-gray-800 transition"
-            >
+            <Link href="/employers" className="text-slate-300 hover:text-white transition font-medium">
               Employers
-            </a>
-            <Link href="/contact" className="text-gray-600 hover:text-gray-800 transition">
-              Contact
+            </Link>
+            <Link href="/impact" className="text-slate-300 hover:text-white transition font-medium">
+              Impact
+            </Link>
+            <Link href="/platform" className="text-slate-300 hover:text-white transition font-medium">
+              Platform
+            </Link>
+            <Link 
+              href="/access" 
+              className="bg-blue-600 hover:bg-blue-700 px-4 py-2 rounded-md transition font-medium"
+            >
+              Access Platform
             </Link>
           </div>
 
@@ -70,8 +54,7 @@ export default function Navbar() {
             <button
               type="button"
               onClick={() => setMenuOpen(!menuOpen)}
-              className="p-2 rounded-md text-gray-600 hover:text-gray-800 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-gray-800"
-              aria-label="Toggle navigation menu"
+              className="p-2 rounded-md text-slate-300 hover:text-white hover:bg-slate-800"
             >
               {menuOpen ? (
                 <XMarkIcon className="h-6 w-6" />
@@ -85,60 +68,49 @@ export default function Navbar() {
 
       {/* Mobile Menu */}
       {menuOpen && (
-        <div className="md:hidden bg-white shadow">
-          <div className="px-4 pt-4 pb-4 space-y-2">
+        <div className="md:hidden bg-slate-800 border-t border-slate-700">
+          <div className="px-4 py-4 space-y-2">
             <Link
-              href="/about"
+              href="/learners"
               onClick={() => setMenuOpen(false)}
-              className="block px-3 py-2 rounded-md text-base font-medium text-gray-600 hover:text-gray-800 hover:bg-gray-50 transition"
+              className="block px-3 py-2 rounded-md text-slate-300 hover:text-white hover:bg-slate-700 transition font-medium"
             >
-              About
+              Learners
             </Link>
             <Link
-              href="/jobs"
+              href="/mentors"
               onClick={() => setMenuOpen(false)}
-              className="block px-3 py-2 rounded-md text-base font-medium text-gray-600 hover:text-gray-800 hover:bg-gray-50 transition"
+              className="block px-3 py-2 rounded-md text-slate-300 hover:text-white hover:bg-slate-700 transition font-medium"
             >
-              Jobs
+              Mentors
             </Link>
             <Link
-              href="/blog"
+              href="/employers"
               onClick={() => setMenuOpen(false)}
-              className="block px-3 py-2 rounded-md text-base font-medium text-gray-600 hover:text-gray-800 hover:bg-gray-50 transition"
-            >
-              Blog
-            </Link>
-
-            {/* Updated Mobile Get into Tech */}
-            <Link
-              href="/career-incubator"
-              onClick={() => setMenuOpen(false)}
-              title="Get into Tech: guided training and job placement"
-              className="block px-3 py-2 rounded-md text-base font-medium text-gray-600 hover:text-gray-800 hover:bg-gray-50 transition"
-            >
-              Get into Tech
-            </Link>
-
-            <a
-              href="https://www.pathsyncrecruitment.com/contact/candidate"
-              onClick={() => setMenuOpen(false)}
-              className="block px-3 py-2 rounded-md text-base font-medium text-gray-600 hover:text-gray-800 hover:bg-gray-50 transition"
-            >
-              Candidates
-            </a>
-            <a
-              href="https://www.pathsyncrecruitment.com/contact/company"
-              onClick={() => setMenuOpen(false)}
-              className="block px-3 py-2 rounded-md text-base font-medium text-gray-600 hover:text-gray-800 hover:bg-gray-50 transition"
+              className="block px-3 py-2 rounded-md text-slate-300 hover:text-white hover:bg-slate-700 transition font-medium"
             >
               Employers
-            </a>
+            </Link>
             <Link
-              href="/contact"
+              href="/impact"
               onClick={() => setMenuOpen(false)}
-              className="block px-3 py-2 rounded-md text-base font-medium text-gray-600 hover:text-gray-800 hover:bg-gray-50 transition"
+              className="block px-3 py-2 rounded-md text-slate-300 hover:text-white hover:bg-slate-700 transition font-medium"
             >
-              Contact
+              Impact
+            </Link>
+            <Link
+              href="/platform"
+              onClick={() => setMenuOpen(false)}
+              className="block px-3 py-2 rounded-md text-slate-300 hover:text-white hover:bg-slate-700 transition font-medium"
+            >
+              Platform
+            </Link>
+            <Link
+              href="/access"
+              onClick={() => setMenuOpen(false)}
+              className="block px-3 py-2 rounded-md bg-blue-600 hover:bg-blue-700 text-white transition font-medium"
+            >
+              Access Platform
             </Link>
           </div>
         </div>
