@@ -1,6 +1,3 @@
-// app/page.tsx
-
-import Link from 'next/link'
 import HeroSection from '@/components/HeroSection'
 import ProgressionModel from '@/components/ProgressionModel'
 import PlatformSections from '@/components/PlatformSections'

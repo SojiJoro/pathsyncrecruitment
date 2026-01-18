@@ -53,7 +53,7 @@ export default function CareerStepTracker({ slug }: CareerStepTrackerProps) {
 
         // 2) For each step, fetch labs
         const stepsWithLabs: StepWithLessonsAndLabs[] = await Promise.all(
-          fetchedSteps.map(async (step: any) => {
+          fetchedSteps.map(async (step: StepWithLessonsAndLabs) => {
             const resLabs = await fetch(`/api/labs?stepId=${step.id}`)
             if (!resLabs.ok) {
               console.warn(`No labs found for step ${step.id}`)
@@ -65,7 +65,7 @@ export default function CareerStepTracker({ slug }: CareerStepTrackerProps) {
         )
 
         setSteps(stepsWithLabs)
-      } catch (err: any) {
+      } catch (err: Error) {
         setError(err.message || 'An unknown error occurred')
       } finally {
         setLoading(false)
