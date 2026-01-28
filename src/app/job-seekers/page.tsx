@@ -2,7 +2,6 @@
 
 import { useState } from 'react';
 import Link from 'next/link';
-import { Metadata } from 'next';
 
 // Process steps data
 const processSteps = [
@@ -233,7 +232,7 @@ export default function JobSeekersPage() {
               Who We Support
             </h2>
             <p className="text-lg text-neutral-600">
-              We welcome all neurodivergent individuals. Everyone's journey is unique, and so is our support.
+              We welcome all neurodivergent individuals. Everyone&apos;s journey is unique, and so is our support.
             </p>
           </div>
 
@@ -289,7 +288,7 @@ export default function JobSeekersPage() {
                 </p>
 
                 <blockquote className="italic text-primary border-l-2 border-primary pl-4 mb-4">
-                  "{story.quote}"
+                  &ldquo;{story.quote}&rdquo;
                 </blockquote>
 
                 <div className="pt-4 border-t border-neutral-200">
@@ -479,7 +478,7 @@ function AssessmentPreview() {
 }
 
 // FAQ Accordion Component
-function FAQAccordion({ faqs }: { faqs: typeof faqs }) {
+function FAQAccordion({ faqs }: { faqs: Array<{ question: string; answer: string }> }) {
   const [openIndex, setOpenIndex] = useState<number | null>(0);
 
   return (

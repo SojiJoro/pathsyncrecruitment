@@ -185,7 +185,7 @@ export default function EmployersPage() {
               Our Employer Services
             </h2>
             <p className="text-lg text-neutral-600">
-              Comprehensive support from recruitment to retention, tailored to your organisation's needs.
+              Comprehensive support from recruitment to retention, tailored to your organisation&apos;s needs.
             </p>
           </div>
 
@@ -315,7 +315,7 @@ export default function EmployersPage() {
                     </div>
 
                     <blockquote className="italic text-primary border-l-2 border-primary pl-4 mt-4">
-                      "{study.quote}"
+                      &ldquo;{study.quote}&rdquo;
                       <footer className="text-sm text-neutral-500 mt-2 not-italic">
                         — {study.quoteName}, {study.quoteRole}
                       </footer>

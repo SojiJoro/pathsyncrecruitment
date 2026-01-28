@@ -215,7 +215,7 @@ function ProblemSection() {
       <div className="container mx-auto px-4">
         <div className="max-w-3xl mx-auto text-center mb-12">
           <h2 id="problem-heading" className="text-3xl md:text-4xl font-bold text-neutral-900 mb-4">
-            The Employment Gap We're Closing
+            The Employment Gap We&apos;re Closing
           </h2>
           <p className="text-lg text-neutral-600">
             Traditional recruitment creates barriers that prevent talented neurodivergent individuals from finding meaningful employment.
@@ -333,7 +333,7 @@ function ComparisonSection() {
             How PathSync is Different
           </h2>
           <p className="text-lg text-neutral-600">
-            We've reimagined recruitment from the ground up to work for neurodivergent talent.
+            We&apos;ve reimagined recruitment from the ground up to work for neurodivergent talent.
           </p>
         </div>
 
@@ -464,7 +464,7 @@ function TestimonialsSection() {
             Success Stories
           </h2>
           <p className="text-lg text-neutral-600">
-            Real experiences from candidates and employers who've transformed their approach to neurodivergent employment.
+            Real experiences from candidates and employers who&apos;ve transformed their approach to neurodivergent employment.
           </p>
         </div>
 
@@ -478,7 +478,7 @@ function TestimonialsSection() {
                 <QuoteIcon className="text-primary/30" />
               </div>
               <blockquote className="text-neutral-700 mb-4 italic">
-                "{testimonial.quote}"
+                &ldquo;{testimonial.quote}&rdquo;
               </blockquote>
               <div className="flex items-center gap-3 pt-4 border-t border-neutral-100">
                 <div className="w-10 h-10 bg-primary/10 rounded-full flex items-center justify-center">

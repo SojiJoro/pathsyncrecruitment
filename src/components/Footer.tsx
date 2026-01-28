@@ -156,11 +156,11 @@ export default function Footer() {
               hello@pathsyncrecruitment.com
             </a>
             <a
-              href="tel:+441onal234567890"
+              href="tel:+447700183964"
               className="flex items-center gap-2 hover:text-white transition-colors no-underline"
             >
               <PhoneIcon />
-              +44 (0) 123 456 7890
+              +44 7700 183964
             </a>
           </div>
         </div>
