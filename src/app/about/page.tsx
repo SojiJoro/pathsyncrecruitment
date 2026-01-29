@@ -44,7 +44,6 @@ const values = [
 const milestones = [
   { year: '2024', title: 'Company Founded', description: 'PathSync Recruitment Ltd established with vision for neurodivergent employment' },
   { year: '2024', title: 'Platform Development', description: 'Building AI-powered assessment and matching technology' },
-  { year: '2025', title: 'Innovation Visa Pursuit', description: 'Seeking endorsement to scale our innovative approach' },
   { year: '2025', title: 'First Placements', description: 'Target: 50 successful neurodivergent placements' },
   { year: '2026', title: 'Platform Launch', description: 'Full self-service platform for candidates and employers' },
   { year: '2027', title: 'Scale & Expansion', description: 'Target: 500 annual placements, national coverage' },
@@ -203,15 +202,15 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* Innovation Visa Journey */}
+      {/* Our Journey */}
       <section className="section bg-neutral-50" aria-labelledby="journey-heading">
         <div className="container mx-auto px-4">
           <div className="max-w-3xl mx-auto text-center mb-12">
             <h2 id="journey-heading" className="text-3xl md:text-4xl font-bold text-neutral-900 mb-4">
-              Innovation Visa Journey
+              Our Journey
             </h2>
             <p className="text-lg text-neutral-600">
-              Building a scalable, innovative business that transforms neurodivergent employment
+              Building a platform that transforms neurodivergent employment
             </p>
           </div>
 

@@ -84,13 +84,6 @@ export default function Footer() {
             <p className="text-neutral-400 text-sm leading-relaxed mb-4">
               Transforming employment for neurodivergent talent through AI-powered matching and human-led support.
             </p>
-            {/* Innovation Badge */}
-            <div className="inline-flex items-center gap-2 px-3 py-2 bg-primary/10 border border-primary/20 rounded-lg">
-              <InnovationIcon />
-              <span className="text-xs font-medium text-primary-light">
-                Innovation Visa Business
-              </span>
-            </div>
           </div>
 
           {/* Link Columns */}
@@ -249,21 +242,3 @@ function PhoneIcon() {
   );
 }
 
-function InnovationIcon() {
-  return (
-    <svg
-      width="16"
-      height="16"
-      viewBox="0 0 24 24"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth="2"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-      aria-hidden="true"
-    >
-      <circle cx="12" cy="12" r="3" />
-      <path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42" />
-    </svg>
-  );
-}
