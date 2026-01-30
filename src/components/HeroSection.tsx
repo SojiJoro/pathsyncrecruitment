@@ -7,7 +7,7 @@ export default function HeroSection() {
     <section className="bg-slate-900 text-white min-h-screen flex items-center relative overflow-hidden">
       {/* Background Pattern */}
       <div className="absolute inset-0 opacity-10">
-        <div className="absolute inset-0 bg-gradient-to-br from-blue-600/20 to-purple-600/20" />
+        <div className="absolute inset-0 bg-blue-600/10" />
         <div className="absolute top-0 left-0 w-full h-full">
           <svg className="w-full h-full" viewBox="0 0 100 100" preserveAspectRatio="none">
             <defs>

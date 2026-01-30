@@ -120,7 +120,7 @@ export default function EmployersPage() {
   return (
     <div className="min-h-screen">
       {/* Hero Section */}
-      <section className="relative bg-gradient-to-br from-primary-50 via-white to-secondary-50 py-20 lg:py-28">
+      <section className="relative bg-neutral-50 py-20 lg:py-28">
         <div className="container mx-auto px-4">
           <div className="max-w-3xl mx-auto text-center">
             <h1 className="text-4xl md:text-5xl font-bold text-neutral-900 mb-6">
@@ -351,7 +351,7 @@ export default function EmployersPage() {
       </section>
 
       {/* CTA Section */}
-      <section className="section bg-gradient-to-br from-primary to-primary-dark" aria-labelledby="cta-heading">
+      <section className="section bg-primary" aria-labelledby="cta-heading">
         <div className="container mx-auto px-4">
           <div className="max-w-2xl mx-auto text-center text-white">
             <h2 id="cta-heading" className="text-3xl md:text-4xl font-bold mb-4">

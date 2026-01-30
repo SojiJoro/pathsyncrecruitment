@@ -60,7 +60,7 @@ export default function LearnersPage() {
       {/* Hero Section with Image */}
       <section className="relative bg-slate-900 text-white py-24 overflow-hidden">
         <div className="absolute inset-0 opacity-20">
-          <div className="absolute inset-0 bg-gradient-to-br from-blue-600/30 to-purple-600/30" />
+          <div className="absolute inset-0 bg-blue-600/20" />
         </div>
 
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">

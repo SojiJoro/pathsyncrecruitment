@@ -68,7 +68,7 @@ export default function Navbar() {
             className="flex items-center gap-2 no-underline"
             aria-label="PathSync Recruitment - Home"
           >
-            <div className="w-10 h-10 bg-gradient-to-br from-primary to-secondary rounded-lg flex items-center justify-center">
+            <div className="w-10 h-10 bg-primary rounded-lg flex items-center justify-center">
               <span className="text-white font-bold text-xl">P</span>
             </div>
             <span className="text-xl font-bold text-neutral-900">

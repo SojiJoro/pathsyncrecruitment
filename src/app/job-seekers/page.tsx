@@ -141,7 +141,7 @@ export default function JobSeekersPage() {
   return (
     <div className="min-h-screen">
       {/* Hero Section */}
-      <section className="relative bg-gradient-to-br from-primary-50 via-white to-secondary-50 py-20 lg:py-28">
+      <section className="relative bg-neutral-50 py-20 lg:py-28">
         <div className="container mx-auto px-4">
           <div className="max-w-3xl mx-auto text-center">
             <h1 className="text-4xl md:text-5xl font-bold text-neutral-900 mb-6">
