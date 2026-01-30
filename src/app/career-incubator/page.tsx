@@ -106,7 +106,7 @@ export default function CareerIncubatorPage() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
         >
-          <div className="absolute inset-0 bg-gradient-to-r from-teal-100 to-white opacity-10" />
+          <div className="absolute inset-0 bg-teal-50 opacity-10" />
           <div className="relative z-10 max-w-2xl mx-auto">
             <h1 className="text-4xl md:text-5xl font-bold mb-4">
               Building Tech Talent. One Career at a Time.

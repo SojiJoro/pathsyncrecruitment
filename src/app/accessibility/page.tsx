@@ -10,7 +10,7 @@ export default function AccessibilityPage() {
   return (
     <main id="main-content" className="min-h-screen bg-white">
       {/* Hero Section */}
-      <section className="bg-gradient-to-br from-primary to-primary-dark text-white py-12 md:py-16">
+      <section className="bg-primary text-white py-12 md:py-16">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <h1 className="text-4xl md:text-5xl font-bold mb-4">Accessibility Statement</h1>
           <p className="text-xl text-white/90">

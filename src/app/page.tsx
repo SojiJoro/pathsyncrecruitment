@@ -131,7 +131,7 @@ export default function Home() {
 
 function HeroSection() {
   return (
-    <section className="relative min-h-[90vh] flex items-center justify-center bg-gradient-to-br from-neutral-50 via-primary-50 to-secondary-50 overflow-hidden">
+    <section className="relative min-h-[90vh] flex items-center justify-center bg-neutral-50 overflow-hidden">
       {/* Background Pattern */}
       <div className="absolute inset-0 opacity-30">
         <div className="absolute top-20 left-10 w-72 h-72 bg-primary/20 rounded-full blur-3xl" />
@@ -540,7 +540,7 @@ function PartnersSection() {
 
 function CTASection() {
   return (
-    <section className="section bg-gradient-to-br from-primary to-primary-dark" aria-labelledby="cta-heading">
+    <section className="section bg-primary" aria-labelledby="cta-heading">
       <div className="container mx-auto px-4">
         <div className="max-w-4xl mx-auto">
           <div className="grid md:grid-cols-2 gap-8">
