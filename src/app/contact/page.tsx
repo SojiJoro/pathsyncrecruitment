@@ -1,25 +1,12 @@
 'use client'
 
 import { useState, FormEvent } from 'react'
-import {
-  FaPhone,
-  FaEnvelope,
-  FaMapMarkerAlt,
-  FaLinkedin,
-  FaTwitter,
-  FaUser,
-  FaBuilding,
-  FaQuestionCircle,
-  FaCheck,
-  FaExclamationTriangle
-} from 'react-icons/fa'
+import Link from 'next/link'
 
-type InquiryType = 'job-seeker' | 'employer' | 'general'
-type CommunicationPreference = 'email' | 'phone' | 'video' | 'text'
+type InquiryType = 'demo' | 'employer' | 'recruiter' | 'partnership' | 'other'
 
 export default function ContactPage() {
   const [inquiryType, setInquiryType] = useState<InquiryType | ''>('')
-  const [communicationPreference, setCommunicationPreference] = useState<CommunicationPreference>('email')
   const [status, setStatus] = useState<'idle' | 'sending' | 'success' | 'error'>('idle')
   const [errorMessage, setErrorMessage] = useState('')
 
@@ -49,37 +36,41 @@ export default function ContactPage() {
 
   const inquiryTypes = [
     {
-      value: 'job-seeker' as InquiryType,
-      label: 'I\'m a Job Seeker',
-      description: 'Looking for neurodivergent-friendly employment opportunities',
-      icon: FaUser
+      value: 'demo' as InquiryType,
+      label: 'Request Demo',
+      description: 'See PathSync in action',
+      icon: PlayIcon
     },
     {
       value: 'employer' as InquiryType,
-      label: 'I\'m an Employer',
-      description: 'Interested in hiring neurodivergent talent',
-      icon: FaBuilding
+      label: 'HR Team',
+      description: 'Internal hiring needs',
+      icon: BuildingIcon
     },
     {
-      value: 'general' as InquiryType,
-      label: 'General Inquiry',
-      description: 'Partnership, press, investment, or other questions',
-      icon: FaQuestionCircle
+      value: 'recruiter' as InquiryType,
+      label: 'Recruitment Agency',
+      description: 'Partnership inquiry',
+      icon: UsersIcon
+    },
+    {
+      value: 'partnership' as InquiryType,
+      label: 'Partnership',
+      description: 'Investment or collaboration',
+      icon: HandshakeIcon
     }
   ]
 
   return (
-    <main id="main-content" className="min-h-screen bg-neutral-50">
+    <main className="min-h-screen bg-neutral-50">
       {/* Hero Section */}
-      <section className="bg-primary text-white py-16 md:py-20">
+      <section className="bg-neutral-900 text-white py-16 md:py-20">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h1 className="text-4xl md:text-5xl font-bold mb-6">
             Get in Touch
           </h1>
-          <p className="text-xl text-white/90 max-w-2xl mx-auto">
-            We&apos;re here to help. Whether you&apos;re a neurodivergent job seeker looking for
-            the right opportunity, or an employer wanting to access untapped talent,
-            we&apos;d love to hear from you.
+          <p className="text-xl text-neutral-300 max-w-2xl mx-auto">
+            Request a demo, discuss your hiring needs, or explore partnership opportunities. Our team typically responds within one business day.
           </p>
         </div>
       </section>
@@ -88,34 +79,34 @@ export default function ContactPage() {
         <div className="grid lg:grid-cols-3 gap-10">
           {/* Contact Information Sidebar */}
           <aside className="lg:col-span-1">
-            <div className="bg-white rounded-2xl shadow-soft p-8 sticky top-24">
+            <div className="bg-white rounded-2xl shadow-sm border border-neutral-200 p-8 sticky top-24">
               <h2 className="text-xl font-bold text-neutral-900 mb-6">Contact Information</h2>
 
               <div className="space-y-6">
                 <div className="flex items-start gap-4">
                   <div className="w-10 h-10 bg-primary/10 rounded-lg flex items-center justify-center flex-shrink-0">
-                    <FaMapMarkerAlt className="text-primary" aria-hidden="true" />
+                    <EmailIcon className="text-primary" />
                   </div>
                   <div>
-                    <p className="font-medium text-neutral-900">Address</p>
-                    <p className="text-neutral-600 text-sm">
-                      PathSync Recruitment<br />
-                      Kemp House, 152-160 City Road<br />
-                      London EC1V 2NX<br />
-                      United Kingdom
-                    </p>
+                    <p className="font-medium text-neutral-900">Email</p>
+                    <a
+                      href="mailto:hello@pathsyncrecruitment.com"
+                      className="text-primary hover:underline"
+                    >
+                      hello@pathsyncrecruitment.com
+                    </a>
                   </div>
                 </div>
 
                 <div className="flex items-start gap-4">
                   <div className="w-10 h-10 bg-primary/10 rounded-lg flex items-center justify-center flex-shrink-0">
-                    <FaPhone className="text-primary" aria-hidden="true" />
+                    <PhoneIcon className="text-primary" />
                   </div>
                   <div>
                     <p className="font-medium text-neutral-900">Phone</p>
                     <a
                       href="tel:+447700183964"
-                      className="text-primary hover:text-primary-dark transition-colors"
+                      className="text-primary hover:underline"
                     >
                       +44 7700 183964
                     </a>
@@ -124,53 +115,38 @@ export default function ContactPage() {
 
                 <div className="flex items-start gap-4">
                   <div className="w-10 h-10 bg-primary/10 rounded-lg flex items-center justify-center flex-shrink-0">
-                    <FaEnvelope className="text-primary" aria-hidden="true" />
+                    <LocationIcon className="text-primary" />
                   </div>
                   <div>
-                    <p className="font-medium text-neutral-900">Email</p>
-                    <a
-                      href="mailto:hello@pathsyncrecruitment.com"
-                      className="text-primary hover:text-primary-dark transition-colors"
-                    >
-                      hello@pathsyncrecruitment.com
-                    </a>
-                  </div>
-                </div>
-
-                <div className="pt-4 border-t border-neutral-200">
-                  <p className="font-medium text-neutral-900 mb-3">Follow Us</p>
-                  <div className="flex gap-3">
-                    <a
-                      href="https://linkedin.com/company/pathsyncrecruitment"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="w-10 h-10 bg-neutral-100 rounded-lg flex items-center justify-center text-neutral-600 hover:bg-primary hover:text-white transition-all"
-                      aria-label="LinkedIn"
-                    >
-                      <FaLinkedin size={18} />
-                    </a>
-                    <a
-                      href="https://twitter.com/pathsyncrecruit"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="w-10 h-10 bg-neutral-100 rounded-lg flex items-center justify-center text-neutral-600 hover:bg-primary hover:text-white transition-all"
-                      aria-label="Twitter"
-                    >
-                      <FaTwitter size={18} />
-                    </a>
+                    <p className="font-medium text-neutral-900">Address</p>
+                    <p className="text-neutral-600 text-sm">
+                      Kemp House, 152-160 City Road<br />
+                      London EC1V 2NX<br />
+                      United Kingdom
+                    </p>
                   </div>
                 </div>
               </div>
 
-              {/* Accessibility Note */}
-              <div className="mt-8 p-4 bg-secondary/10 rounded-lg">
-                <h3 className="font-semibold text-neutral-900 text-sm mb-2">
-                  Accessibility Support
-                </h3>
-                <p className="text-sm text-neutral-600">
-                  Need accommodations for our communication? Let us know your preferences
-                  and we&apos;ll adapt to your needs.
-                </p>
+              <div className="mt-8 pt-6 border-t border-neutral-200">
+                <h3 className="font-semibold text-neutral-900 mb-4">Quick Links</h3>
+                <ul className="space-y-2">
+                  <li>
+                    <Link href="/docs" className="text-primary hover:underline text-sm">
+                      API Documentation
+                    </Link>
+                  </li>
+                  <li>
+                    <Link href="/pricing" className="text-primary hover:underline text-sm">
+                      Pricing Plans
+                    </Link>
+                  </li>
+                  <li>
+                    <Link href="/platform" className="text-primary hover:underline text-sm">
+                      Platform Overview
+                    </Link>
+                  </li>
+                </ul>
               </div>
             </div>
           </aside>
@@ -178,35 +154,34 @@ export default function ContactPage() {
           {/* Contact Form */}
           <div className="lg:col-span-2">
             {status === 'success' ? (
-              <div className="bg-white rounded-2xl shadow-soft p-8 text-center">
-                <div className="w-16 h-16 bg-secondary/20 rounded-full flex items-center justify-center mx-auto mb-6">
-                  <FaCheck className="text-secondary text-2xl" />
+              <div className="bg-white rounded-2xl shadow-sm border border-neutral-200 p-8 text-center">
+                <div className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-6">
+                  <CheckIcon className="text-green-600 w-8 h-8" />
                 </div>
                 <h2 className="text-2xl font-bold text-neutral-900 mb-4">
-                  Message Sent Successfully!
+                  Message Sent Successfully
                 </h2>
                 <p className="text-neutral-600 mb-6 max-w-md mx-auto">
-                  Thank you for reaching out. We typically respond within 1-2 business days.
-                  We&apos;ll contact you using your preferred communication method.
+                  Thank you for reaching out. Our team will review your inquiry and respond within one business day.
                 </p>
                 <button
                   onClick={() => setStatus('idle')}
-                  className="btn-primary"
+                  className="btn btn-primary"
                 >
                   Send Another Message
                 </button>
               </div>
             ) : (
-              <form onSubmit={handleSubmit} className="bg-white rounded-2xl shadow-soft p-8">
-                <h2 className="text-2xl font-bold text-neutral-900 mb-2">Send Us a Message</h2>
+              <form onSubmit={handleSubmit} className="bg-white rounded-2xl shadow-sm border border-neutral-200 p-8">
+                <h2 className="text-2xl font-bold text-neutral-900 mb-2">How can we help?</h2>
                 <p className="text-neutral-600 mb-8">
-                  Please select the option that best describes you, and we&apos;ll tailor our response accordingly.
+                  Select the option that best describes your inquiry.
                 </p>
 
                 {/* Error Message */}
                 {status === 'error' && (
                   <div className="mb-6 p-4 bg-red-50 border border-red-200 rounded-lg flex items-start gap-3" role="alert">
-                    <FaExclamationTriangle className="text-red-500 mt-0.5 flex-shrink-0" />
+                    <AlertIcon className="text-red-500 mt-0.5 flex-shrink-0" />
                     <p className="text-red-700">{errorMessage}</p>
                   </div>
                 )}
@@ -214,15 +189,15 @@ export default function ContactPage() {
                 {/* Inquiry Type Selection */}
                 <fieldset className="mb-8">
                   <legend className="block text-sm font-semibold text-neutral-900 mb-4">
-                    I am... <span className="text-red-500">*</span>
+                    I&apos;m interested in... <span className="text-red-500">*</span>
                   </legend>
-                  <div className="grid sm:grid-cols-3 gap-4">
+                  <div className="grid sm:grid-cols-2 gap-4">
                     {inquiryTypes.map((type) => {
                       const Icon = type.icon
                       return (
                         <label
                           key={type.value}
-                          className={`relative flex flex-col items-center p-4 border-2 rounded-xl cursor-pointer transition-all ${
+                          className={`relative flex items-center gap-4 p-4 border-2 rounded-xl cursor-pointer transition-all ${
                             inquiryType === type.value
                               ? 'border-primary bg-primary/5'
                               : 'border-neutral-200 hover:border-primary/50'
@@ -238,16 +213,18 @@ export default function ContactPage() {
                             required
                           />
                           <Icon
-                            className={`text-2xl mb-2 ${
+                            className={`w-6 h-6 ${
                               inquiryType === type.value ? 'text-primary' : 'text-neutral-400'
                             }`}
                           />
-                          <span className="font-medium text-neutral-900 text-sm text-center">
-                            {type.label}
-                          </span>
-                          <span className="text-xs text-neutral-500 text-center mt-1">
-                            {type.description}
-                          </span>
+                          <div>
+                            <span className="font-medium text-neutral-900">
+                              {type.label}
+                            </span>
+                            <span className="block text-xs text-neutral-500">
+                              {type.description}
+                            </span>
+                          </div>
                         </label>
                       )
                     })}
@@ -271,7 +248,7 @@ export default function ContactPage() {
                   </div>
                   <div>
                     <label htmlFor="email" className="block text-sm font-semibold text-neutral-900 mb-2">
-                      Email Address <span className="text-red-500">*</span>
+                      Work Email <span className="text-red-500">*</span>
                     </label>
                     <input
                       type="email"
@@ -279,171 +256,70 @@ export default function ContactPage() {
                       name="email"
                       required
                       className="form-input"
-                      placeholder="your@email.com"
+                      placeholder="you@company.com"
                     />
                   </div>
                 </div>
 
-                {/* Communication Preference */}
-                <div className="mb-6">
-                  <label className="block text-sm font-semibold text-neutral-900 mb-2">
-                    Preferred Communication Method
-                  </label>
-                  <p className="text-sm text-neutral-500 mb-3">
-                    How would you like us to contact you? We&apos;ll do our best to accommodate your preference.
-                  </p>
-                  <div className="flex flex-wrap gap-3">
-                    {[
-                      { value: 'email', label: 'Email' },
-                      { value: 'phone', label: 'Phone Call' },
-                      { value: 'video', label: 'Video Call' },
-                      { value: 'text', label: 'Text/SMS' }
-                    ].map((option) => (
-                      <label
-                        key={option.value}
-                        className={`px-4 py-2 rounded-full border-2 cursor-pointer transition-all text-sm ${
-                          communicationPreference === option.value
-                            ? 'border-primary bg-primary text-white'
-                            : 'border-neutral-200 text-neutral-700 hover:border-primary/50'
-                        }`}
-                      >
-                        <input
-                          type="radio"
-                          name="communicationPreference"
-                          value={option.value}
-                          checked={communicationPreference === option.value}
-                          onChange={(e) => setCommunicationPreference(e.target.value as CommunicationPreference)}
-                          className="sr-only"
-                        />
-                        {option.label}
-                      </label>
-                    ))}
+                {/* Company Information */}
+                <div className="grid sm:grid-cols-2 gap-6 mb-6">
+                  <div>
+                    <label htmlFor="company" className="block text-sm font-semibold text-neutral-900 mb-2">
+                      Company Name <span className="text-red-500">*</span>
+                    </label>
+                    <input
+                      type="text"
+                      id="company"
+                      name="company"
+                      required
+                      className="form-input"
+                      placeholder="Your company"
+                    />
+                  </div>
+                  <div>
+                    <label htmlFor="jobTitle" className="block text-sm font-semibold text-neutral-900 mb-2">
+                      Job Title
+                    </label>
+                    <input
+                      type="text"
+                      id="jobTitle"
+                      name="jobTitle"
+                      className="form-input"
+                      placeholder="Your role"
+                    />
                   </div>
                 </div>
 
-                {/* Conditional Fields Based on Inquiry Type */}
-                {inquiryType === 'job-seeker' && (
-                  <div className="mb-6 p-4 bg-primary/5 rounded-xl space-y-4">
-                    <h3 className="font-semibold text-neutral-900">Job Seeker Information</h3>
-                    <div>
-                      <label htmlFor="neurodivergence" className="block text-sm font-medium text-neutral-700 mb-2">
-                        How do you identify? (Optional)
-                      </label>
-                      <p className="text-xs text-neutral-500 mb-2">
-                        This helps us understand how to best support you. All information is kept confidential.
-                      </p>
-                      <select id="neurodivergence" name="neurodivergence" className="form-input">
-                        <option value="">Prefer not to say</option>
-                        <option value="autism">Autism/Asperger&apos;s</option>
-                        <option value="adhd">ADHD</option>
-                        <option value="dyslexia">Dyslexia</option>
-                        <option value="dyspraxia">Dyspraxia</option>
-                        <option value="dyscalculia">Dyscalculia</option>
-                        <option value="multiple">Multiple conditions</option>
-                        <option value="other">Other neurodivergent condition</option>
-                        <option value="exploring">Still exploring/undiagnosed</option>
-                      </select>
-                    </div>
-                    <div>
-                      <label htmlFor="currentStatus" className="block text-sm font-medium text-neutral-700 mb-2">
-                        Current Employment Status
-                      </label>
-                      <select id="currentStatus" name="currentStatus" className="form-input">
-                        <option value="">Select your status</option>
-                        <option value="employed">Currently employed, looking to change</option>
-                        <option value="unemployed">Currently unemployed</option>
-                        <option value="student">Student/Recent graduate</option>
-                        <option value="freelance">Self-employed/Freelance</option>
-                        <option value="returning">Returning to work after a break</option>
-                      </select>
-                    </div>
-                    <div>
-                      <label htmlFor="interests" className="block text-sm font-medium text-neutral-700 mb-2">
-                        What types of roles interest you?
-                      </label>
-                      <input
-                        type="text"
-                        id="interests"
-                        name="interests"
-                        className="form-input"
-                        placeholder="e.g., Software development, Data analysis, Creative roles"
-                      />
-                    </div>
-                  </div>
-                )}
-
-                {inquiryType === 'employer' && (
-                  <div className="mb-6 p-4 bg-secondary/5 rounded-xl space-y-4">
-                    <h3 className="font-semibold text-neutral-900">Employer Information</h3>
-                    <div className="grid sm:grid-cols-2 gap-4">
-                      <div>
-                        <label htmlFor="company" className="block text-sm font-medium text-neutral-700 mb-2">
-                          Company Name <span className="text-red-500">*</span>
-                        </label>
-                        <input
-                          type="text"
-                          id="company"
-                          name="company"
-                          required={inquiryType === 'employer'}
-                          className="form-input"
-                          placeholder="Your company name"
-                        />
-                      </div>
-                      <div>
-                        <label htmlFor="jobTitle" className="block text-sm font-medium text-neutral-700 mb-2">
-                          Your Job Title
-                        </label>
-                        <input
-                          type="text"
-                          id="jobTitle"
-                          name="jobTitle"
-                          className="form-input"
-                          placeholder="e.g., HR Director"
-                        />
-                      </div>
-                    </div>
-                    <div>
-                      <label htmlFor="companySize" className="block text-sm font-medium text-neutral-700 mb-2">
-                        Company Size
-                      </label>
-                      <select id="companySize" name="companySize" className="form-input">
-                        <option value="">Select company size</option>
-                        <option value="1-10">1-10 employees</option>
-                        <option value="11-50">11-50 employees</option>
-                        <option value="51-200">51-200 employees</option>
-                        <option value="201-500">201-500 employees</option>
-                        <option value="501-1000">501-1,000 employees</option>
-                        <option value="1000+">1,000+ employees</option>
-                      </select>
-                    </div>
-                    <div>
-                      <label htmlFor="hiringNeeds" className="block text-sm font-medium text-neutral-700 mb-2">
-                        What roles are you looking to fill?
-                      </label>
-                      <input
-                        type="text"
-                        id="hiringNeeds"
-                        name="hiringNeeds"
-                        className="form-input"
-                        placeholder="e.g., Software engineers, Data analysts, QA testers"
-                      />
-                    </div>
-                  </div>
-                )}
-
-                {inquiryType === 'general' && (
-                  <div className="mb-6 p-4 bg-neutral-100 rounded-xl">
-                    <label htmlFor="subject" className="block text-sm font-medium text-neutral-700 mb-2">
-                      Subject <span className="text-red-500">*</span>
+                {/* Company Size (for demo/employer inquiries) */}
+                {(inquiryType === 'demo' || inquiryType === 'employer' || inquiryType === 'recruiter') && (
+                  <div className="mb-6">
+                    <label htmlFor="companySize" className="block text-sm font-semibold text-neutral-900 mb-2">
+                      Company Size
                     </label>
-                    <select id="subject" name="subject" required={inquiryType === 'general'} className="form-input">
-                      <option value="">Select a topic</option>
-                      <option value="partnership">Partnership Opportunity</option>
-                      <option value="press">Press/Media Inquiry</option>
-                      <option value="investment">Investment Inquiry</option>
-                      <option value="research">Research Collaboration</option>
-                      <option value="feedback">Feedback/Suggestions</option>
-                      <option value="other">Other</option>
+                    <select id="companySize" name="companySize" className="form-input">
+                      <option value="">Select company size</option>
+                      <option value="1-10">1-10 employees</option>
+                      <option value="11-50">11-50 employees</option>
+                      <option value="51-200">51-200 employees</option>
+                      <option value="201-500">201-500 employees</option>
+                      <option value="501-1000">501-1,000 employees</option>
+                      <option value="1000+">1,000+ employees</option>
+                    </select>
+                  </div>
+                )}
+
+                {/* Hiring Volume (for demo/employer inquiries) */}
+                {(inquiryType === 'demo' || inquiryType === 'employer') && (
+                  <div className="mb-6">
+                    <label htmlFor="hiringVolume" className="block text-sm font-semibold text-neutral-900 mb-2">
+                      Annual Hiring Volume
+                    </label>
+                    <select id="hiringVolume" name="hiringVolume" className="form-input">
+                      <option value="">Select approximate volume</option>
+                      <option value="1-10">1-10 hires per year</option>
+                      <option value="11-50">11-50 hires per year</option>
+                      <option value="51-200">51-200 hires per year</option>
+                      <option value="200+">200+ hires per year</option>
                     </select>
                   </div>
                 )}
@@ -451,36 +327,15 @@ export default function ContactPage() {
                 {/* Message */}
                 <div className="mb-6">
                   <label htmlFor="message" className="block text-sm font-semibold text-neutral-900 mb-2">
-                    Your Message <span className="text-red-500">*</span>
+                    Message <span className="text-red-500">*</span>
                   </label>
-                  <p className="text-sm text-neutral-500 mb-2">
-                    Take your time - there&apos;s no rush. Tell us how we can help.
-                  </p>
                   <textarea
                     id="message"
                     name="message"
                     required
-                    rows={6}
+                    rows={5}
                     className="form-input resize-y"
-                    placeholder="Tell us more about your situation and how we can help..."
-                  />
-                </div>
-
-                {/* Accommodations Request */}
-                <div className="mb-6">
-                  <label htmlFor="accommodations" className="block text-sm font-semibold text-neutral-900 mb-2">
-                    Any Accommodations Needed? (Optional)
-                  </label>
-                  <p className="text-sm text-neutral-500 mb-2">
-                    Let us know if you need any specific accommodations for our communication
-                    (e.g., written summaries after calls, extra processing time, specific communication tools).
-                  </p>
-                  <textarea
-                    id="accommodations"
-                    name="accommodations"
-                    rows={3}
-                    className="form-input resize-y"
-                    placeholder="Any accommodations that would help our communication..."
+                    placeholder="Tell us about your hiring challenges or what you'd like to discuss..."
                   />
                 </div>
 
@@ -495,9 +350,8 @@ export default function ContactPage() {
                     />
                     <span className="text-sm text-neutral-600">
                       I agree to the{' '}
-                      <a href="/privacy" className="text-primary hover:underline">Privacy Policy</a>
+                      <Link href="/privacy" className="text-primary hover:underline">Privacy Policy</Link>
                       {' '}and consent to PathSync processing my data to respond to my inquiry.
-                      I understand my information will be handled confidentially and in accordance with GDPR.
                       <span className="text-red-500"> *</span>
                     </span>
                   </label>
@@ -507,61 +361,123 @@ export default function ContactPage() {
                 <button
                   type="submit"
                   disabled={status === 'sending' || !inquiryType}
-                  className="btn-primary w-full disabled:opacity-50 disabled:cursor-not-allowed"
+                  className="btn btn-primary w-full disabled:opacity-50 disabled:cursor-not-allowed"
                 >
                   {status === 'sending' ? (
                     <span className="flex items-center justify-center gap-2">
-                      <svg className="animate-spin h-5 w-5\" viewBox="0 0 24 24">
-                        <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" fill="none" />
-                        <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z" />
-                      </svg>
+                      <LoadingSpinner />
                       Sending...
                     </span>
+                  ) : inquiryType === 'demo' ? (
+                    'Request Demo'
                   ) : (
                     'Send Message'
                   )}
                 </button>
 
                 <p className="text-sm text-neutral-500 text-center mt-4">
-                  We typically respond within 1-2 business days
+                  We typically respond within one business day
                 </p>
               </form>
             )}
           </div>
         </div>
-
-        {/* FAQ Section */}
-        <section className="mt-16">
-          <h2 className="text-2xl font-bold text-neutral-900 mb-8 text-center">
-            Frequently Asked Questions
-          </h2>
-          <div className="grid md:grid-cols-2 gap-6 max-w-4xl mx-auto">
-            {[
-              {
-                q: 'Do I need a formal diagnosis to use PathSync?',
-                a: 'No formal diagnosis is required. Our assessment process focuses on identifying your cognitive strengths and optimal working conditions, regardless of whether you have a clinical diagnosis.'
-              },
-              {
-                q: 'Is there a cost for job seekers?',
-                a: 'Our core services for job seekers are completely free. We\'re funded by employer partnerships who pay for access to our pre-qualified, job-ready candidates.'
-              },
-              {
-                q: 'How long does the assessment process take?',
-                a: 'Our cognitive assessment takes about 45-60 minutes and can be completed at your own pace. You can take breaks whenever needed and save your progress.'
-              },
-              {
-                q: 'What industries do you work with?',
-                a: 'We work with employers across technology, finance, healthcare, creative industries, and more. Neurodivergent talent excels in many different fields.'
-              }
-            ].map((faq, idx) => (
-              <div key={idx} className="bg-white rounded-xl p-6 shadow-soft">
-                <h3 className="font-semibold text-neutral-900 mb-2">{faq.q}</h3>
-                <p className="text-neutral-600 text-sm">{faq.a}</p>
-              </div>
-            ))}
-          </div>
-        </section>
       </div>
     </main>
+  )
+}
+
+// Icon Components
+function PlayIcon({ className }: { className?: string }) {
+  return (
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={className} aria-hidden="true">
+      <polygon points="5 3 19 12 5 21 5 3" />
+    </svg>
+  )
+}
+
+function BuildingIcon({ className }: { className?: string }) {
+  return (
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={className} aria-hidden="true">
+      <rect x="4" y="2" width="16" height="20" rx="2" ry="2" />
+      <path d="M9 22v-4h6v4" />
+      <path d="M8 6h.01M16 6h.01M12 6h.01M12 10h.01M12 14h.01M16 10h.01M16 14h.01M8 10h.01M8 14h.01" />
+    </svg>
+  )
+}
+
+function UsersIcon({ className }: { className?: string }) {
+  return (
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={className} aria-hidden="true">
+      <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2" />
+      <circle cx="9" cy="7" r="4" />
+      <path d="M22 21v-2a4 4 0 0 0-3-3.87" />
+      <path d="M16 3.13a4 4 0 0 1 0 7.75" />
+    </svg>
+  )
+}
+
+function HandshakeIcon({ className }: { className?: string }) {
+  return (
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={className} aria-hidden="true">
+      <path d="m11 17 2 2a1 1 0 1 0 3-3" />
+      <path d="m14 14 2.5 2.5a1 1 0 1 0 3-3l-3.88-3.88a3 3 0 0 0-4.24 0l-.88.88a1 1 0 1 1-3-3l2.81-2.81a5.79 5.79 0 0 1 7.06-.87l.47.28a2 2 0 0 0 1.42.25L21 4" />
+      <path d="m21 3 1 11h-2" />
+      <path d="M3 3 2 14l6.5 6.5a1 1 0 1 0 3-3" />
+      <path d="M3 4h8" />
+    </svg>
+  )
+}
+
+function EmailIcon({ className }: { className?: string }) {
+  return (
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={className} aria-hidden="true">
+      <rect x="2" y="4" width="20" height="16" rx="2" />
+      <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7" />
+    </svg>
+  )
+}
+
+function PhoneIcon({ className }: { className?: string }) {
+  return (
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={className} aria-hidden="true">
+      <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z" />
+    </svg>
+  )
+}
+
+function LocationIcon({ className }: { className?: string }) {
+  return (
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={className} aria-hidden="true">
+      <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z" />
+      <circle cx="12" cy="10" r="3" />
+    </svg>
+  )
+}
+
+function CheckIcon({ className }: { className?: string }) {
+  return (
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={className} aria-hidden="true">
+      <polyline points="20 6 9 17 4 12" />
+    </svg>
+  )
+}
+
+function AlertIcon({ className }: { className?: string }) {
+  return (
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={className} aria-hidden="true">
+      <path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3Z" />
+      <path d="M12 9v4" />
+      <path d="M12 17h.01" />
+    </svg>
+  )
+}
+
+function LoadingSpinner() {
+  return (
+    <svg className="animate-spin h-5 w-5" viewBox="0 0 24 24" aria-hidden="true">
+      <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" fill="none" />
+      <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z" />
+    </svg>
   )
 }

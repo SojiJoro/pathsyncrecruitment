@@ -5,11 +5,12 @@ import Link from 'next/link';
 import AccessibilityToolbar from './AccessibilityToolbar';
 
 const navLinks = [
-  { href: '/job-seekers', label: 'For Job Seekers' },
-  { href: '/employers', label: 'For Employers' },
-  { href: '/how-it-works', label: 'How It Works' },
+  { href: '/platform', label: 'Platform' },
+  { href: '/pricing', label: 'Pricing' },
+  { href: '/employers', label: 'For HR Teams' },
+  { href: '/recruiters', label: 'For Recruiters' },
+  { href: '/docs', label: 'Docs' },
   { href: '/about', label: 'About' },
-  { href: '/resources', label: 'Resources' },
 ];
 
 export default function Navbar() {
@@ -66,7 +67,7 @@ export default function Navbar() {
           <Link
             href="/"
             className="flex items-center gap-2 no-underline"
-            aria-label="PathSync Recruitment - Home"
+            aria-label="PathSync - Home"
           >
             <div className="w-10 h-10 bg-primary rounded-lg flex items-center justify-center">
               <span className="text-white font-bold text-xl">P</span>
@@ -93,10 +94,10 @@ export default function Navbar() {
           <div className="hidden lg:flex items-center gap-4">
             <AccessibilityToolbar />
             <Link
-              href="/contact"
+              href="/contact?demo=true"
               className="btn btn-primary no-underline"
             >
-              Get Started
+              Request Demo
             </Link>
           </div>
 
@@ -148,11 +149,11 @@ export default function Navbar() {
 
           <div className="p-4 border-t border-neutral-200">
             <Link
-              href="/contact"
+              href="/contact?demo=true"
               onClick={() => setIsMenuOpen(false)}
               className="btn btn-primary w-full no-underline"
             >
-              Get Started
+              Request Demo
             </Link>
           </div>
         </div>

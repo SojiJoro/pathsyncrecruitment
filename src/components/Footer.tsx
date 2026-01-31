@@ -3,31 +3,30 @@
 import Link from 'next/link';
 
 const footerLinks = {
-  jobSeekers: {
-    title: 'For Job Seekers',
+  product: {
+    title: 'Product',
     links: [
-      { label: 'Free Assessment', href: '/job-seekers#assessment' },
-      { label: 'Our Programs', href: '/job-seekers#programs' },
-      { label: 'Success Stories', href: '/job-seekers#success-stories' },
-      { label: 'FAQs', href: '/job-seekers#faq' },
+      { label: 'Platform', href: '/platform' },
+      { label: 'Pricing', href: '/pricing' },
+      { label: 'Documentation', href: '/docs' },
+      { label: 'API Reference', href: '/docs#api-reference' },
     ],
   },
-  employers: {
-    title: 'For Employers',
+  solutions: {
+    title: 'Solutions',
     links: [
-      { label: 'Our Services', href: '/employers#services' },
-      { label: 'Case Studies', href: '/employers#case-studies' },
-      { label: 'ROI Calculator', href: '/employers#roi-calculator' },
-      { label: 'Book Consultation', href: '/contact?type=employer' },
+      { label: 'For HR Teams', href: '/employers' },
+      { label: 'For Recruiters', href: '/recruiters' },
+      { label: 'For Employment Services', href: '/contact?type=employment-services' },
+      { label: 'Enterprise', href: '/contact?plan=enterprise' },
     ],
   },
   company: {
     title: 'Company',
     links: [
-      { label: 'About Us', href: '/about' },
-      { label: 'How It Works', href: '/how-it-works' },
-      { label: 'Resources', href: '/resources' },
+      { label: 'About', href: '/about' },
       { label: 'Contact', href: '/contact' },
+      { label: 'Request Demo', href: '/contact?demo=true' },
     ],
   },
   legal: {
@@ -36,7 +35,6 @@ const footerLinks = {
       { label: 'Privacy Policy', href: '/privacy' },
       { label: 'Terms of Service', href: '/terms' },
       { label: 'Accessibility', href: '/accessibility' },
-      { label: 'Cookie Policy', href: '/privacy#cookies' },
     ],
   },
 };
@@ -51,11 +49,6 @@ const socialLinks = [
     label: 'Twitter',
     href: 'https://twitter.com/pathsyncrecruit',
     icon: TwitterIcon,
-  },
-  {
-    label: 'YouTube',
-    href: 'https://youtube.com/@pathsyncrecruitment',
-    icon: YouTubeIcon,
   },
 ];
 
@@ -72,7 +65,7 @@ export default function Footer() {
             <Link
               href="/"
               className="flex items-center gap-2 no-underline mb-4"
-              aria-label="PathSync Recruitment - Home"
+              aria-label="PathSync - Home"
             >
               <div className="w-10 h-10 bg-primary rounded-lg flex items-center justify-center">
                 <span className="text-white font-bold text-xl">P</span>
@@ -82,13 +75,17 @@ export default function Footer() {
               </span>
             </Link>
             <p className="text-neutral-400 text-sm leading-relaxed mb-4">
-              Transforming employment for neurodivergent talent through AI-powered matching and human-led support.
+              AI-powered cognitive strengths assessment platform for neuroinclusive hiring.
             </p>
-            {/* Innovation Badge */}
-            <div className="inline-flex items-center gap-2 px-3 py-2 bg-primary/10 border border-primary/20 rounded-lg">
-              <InnovationIcon />
-              <span className="text-xs font-medium text-primary-light">
-                Innovation Visa Business
+            {/* Trust Badges */}
+            <div className="flex flex-wrap gap-2">
+              <span className="inline-flex items-center gap-1.5 px-2 py-1 bg-white/10 rounded text-xs text-neutral-300">
+                <ShieldIcon />
+                GDPR
+              </span>
+              <span className="inline-flex items-center gap-1.5 px-2 py-1 bg-white/10 rounded text-xs text-neutral-300">
+                <ShieldIcon />
+                WCAG 2.1
               </span>
             </div>
           </div>
@@ -198,20 +195,6 @@ function TwitterIcon() {
   );
 }
 
-function YouTubeIcon() {
-  return (
-    <svg
-      width="20"
-      height="20"
-      viewBox="0 0 24 24"
-      fill="currentColor"
-      aria-hidden="true"
-    >
-      <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z" />
-    </svg>
-  );
-}
-
 function EmailIcon() {
   return (
     <svg
@@ -249,11 +232,11 @@ function PhoneIcon() {
   );
 }
 
-function InnovationIcon() {
+function ShieldIcon() {
   return (
     <svg
-      width="16"
-      height="16"
+      width="12"
+      height="12"
       viewBox="0 0 24 24"
       fill="none"
       stroke="currentColor"
@@ -262,8 +245,7 @@ function InnovationIcon() {
       strokeLinejoin="round"
       aria-hidden="true"
     >
-      <circle cx="12" cy="12" r="3" />
-      <path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42" />
+      <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
     </svg>
   );
 }
